@@ -3,7 +3,7 @@
     height: 439px;
     display: inline-block;
     vertical-align: middle;
-    margin: 120px auto 0 auto;
+    /* margin: 120px auto 0 auto; */
 }
 .signSq{
     width: 610px;
@@ -12,20 +12,20 @@
     border-radius: 35px;
     display: inline-block;
     vertical-align: middle;
-    margin: 120px auto 0 auto;
+    /* margin: 120px auto 0 auto; */
 }
 form{
-    margin-left: 20px;
+    /* margin-left: 20px; */
 }
 .logoS{
-    margin: 20px 0 20px 200px;
+    /* margin: 20px 0 20px 200px; */
 }
 .logoStart{
     margin-left: 45px;
 }
 .textSign{
     font-size: 20px;
-    margin-left: 45px;
+    /* margin-left: 45px; */
 }
 input{
     width: 500px;
@@ -33,7 +33,7 @@ input{
     background: #DEB07B;
     border-radius: 15px;
     border: none;
-    margin-left: 35px;
+    /* margin-left: 35px; */
 }
 .bSign{
     background: #583719;
@@ -45,7 +45,14 @@ input{
     margin: 20px 0 20px 200px;
     padding: 10px;
 }
-.buttonM{
+.buttonm{
+    margin-left: 30px;
+    margin-right: 60px;
+    font-family: 'PressStart2PRegular';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 15px;
+    color: #fff;
     padding: 15px;
     margin: 1px 5px 10px 110px;
 }

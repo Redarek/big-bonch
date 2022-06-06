@@ -48,34 +48,9 @@ const start = async () => { // функция старта сервера
             self.update = function() { // для перемещения
                 self.updatePosition()
             }
-
-            //ПЕРЕОПРЕДЕЛИТЬ updatePosition ТОЛЬКО В ОБЪЕКТЕ ИГРОКА Player
-            // А ТУТ ВЕРНУТЬ ТЕЛО ФУНКЦИИ КАК НИЖЕ
-            // self.x += self.spdX
-            // self.y += self.spdY
-            //ИНАЧЕ Bullet ТОЖЕ ОТСКАКИВАЕТ ОТ СТЕН
             self.updatePosition = function() { // перемещение игрока со скоростью spdX и spdY
                 self.x += self.spdX
                 self.y += self.spdY
-                // if (self.x > 0)
-                //     self.x += self.spdX
-                // else 
-                //     self.x += 5
-
-                // if (self.x < 1300)
-                //     self.x += self.spdX
-                // else 
-                //     self.x -= 5
-
-                // if (self.y > 0)
-                //     self.y += self.spdY
-                // else
-                //     self.y += 5
-
-                // if (self.y < 745)
-                //     self.y += self.spdY
-                // else
-                //     self.y -= 5
             }
             self.getDistance = function(pt){ // вычисление дистанции
                 return Math.sqrt(Math.pow(self.x-pt.x,2) + Math.pow(self.y-pt.y,2));
@@ -105,91 +80,48 @@ const start = async () => { // функция старта сервера
             self.pressingAttack = false
 	        self.mouseAngle = 0 // угол наведения курсора
             self.maxSpd = 10 // скорость передвижения игрока
-            // self.hp = 10;
-            // self.hpMax = 10;
-            // self.score = 0;
-            var super_update = self.update
+            self.hp = 10
+            self.hpMax = 10
+            self.score = 0
+            self.spriteAnimCounter = 0
+            let super_update = self.update
             self.update = function() {
                 self.updateSpd() //обновление скорости при нажатии клавиш
                 super_update() 
-
-                if(self.pressingAttack){
+                self.spriteAnimCounter += 0.5   
+                
+                if (self.pressingAttack) { //стрельба по нажатии клавиши мыши
                     self.shootBullet(self.mouseAngle)
                 }
             }
 
             self.shootBullet = function(angle) {
-                var b = Bullet(self.id,angle)
+                let b = Bullet(self.id,angle)
                 b.x = self.x
                 b.y = self.y
             }
 
             self.updateSpd = function() {
                 if(self.pressingRight)
-                    self.spdX = self.maxSpd
-                else if(self.pressingLeft) {
-                        self.spdX = -self.maxSpd
-                        if (self.y < 200 && self.x < 450)
-                            self.spdX = 0
-                        if (self.x < 100)
-                            self.spdX = 0
-                }
+			        self.spdX = self.maxSpd;
+		        else if(self.pressingLeft)
+                    self.spdX = -self.maxSpd;
                 else
-                    self.spdX = 0
-         
+                    self.spdX = 0;
+                
                 if(self.pressingUp)
-                    self.spdY = -self.maxSpd
+                    self.spdY = -self.maxSpd;
                 else if(self.pressingDown)
-                    self.spdY = self.maxSpd
+                    self.spdY = self.maxSpd;
                 else
-                    self.spdY = 0
-                
-                if (self.pressingLeft && self.x < 60) // столкновение с левой стеной
-                    self.spdX = 0
-
-                if (self.pressingRight && self.x > 1280) // столкновение с правой стеной
-                    self.spdX = 0
-                
-                if (self.pressingUp && self.y < 60) // столкновение с верхней стеной
-                    self.spdY = 0
-
-                if (self.pressingDown && self.y > 650) //столкновение с нижней стеной
-                    self.spdY = 0
-                // //////////
-                // if (self.pressingLeft && self.x < 450) { // столкновение с левой стеной
-                //     self.spdX = 0
-                //     if (self.y > 200)
-                //         self.spdX = -self.maxSpd
-                // }
-                
-                // if (self.pressingRight && self.x > 1280) // столкновение с правой стеной
-                //     self.spdX = 0
-
-                // if (self.pressingUp && self.y < 200) { // столкновение с верхней стеной
-                //     self.spdY = 0
-                //     if (self.x > 250)
-                //         self.spdY = -self.maxSpd
-                // }
-
-                // if (self.pressingDown && self.y > 650) //столкновение с нижней стеной
-                //     self.spdY = 0
-
-
-                // if(self.pressingLeft) {
-                //     self.spdX = -self.maxSpd
-                //     if (self.y < 200 && self.x < 450)
-                //         self.spdX = 0
-                //     if (self.x < 100)
-                //         self.spdX = 0
-                // }
-
+                    self.spdY = 0;		
             }
 
             self.getInitPack = function() { // отправка пакета с данными о сущности
                 return {
                     id:self.id,
                     x:self.x,
-                    y:self.y,	
+                    y:self.y,
                     number:self.number,	
                     hp:self.hp,
                     hpMax:self.hpMax,
@@ -216,19 +148,28 @@ const start = async () => { // функция старта сервера
         Player.onConnect = function(socket){
             let player = Player(socket.id)
             socket.on('keyPress',function(data){
-                if(data.inputId === 'left')
+                if (data.inputId === 'left') {
                     player.pressingLeft = data.state;
-                else if(data.inputId === 'right')
+                    socket.emit('spriteAnimCounter', player.spriteAnimCounter)
+                }
+                else if (data.inputId === 'right') {
                     player.pressingRight = data.state;
-                else if(data.inputId === 'up')
+                    socket.emit('spriteAnimCounter', player.spriteAnimCounter)
+                }
+                else if (data.inputId === 'up') {
                     player.pressingUp = data.state;
-                else if(data.inputId === 'down')
+                    socket.emit('spriteAnimCounter', player.spriteAnimCounter)
+                }
+                else if (data.inputId === 'down') {
                     player.pressingDown = data.state;
-                else if(data.inputId === 'attack')
+                    socket.emit('spriteAnimCounter', player.spriteAnimCounter)
+                }
+                else if (data.inputId === 'attack')
 			        player.pressingAttack = data.state;
-		        else if(data.inputId === 'mouseAngle')
-			        player.mouseAngle = data.state;
+		        else if (data.inputId === 'mouseAngle')
+			        player.mouseAngle = data.state;         
             });
+            socket.on('moveMouse', function() {socket.emit('angle', player.mouseAngle)})
 
             socket.emit('init',{
                 selfId:socket.id,
@@ -238,8 +179,8 @@ const start = async () => { // функция старта сервера
         }
 
         Player.getAllInitPack = function(){
-            var players = []
-            for(var i in Player.list)
+            let players = []
+            for(let i in Player.list)
                 players.push(Player.list[i].getInitPack());
             return players;
         }
@@ -260,36 +201,45 @@ const start = async () => { // функция старта сервера
         }
 
 
-        var Bullet = function(parent,angle){
-            var self = Entity();
+        let Bullet = function(parent,angle){
+            let self = Entity();
             self.id = Math.random();
             self.spdX = Math.cos(angle/180*Math.PI) * 10;
             self.spdY = Math.sin(angle/180*Math.PI) * 10;
             self.parent = parent;
             self.timer = 0;
             self.toRemove = false;
-            var super_update = self.update;
+            let super_update = self.update;
             self.update = function(){
                 if(self.timer++ > 100)
                     self.toRemove = true;
                 super_update();
          
-                for(var i in Player.list){
-                    var p = Player.list[i];
+                for(let i in Player.list){
+                    let p = Player.list[i];
                     if(self.getDistance(p) < 32 && self.parent !== p.id){
-                        //handle collision. ex: hp--;
+                        p.hp -= 1;
+                                        
+                        if(p.hp <= 0){
+                            let shooter = Player.list[self.parent];
+                            if(shooter)
+                                shooter.score += 1;
+                            p.hp = p.hpMax;
+                            p.x = Math.random() * 500;
+                            p.y = Math.random() * 500;					
+                        }
                         self.toRemove = true;
                     }
                 }
             }
-        self.getInitPack = function(){
+        self.getInitPack = function() {
             return {
                 id:self.id,
                 x:self.x,
                 y:self.y,		
             };
         }
-        self.getUpdatePack = function(){
+        self.getUpdatePack = function() {
             return {
                 id:self.id,
                 x:self.x,
@@ -305,9 +255,9 @@ const start = async () => { // функция старта сервера
          
         
         Bullet.update = function(){
-            var pack = [];
-            for(var i in Bullet.list){
-                var bullet = Bullet.list[i];
+            let pack = [];
+            for(let i in Bullet.list){
+                let bullet = Bullet.list[i];
                 bullet.update();
                 if (bullet.toRemove) {
                     delete Bullet.list[i];
@@ -319,8 +269,8 @@ const start = async () => { // функция старта сервера
             return pack;
         }
         Bullet.getAllInitPack = function(){
-            var bullets = [];
-            for(var i in Bullet.list)
+            let bullets = [];
+            for(let i in Bullet.list)
                 bullets.push(Bullet.list[i].getInitPack());
             return bullets;
         }
@@ -341,8 +291,8 @@ const start = async () => { // функция старта сервера
             })
 
             socket.on('sendMsgToServer',function(data){
-                var playerName = ("" + socket.id).slice(2,7);
-                for(var i in SOCKET_LIST){
+                let playerName = ("" + socket.id).slice(2,7);
+                for(let i in SOCKET_LIST) {
                     SOCKET_LIST[i].emit('addToChat',playerName + ': ' + data);
                 }
             });
@@ -350,7 +300,7 @@ const start = async () => { // функция старта сервера
             socket.on('evalServer',function(data){
                 if(!DEBUG)
                     return;
-                var res = eval(data);
+                let res = eval(data);
                 socket.emit('evalAnswer',res);		
             });
 
@@ -360,8 +310,8 @@ const start = async () => { // функция старта сервера
         let initPack = {
             player:[],
             bullet:[]
-        };
-        var removePack = {
+        }
+        let removePack = {
             player:[],
             bullet:[]
         }
@@ -375,14 +325,15 @@ const start = async () => { // функция старта сервера
          
             for(let i in SOCKET_LIST) {
                 let socket = SOCKET_LIST[i]
-                socket.emit('init',initPack)
-		        socket.emit('update',pack)
-		        socket.emit('remove',removePack)
+                socket.emit('init', initPack)
+		        socket.emit('update', pack)
+		        socket.emit('remove', removePack)             
             }
             initPack.player = []
 	        initPack.bullet = []
 	        removePack.player = []
 	        removePack.bullet = []
+            
         }, 1000/25);
 
 

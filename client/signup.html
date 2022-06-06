@@ -20,15 +20,14 @@
                     <p class="textSign"><label>Имя пользователя</label></p>
                     <input type="text" name="username" />
                     <p class="textSign"><label>Адрес кошелька</label></p>
-                    <input type="text" name="walletAddress" id="walletAddress"/>
-                    <!--<p><input type="submit" value="Подтвердить"/></p> Здесь разве не button должен быть?-->
+                    <input type="text" name="walletAddress" id="walletAddress" readonly/>
                     <button class="buttonS bSign" id="#"><p class="tbs">Подтвердить</p></button>
-                    
                 </form>
             </div>
         </div>
-        <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
-        type="application/javascript"></script>
+
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+
     <script>
         window.userWalletAddress = null
         const loginButton = document.getElementById('loginButton')
@@ -36,13 +35,8 @@
 
         function toggleButton() {
         if (!window.ethereum) {
-            loginButton.innerText = 'MetaMask is not installed'
+            loginButton.innerText = 'MetaMask не установлен'
             return false
-        }
-
-        function addWallet(value) {
-            let input = document.getElementById("walletAddress"); 
-            input.value = value;
         }
 
         loginButton.addEventListener('click', loginWithMetaMask)
@@ -68,7 +62,7 @@
 
         function signOutOfMetaMask() {
         window.userWalletAddress = null
-        walletAddress.innerText = ''
+        walletAddress.value = ''
         loginButton.innerText = 'Подлючить Metamask'
 
         loginButton.removeEventListener('click', signOutOfMetaMask)
