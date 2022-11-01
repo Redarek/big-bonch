@@ -12,7 +12,7 @@ class UserController {
             }
             const {email, password, walletAddress, name} = req.body; //вытаскиваем из тела запроса почту и пароль
             const userData = await userService.registration(email, password, walletAddress, name);
-            
+
             res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
             return res.json(userData);
         } catch (error) {

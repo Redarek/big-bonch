@@ -23,7 +23,7 @@ class UserService {
 
         const userDto = new UserDto(user); //id, email, isActivated, walletAddress, name Отправляем письмо для активации
         const tokens = tokenService.generateTokens({...userDto}); // генерируем JWT токены payload=userDto
-        await tokenService.saveToken(userDto.id, tokens.refreshToken); // сохраняем рефреш токен в БД
+        await tokenService.saveToken(userDto._id, tokens.refreshToken); // сохраняем рефреш токен в БД
 
         // возвращаем инфу о польз-ле и токены
         return {
@@ -77,11 +77,11 @@ class UserService {
         if (!userData || !tokenFromDb) {
             throw ApiError.unauthorizedError();
         }
-        const user = await userModel.findById(userData.id)
+        const user = await userModel.findById(userData._id)
         // код ниже можно вынести в отдельную функцию
         const userDto = new UserDto(user); //генерируем dto, выбрасываем из модели всё ненужное
         const tokens = tokenService.generateTokens({...userDto}); // генерируем JWT токены
-        await tokenService.saveToken(userDto.id, tokens.refreshToken); // сохраняем рефреш токен в БД
+        await tokenService.saveToken(userDto._id, tokens.refreshToken); // сохраняем рефреш токен в БД
 
         // возвращаем инфу о польз-ле и токены
         return {
