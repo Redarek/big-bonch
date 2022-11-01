@@ -9,10 +9,12 @@ import MetaMaskAuth from "./components/MetamaskConnect/MetaMaskAuth";
 function App() {
     const {isAuth, isLoading, user, walletAddress} = useAppSelector(state => state.authSlice)
     const dispatch = useAppDispatch()
+
+    const userId = localStorage.getItem("userId")
     // Проверка наличия токена доступа при первом запуске приложения
     useEffect(() => {
         if (localStorage.getItem('token')) {
-            dispatch(checkAuth);
+            dispatch(checkAuth());
         }
     }, [])
 

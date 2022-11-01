@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import {Navigate, Route, Routes} from 'react-router-dom';
 import {authRoutes, publicRoutes} from "../router";
 import {useAppSelector} from "../hooks/redux";
@@ -8,14 +8,14 @@ const AppRouter: FC = () => {
     return (
         <Routes>
             {isAuth
-                ? publicRoutes.map(route =>
+                ? authRoutes.map(route =>
                     <Route
                         key={route.path}
                         element={route.element}
                         path={route.path}
                     />
                 )
-                : authRoutes.map(route =>
+                : publicRoutes.map(route =>
                     <Route
                         key={route.path}
                         element={route.element}

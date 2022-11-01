@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {AuthResponse} from "../../types/AuthResponse";
-import {login, logout, registration} from "./ActionCreators";
+import {checkAuth,login, logout} from "./ActionCreators";
 
 interface UserState {
     user: AuthResponse;
@@ -29,6 +29,20 @@ const authSlice = createSlice({
     },
 
     extraReducers: {
+        [checkAuth.fulfilled.type]: (state, action: PayloadAction<AuthResponse>) => {
+            state.isLoading = false;
+            state.error = '';
+            if (action.payload != undefined) {
+                state.isAuth = true
+                state.user = action.payload
+            }
+        },
+        [checkAuth.pending.type]: (state) => {
+            state.isLoading = true;
+        },
+        [checkAuth.rejected.type]: (state, action: PayloadAction<string>) => {
+            state.error = action.payload
+        },
         [login.fulfilled.type]: (state, action: PayloadAction<AuthResponse>) => {
             state.isLoading = false;
             state.error = '';
