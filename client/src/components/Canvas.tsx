@@ -6,9 +6,10 @@ import mapPicture from '../images/map.png'
 
 declare var window: any
 
+
 const Canvas = () => {
     const canvasRef = React.useRef(null)
-
+    const BASE_URL = 'http://localhost:8080';
     // useEffect(() => {
     //
     //     const canvas = canvasRef.current;
@@ -19,7 +20,7 @@ const Canvas = () => {
     // }, [])
 
     useEffect(() => {
-        const socket = io('http://localhost:8080')
+        const socket = io(`${BASE_URL}`)
         const canvas = canvasRef.current;
         // @ts-ignore
         const ctx = canvas.getContext('2d');
@@ -28,9 +29,45 @@ const Canvas = () => {
 
         const contractAddr = "0xd3D7095fa12C735dfC0893CC2717670E241e1d71"
 
+        const TILE_SIZE = 64
         const WIDTH = 1280
         const HEIGHT = 720
-
+        let CANVAS_WIDTH = 1280
+        let CANVAS_HEIGHT = 720
+        
+        const array = 
+            [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+            [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
 
         // socket.on('BigNumber', async function(data) {
         //     if (window.ethereum) {
@@ -52,6 +89,35 @@ const Canvas = () => {
         //     }
         // })
 
+        // resize game
+        let resizeCanvas = function(){
+            CANVAS_WIDTH = window.innerWidth - 4;
+            CANVAS_HEIGHT = window.innerHeight - 4;
+          
+            let ratio = 16 / 9;
+            if(CANVAS_HEIGHT < CANVAS_WIDTH / ratio)
+              CANVAS_WIDTH = CANVAS_HEIGHT * ratio;
+            else
+              CANVAS_HEIGHT = CANVAS_WIDTH / ratio;
+            // @ts-ignore
+            canvas.width = WIDTH;
+            // @ts-ignore
+            canvas.height = HEIGHT;
+            ctx.font = '30px Arial';
+            ctx.mozImageSmoothingEnabled = false;	//better graphics for pixel art
+            ctx.msImageSmoothingEnabled = false;
+            ctx.imageSmoothingEnabled = false;
+            // @ts-ignore
+            canvas.style.width = '' + CANVAS_WIDTH + 'px';
+            // @ts-ignore
+            canvas.style.height = '' + CANVAS_HEIGHT + 'px';
+          }
+          resizeCanvas();
+          
+          window.addEventListener('resize',function(){
+            resizeCanvas();
+          });
+
         //game
         let Img = {}
         // @ts-ignore
@@ -61,17 +127,17 @@ const Canvas = () => {
         // @ts-ignore
         Img.bullet = new Image()
         // @ts-ignore
-        Img.bullet.src = '/images/bullet.png'
+        Img.bullet.src = '/images/bullet.png';
         // @ts-ignore
-        console.log(Img.bullet.src)
+        Img.map = {}
         // @ts-ignore
-        Img.map = new Image()
+        Img.map['vestibule'] = new Image()
         // @ts-ignore
-        Img.map.src = '/images/map.png'
+        Img.map['vestibule'].src = '/images/map.png'
         // @ts-ignore
-        console.log(Img.map.src)
+        Img.map['vestibule2'] = new Image()
         // @ts-ignore
-        // const ctx = document.getElementById("ctx").getContext("2d")
+        Img.map['vestibule2'].src = '/images/map.png'
         ctx.font = '30px Arial'
         // @ts-ignore
         let Player = function (initPack) {
@@ -91,12 +157,18 @@ const Canvas = () => {
             // @ts-ignore
             self.score = initPack.score
             // @ts-ignore
-            self.angle = 0
+            self.map = initPack.map
             // @ts-ignore
-            self.spriteAnimCounter = 0
+            self.mouseAngle = initPack.mouseAngle
+            // @ts-ignore
+            self.spriteAnimCounter = initPack.spriteAnimCounter
 
             // @ts-ignore
             self.draw = function () {
+                // @ts-ignore
+                if(Player.list[selfId].map !== self.map) {
+                    return
+                }
                 // @ts-ignore
                 let x = self.x - Player.list[selfId].x + WIDTH / 2
                 // @ts-ignore
@@ -110,29 +182,33 @@ const Canvas = () => {
                 const width = Img.player.width / 3 / 7 //размеры фрейма игрока
                 // @ts-ignore
                 const height = Img.player.height / 4 / 7
+                // // @ts-ignore
+                // console.log(Maps.current.width, Maps.current.height)
+                // // @ts-ignore
+                // console.log(Img.player.width /3 /7, Img.player.height/4/7)
                 // @ts-ignore
                 const frameWidth = Img.player.width / 3
                 // @ts-ignore
                 const frameHeight = Img.player.height / 4
-                socket.on('angle', function (data) {
-                    // @ts-ignore
-                    self.angle = data
-                })
+                // socket.on('angle', function (data) {
+                //     // @ts-ignore
+                //     self.angle = data
+                // })
                 let directionMod = 2 // вправо
                 // @ts-ignore
-                if (self.angle >= 45 && self.angle < 135) //вниз
+                if (self.mouseAngle >= 45 && self.mouseAngle < 135) //вниз
                     directionMod = 0
                 // @ts-ignore
-                else if ((self.angle >= 135 && self.angle <= 180) || (self.angle >= -180 && self.angle < -135)) //влево
+                else if ((self.mouseAngle >= 135 && self.mouseAngle <= 180) || (self.mouseAngle >= -180 && self.mouseAngle < -135)) //влево
                     directionMod = 3
                 // @ts-ignore
-                else if (self.angle >= -135 && self.angle < -45) //вверх
+                else if (self.mouseAngle >= -135 && self.mouseAngle < -45) //вверх
                     directionMod = 1
 
-                socket.on('spriteAnimCounter', function (data) {
-                    // @ts-ignore
-                    self.spriteAnimCounter = data
-                })
+                // socket.on('spriteAnimCounter', function (data) {
+                //     // @ts-ignore
+                //     self.spriteAnimCounter = data
+                // })
                 // @ts-ignore
                 let walkingMod = Math.floor(self.spriteAnimCounter) % 3
                 // @ts-ignore
@@ -140,8 +216,6 @@ const Canvas = () => {
                 ctx.drawImage(Img.player,
                     walkingMod * frameWidth, directionMod * frameHeight, frameWidth, frameHeight,
                     x - width / 2, y - height / 2, width, height);
-
-                // ctx.fillText(self.score, self.x, self.y-60);
             }
             // @ts-ignore
             Player.list[self.id] = self
@@ -160,7 +234,13 @@ const Canvas = () => {
             // @ts-ignore
             self.y = initPack.y
             // @ts-ignore
+            self.map = initPack.map
+            // @ts-ignore
             self.draw = function () {
+                // @ts-ignore
+                if(Player.list[selfId].map !== self.map) {
+                    return
+                }
                 // @ts-ignore
                 let width = Img.bullet.width / 2
                 // @ts-ignore
@@ -212,6 +292,10 @@ const Canvas = () => {
                         p.hp = pack.hp
                     if (pack.score !== undefined)
                         p.score = pack.score
+                    if (pack.mouseAngle !== undefined)
+                        p.mouseAngle = pack.mouseAngle
+                    if (pack.spriteAnimCounter !== undefined)
+                        p.spriteAnimCounter = pack.spriteAnimCounter
                 }
             }
             for (let i = 0; i < data.bullet.length; i++) {
@@ -228,7 +312,6 @@ const Canvas = () => {
         });
 
         socket.on('remove', function (data) {
-            //{player:[12323],bullet:[12323,123123]}
             for (let i = 0; i < data.player.length; i++) {
                 // @ts-ignore
                 delete Player.list[data.player[i]]
@@ -238,13 +321,80 @@ const Canvas = () => {
                 delete Bullet.list[data.bullet[i]]
             }
         });
+        // @ts-ignore
+        let Maps = function(id,imgSrc,grid){
+            // @ts-ignore
+            
+            var self = {
+                id:id,
+                image:new Image(),
+                width:grid[0].length * TILE_SIZE,
+                height:grid.length * TILE_SIZE,
+                grid:grid,
+            }
+            self.image.src = imgSrc;
+            // @ts-ignore
+            self.isPositionWall = function(pt){
+                var gridX = Math.floor(pt.x / TILE_SIZE);
+                var gridY = Math.floor(pt.y / TILE_SIZE);
+                if(gridX < 0 || gridX >= self.grid[0].length)
+                    return true;
+                if(gridY < 0 || gridY >= self.grid.length)
+                    return true;
+                return self.grid[gridY][gridX];
+            }
+            // @ts-ignore
+            self.draw = function(){
+                
+                // @ts-ignore
+                let player = Player.list[selfId];
+                // console.log(player.x, player.y)
+                // @ts-ignore
+                var x = WIDTH/2 - player.x;
+                // @ts-ignore
+                var y = HEIGHT/2 - player.y;
+                // ctx.drawImage(self.image,0,0,self.image.width,self.image.height,x,y,self.image.width*2,self.image.height*2);
+                ctx.drawImage(self.image, x, y, WIDTH*2,HEIGHT*2);
+                // @ts-ignore
+                // ctx.drawImage(Img.map[player.map],x,y, WIDTH*2, HEIGHT*2);
+            }
+            return self;
+        }
+        // @ts-ignore
+        Maps.current = Maps('vestibule','/images/map.png', array);
+        
+            // // @ts-ignore
+            // let array2D = [];
+            // for(let i = 0 ; i < 32; i++){
+            //     // @ts-ignore
+            //     array2D[i] = [];
+            //     for(let j = 0 ; j < 51; j++){
+            //         // @ts-ignore
+            //         array2D[i][j] = array[i * 32 + j];
+            //     }
+            // }
+        let drawMap = function () {
+            // @ts-ignore
+            let player = Player.list[selfId];
+            // @ts-ignore
+		    let x = WIDTH/2 - player.x;
+            // @ts-ignore
+		    let y = HEIGHT/2 - player.y;
+            // @ts-ignore
+		    ctx.drawImage(Img.map[player.map],x,y, WIDTH*2, HEIGHT*2);
+            // @ts-ignore
+            
+        }
 
         setInterval(function () {
             // @ts-ignore
             if (!selfId)
                 return;
             ctx.clearRect(0, 0, WIDTH, HEIGHT)
-            drawMap()
+            // @ts-ignore
+            Maps.current.draw();
+            // drawMap()
+            // drawScore()
             // @ts-ignore
             for (let i in Player.list)
                 // @ts-ignore
@@ -255,20 +405,13 @@ const Canvas = () => {
                 Bullet.list[i].draw()
         }, 40)
 
-        let drawMap = function () {
-            // @ts-ignore
-            let x = WIDTH / 2 - Player.list[selfId].x
-            // @ts-ignore
-            let y = HEIGHT / 2 - Player.list[selfId].y
-            // @ts-ignore
-            ctx.drawImage(Img.map, x, y, WIDTH * 2, HEIGHT * 2)
-        }
+        
 
         //score
         let drawScore = function () {
-            ctx.fillStyle = 'white';
+            ctx.fillStyle = 'black';
             // @ts-ignore
-            ctx.fillText(Player.list[selfId].score, 0, 30);
+            ctx.fillText(Player.list[selfId].score, 40, 80);
         }
 
         document.onkeydown = function (event) {
@@ -298,14 +441,22 @@ const Canvas = () => {
         document.onmouseup = function (event) {
             socket.emit('keyPress', {inputId: 'attack', state: false})
         }
-        document.onmousemove = function (event) {
-            let x = -640 + event.clientX - 20
-            let y = -360 + event.clientY - 20
-            let angle = Math.atan2(y, x) / Math.PI * 180
+        document.onmousemove = function (mouse) {       
+            // @ts-ignore
+            var mouseX = mouse.clientX - canvas.getBoundingClientRect().left;
+            // @ts-ignore
+	        var mouseY = mouse.clientY - canvas.getBoundingClientRect().top;
+
+	        mouseX -= CANVAS_WIDTH/2;
+	        mouseY -= CANVAS_HEIGHT/2;
+
+            let angle = Math.atan2(mouseY, mouseX) / Math.PI * 180
             socket.emit('keyPress', {inputId: 'mouseAngle', state: angle})
-            socket.emit('moveMouse')
+            // socket.emit('moveMouse')
             //тут отдельный сокет эмит для aimAngle и на сервере вынести ON из keyPress
         }
+
+
     }, [])
     return (
         <div className="middlepart">
@@ -316,6 +467,13 @@ const Canvas = () => {
                 ref={canvasRef}>
                 Обновите браузер
             </canvas>
+            {/* <canvas
+                width="1280px"
+                height="720px"
+                id="ctx-ui"
+                ref={canvasRefUi}>
+                Обновите браузер
+            </canvas> */}
         </div>
     );
 };

@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const session = require('express-session')
 const mongoose = require('mongoose');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -14,6 +15,17 @@ const User = require('./models/userModel');
 const router = require('./router/index.js');
 
 const app = express();
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET || 'Super Secret (change it)',
+        resave: true,
+        saveUninitialized: false,
+        // cookie: {
+        //     sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax', // must be 'none' to enable cross-site delivery
+        //     secure: process.env.NODE_ENV === "production", // must be true if sameSite='none'
+        // }
+    })
+);
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
@@ -46,20 +58,66 @@ const start = async () => {
         // игра
         let SOCKET_LIST = {} //список сокетов
 
-        let Entity = function() { //Сущность с параметрами для игры
+        let Entity = function(param) { //Сущность с параметрами для игры
             let self = {
-                x: 750, // координаты x
-                y: 370, // координаты y
+                x: 550, // координаты x
+                y: 600, // координаты y
                 spdX: 0, // скорость
                 spdY: 0,
                 id: "", // id
+                map: 'vestibule',
             }
+
+            if(param) {
+                if(param.x)
+                    self.x = param.x;
+                if(param.y)
+                    self.y = param.y;
+                if(param.map)
+                    self.map = param.map;
+                if(param.id)
+                    self.id = param.id;		
+            }
+
             self.update = function() { // для перемещения
                 self.updatePosition()
             }
+
+            self.isPositionWall = function(pt){
+                // const TILE_SIZE = 128
+                const TILE_SIZE_X = 50.19607843
+                const TILE_SIZE_Y = 45
+                // console.log(pt.x, pt.y)
+                let gridX = Math.floor(pt.x / TILE_SIZE_X);
+                let gridY = Math.floor(pt.y / TILE_SIZE_Y);
+                if(gridX < 0 || gridX >= array[0].length)
+                    return true;
+                if(gridY < 0 || gridY >= array.length)
+                    return true;
+                return array[gridY][gridX];
+            }
+
             self.updatePosition = function() { // перемещение игрока со скоростью spdX и spdY
+                let oldX = self.x;
+		        let oldY = self.y;
+                
                 self.x += self.spdX
                 self.y += self.spdY
+
+                //ispositionvalid не даем выйти за границы canvas
+                if(self.x < 160)
+                    self.x = 160;
+                if(self.x > 2400-131/2) //6528px ширина карты, 131px ширина фрейма игрока(Img.player.width /3/7)
+                    self.x = 2400 - 131/2; //160 2400 1350 границы карты по текущим размерам отрисованной карты
+                if(self.y < 121/2)
+                    self.y = 121/2;
+                if(self.y > 1350 - 121/2) //4096px высота карты, 121px высота фрейма игрока(Img.player.height /4/7)
+                    self.y = 1350 - 121/2;
+
+                if (self.isPositionWall(self)) {
+                    self.x = oldX
+                    self.y = oldY
+                }
             }
             self.getDistance = function(pt){ // вычисление дистанции
                 return Math.sqrt(Math.pow(self.x-pt.x,2) + Math.pow(self.y-pt.y,2));
@@ -78,9 +136,8 @@ const start = async () => {
             return distance < 10
         }
 
-        let Player = function(id) { // Игрок
-            let self = Entity() //создание экземпляра сущности
-            self.id = id // id
+        let Player = function(param) { // Игрок
+            let self = Entity(param) //создание экземпляра сущности
             self.number = "" + Math.floor(10 * Math.random()) // присвоение рандомного номера игрока (никнейм, по сути)
             self.pressingRight = false // нажаты ли клавиши – нет, т.к. false
             self.pressingLeft = false
@@ -93,11 +150,11 @@ const start = async () => {
             self.hpMax = 10
             self.score = 0
             self.spriteAnimCounter = 0
+            // self.angle = 0
             let super_update = self.update
             self.update = function() {
                 self.updateSpd() //обновление скорости при нажатии клавиш
-                super_update() 
-                self.spriteAnimCounter += 0.5   
+                super_update()   
                 
                 if (self.pressingAttack) { //стрельба по нажатии клавиши мыши
                     self.shootBullet(self.mouseAngle)
@@ -105,12 +162,17 @@ const start = async () => {
             }
 
             self.shootBullet = function(angle) {
-                let b = Bullet(self.id,angle)
-                b.x = self.x
-                b.y = self.y
+                Bullet({
+                    parent:self.id,
+                    angle:angle,
+                    x:self.x,
+                    y:self.y,
+                    map:self.map,
+                });
             }
 
             self.updateSpd = function() {
+
                 if(self.pressingRight)
 			        self.spdX = self.maxSpd;
 		        else if(self.pressingLeft)
@@ -123,7 +185,11 @@ const start = async () => {
                 else if(self.pressingDown)
                     self.spdY = self.maxSpd;
                 else
-                    self.spdY = 0;		
+                    self.spdY = 0;	
+
+                // анимация спрайта
+                if (self.pressingRight || self.pressingLeft || self.pressingUp || self.pressingDown)
+                    self.spriteAnimCounter += 0.5 
             }
 
             self.getInitPack = function() { // отправка пакета с данными о сущности
@@ -135,6 +201,9 @@ const start = async () => {
                     hp:self.hp,
                     hpMax:self.hpMax,
                     score:self.score,
+                    map:self.map,
+                    mouseAngle:self.mouseAngle,
+                    spriteAnimCounter:self.spriteAnimCounter,
                 }
             }
 
@@ -145,17 +214,27 @@ const start = async () => {
                     y:self.y,
                     hp:self.hp,
                     score:self.score,
+                    mouseAngle:self.mouseAngle,
+                    spriteAnimCounter:self.spriteAnimCounter,
                 }	
             }
 
-            Player.list[id] = self
+            Player.list[self.id] = self
             initPack.player.push(self.getInitPack())
             return self
         }
         Player.list = {}
 
         Player.onConnect = function(socket){
-            let player = Player(socket.id)
+            let map = 'vestibule';
+                // if(Math.random() < 0.5) {
+                //     map = 'vestibule2';
+                // }
+                    
+                let player = Player({
+                    id:socket.id,
+                    map:map,
+                });
             socket.on('keyPress',function(data){
                 if (data.inputId === 'left') {
                     player.pressingLeft = data.state;
@@ -178,7 +257,7 @@ const start = async () => {
 		        else if (data.inputId === 'mouseAngle')
 			        player.mouseAngle = data.state;         
             });
-            socket.on('moveMouse', function() {socket.emit('angle', player.mouseAngle)})
+            // socket.on('moveMouse', function() {socket.emit('angle', player.mouseAngle)})
 
             socket.emit('init',{
                 selfId:socket.id,
@@ -210,12 +289,14 @@ const start = async () => {
         }
 
 
-        let Bullet = function(parent,angle){
-            let self = Entity();
+        let Bullet = function(param) {
+            let self = Entity(param);
             self.id = Math.random();
-            self.spdX = Math.cos(angle/180*Math.PI) * 10;
-            self.spdY = Math.sin(angle/180*Math.PI) * 10;
-            self.parent = parent;
+            self.angle = param.angle;
+            self.spdX = Math.cos(param.angle/180*Math.PI) * 10;
+            self.spdY = Math.sin(param.angle/180*Math.PI) * 10;
+            self.parent = param.parent;
+
             self.timer = 0;
             self.toRemove = false;
             let super_update = self.update;
@@ -223,10 +304,15 @@ const start = async () => {
                 if(self.timer++ > 100)
                     self.toRemove = true;
                 super_update();
+                
+                // console.log(self.isPositionWall(self))
+                if (self.isPositionWall(self)) {
+                    self.toRemove = true;
+                }
          
                 for(let i in Player.list){
                     let p = Player.list[i];
-                    if(self.getDistance(p) < 32 && self.parent !== p.id){
+                    if(self.map === p.map && self.getDistance(p) < 32 && self.parent !== p.id){
                         p.hp -= 1;
                                         
                         if(p.hp <= 0){
@@ -234,18 +320,44 @@ const start = async () => {
                             if(shooter)
                                 shooter.score += 1;
                             p.hp = p.hpMax;
-                            p.x = Math.random() * 500;
-                            p.y = Math.random() * 500;					
+                            // p.x = Math.random() * 500;
+                            // p.y = Math.random() * 500;		
+                            p.x = 550; // координаты возрождения игрока
+                            p.y = 600;			
                         }
                         self.toRemove = true;
                     }
                 }
             }
+            self.updatePosition = function() { // перемещение игрока со скоростью spdX и spdY
+                // let oldX = self.x;
+		        // let oldY = self.y;
+                
+                self.x += self.spdX
+                self.y += self.spdY
+
+                // //ispositionvalid не даем выйти за границы canvas
+                // if(self.x < 160)
+                //     self.x = 160;
+                // if(self.x > 2400-131/2) //6528px ширина карты, 131px ширина фрейма игрока(Img.player.width /3/7)
+                //     self.x = 2400 - 131/2; //160 2400 1350 границы карты по текущим размерам отрисованной карты
+                // if(self.y < 121/2)
+                //     self.y = 121/2;
+                // if(self.y > 1350 - 121/2) //4096px высота карты, 121px высота фрейма игрока(Img.player.height /4/7)
+                //     self.y = 1350 - 121/2;
+
+                // if (self.isPositionWall(self)) {
+                //     self.x = oldX
+                //     self.y = oldY
+                // }
+            }
+
         self.getInitPack = function() {
             return {
                 id:self.id,
                 x:self.x,
-                y:self.y,		
+                y:self.y,	
+                map:self.map,	
             };
         }
         self.getUpdatePack = function() {
@@ -315,6 +427,40 @@ const start = async () => {
 
             console.log('socket connection')
         })
+
+        const array = 
+            [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+            [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
 
         let initPack = {
             player:[],
