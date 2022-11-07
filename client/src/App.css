@@ -4,16 +4,23 @@
     box-sizing: border-box;
 }
 
-#ctx-ui {
+/* #ctx-ui {
     position: absolute;
     top: 0;
     left: 0;
-}
+} */
 #ctx {
     position: absolute;
     top: 0;
     left: 0;
 }
+
+/* .canvasBox {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+} */
     
 .wrapper {
     display: flex;

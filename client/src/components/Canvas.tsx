@@ -15,13 +15,11 @@ const Canvas = () => {
     useEffect(() => {
         const socket = io(`${BASE_URL}`)
         const canvas = canvasRef.current;
-        const canvasUi = canvasRefUi.current;
+        // const canvasUi = canvasRefUi.current;
         // @ts-ignore
-        const ctxUi = canvasUi.getContext('2d');
+        // const ctxUi = canvasUi.getContext('2d');
         // @ts-ignore
         const ctx = canvas.getContext('2d');
-        // ctx.fillStyle = "red";
-        // ctx.fillRect(10, 10, 150, 100)
 
         const contractAddr = "0xd3D7095fa12C735dfC0893CC2717670E241e1d71"
 
@@ -99,9 +97,6 @@ const Canvas = () => {
             canvas.width = WIDTH;
             // @ts-ignore
             canvas.height = HEIGHT;
-            // ctxUi.font = '30px Arial';
-            // ctxUi.fillStyle = 'white';
-            // ctxUi.fillText("123")
             ctx.font = '30px Arial';
         
             ctx.mozImageSmoothingEnabled = false;	//better graphics for pixel art
@@ -112,9 +107,9 @@ const Canvas = () => {
             // @ts-ignore
             canvas.style.height = '' + CANVAS_HEIGHT + 'px';
             // @ts-ignore
-            canvasUi.style.width = '' + CANVAS_WIDTH + 'px';
+            // canvasUi.style.width = '' + CANVAS_WIDTH + 'px';
             // @ts-ignore
-            canvasUi.style.height = '' + CANVAS_HEIGHT + 'px';
+            // canvasUi.style.height = '' + CANVAS_HEIGHT + 'px';
           }
           resizeCanvas();
           
@@ -463,7 +458,7 @@ const Canvas = () => {
 
     }, [])
     return (
-        <div>
+        <div className={cl.canvasBox}>
             <canvas
                 width="1280px"
                 height="720px"
@@ -471,13 +466,13 @@ const Canvas = () => {
                 ref={canvasRef}>
                 Обновите браузер
             </canvas>
-            <canvas
+            {/* <canvas
                 width="1280px"
                 height="720px"
                 id="ctx-ui"
                 ref={canvasRefUi}>
                 Обновите браузер
-            </canvas>
+            </canvas> */}
         </div>
     );
 };
