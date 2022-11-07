@@ -30,8 +30,8 @@ const Canvas = () => {
         const HEIGHT = 720
         let CANVAS_WIDTH = 1280
         let CANVAS_HEIGHT = 720
-        
-        const array = 
+
+        const array =
             [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -89,7 +89,7 @@ const Canvas = () => {
         let resizeCanvas = function(){
             CANVAS_WIDTH = window.innerWidth - 4;
             CANVAS_HEIGHT = window.innerHeight - 4;
-          
+
             let ratio = 16 / 9;
             if(CANVAS_HEIGHT < CANVAS_WIDTH / ratio)
               CANVAS_WIDTH = CANVAS_HEIGHT * ratio;
@@ -103,7 +103,7 @@ const Canvas = () => {
             // ctxUi.fillStyle = 'white';
             // ctxUi.fillText("123")
             ctx.font = '30px Arial';
-        
+
             ctx.mozImageSmoothingEnabled = false;	//better graphics for pixel art
             ctx.msImageSmoothingEnabled = false;
             ctx.imageSmoothingEnabled = false;
@@ -117,7 +117,7 @@ const Canvas = () => {
             canvasUi.style.height = '' + CANVAS_HEIGHT + 'px';
           }
           resizeCanvas();
-          
+
           window.addEventListener('resize',function(){
             resizeCanvas();
           });
@@ -328,7 +328,7 @@ const Canvas = () => {
         // @ts-ignore
         let Maps = function(id,imgSrc,grid){
             // @ts-ignore
-            
+
             var self = {
                 id:id,
                 image:new Image(),
@@ -349,7 +349,7 @@ const Canvas = () => {
             }
             // @ts-ignore
             self.draw = function(){
-                
+
                 // @ts-ignore
                 let player = Player.list[selfId];
                 // console.log(player.x, player.y)
@@ -366,7 +366,7 @@ const Canvas = () => {
         }
         // @ts-ignore
         Maps.current = Maps('vestibule','/images/map.png', array);
-        
+
             // // @ts-ignore
             // let array2D = [];
             // for(let i = 0 ; i < 32; i++){
@@ -387,7 +387,7 @@ const Canvas = () => {
             // @ts-ignore
 		    ctx.drawImage(Img.map[player.map],x,y, WIDTH*2, HEIGHT*2);
             // @ts-ignore
-            
+
         }
 
         setInterval(function () {
@@ -409,7 +409,7 @@ const Canvas = () => {
                 Bullet.list[i].draw()
         }, 40)
 
-        
+
 
         //score
         let drawScore = function () {
@@ -445,7 +445,7 @@ const Canvas = () => {
         document.onmouseup = function (event) {
             socket.emit('keyPress', {inputId: 'attack', state: false})
         }
-        document.onmousemove = function (mouse) {       
+        document.onmousemove = function (mouse) {
             // @ts-ignore
             var mouseX = mouse.clientX - canvas.getBoundingClientRect().left;
             // @ts-ignore
@@ -463,17 +463,17 @@ const Canvas = () => {
 
     }, [])
     return (
-        <div>
+        <div className={cl.wrap}>
             <canvas
-                width="1280px"
-                height="720px"
+                // width="1280px"
+                // height="720px"
                 id="ctx"
                 ref={canvasRef}>
                 Обновите браузер
             </canvas>
             <canvas
-                width="1280px"
-                height="720px"
+                // width="1280px"
+                // height="720px"
                 id="ctx-ui"
                 ref={canvasRefUi}>
                 Обновите браузер
