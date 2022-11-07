@@ -2,26 +2,22 @@ import React, {useEffect, useState} from 'react';
 import {io} from "socket.io-client";
 import Web3 from "web3";
 import {ethers} from 'ethers'
-import mapPicture from '../images/map.png'
+import cl from '../styles/MainPage.module.css'
 
 declare var window: any
 
 
 const Canvas = () => {
     const canvasRef = React.useRef(null)
+    const canvasRefUi = React.useRef(null)
     const BASE_URL = 'http://localhost:8080';
-    // useEffect(() => {
-    //
-    //     const canvas = canvasRef.current;
-    //     // @ts-ignore
-    //     const ctx = canvas.getContext('2d');
-    //     ctx.fillStyle = "red";
-    //     ctx.fillRect(10, 10, 150, 100)
-    // }, [])
 
     useEffect(() => {
         const socket = io(`${BASE_URL}`)
         const canvas = canvasRef.current;
+        const canvasUi = canvasRefUi.current;
+        // @ts-ignore
+        const ctxUi = canvasUi.getContext('2d');
         // @ts-ignore
         const ctx = canvas.getContext('2d');
         // ctx.fillStyle = "red";
@@ -103,7 +99,11 @@ const Canvas = () => {
             canvas.width = WIDTH;
             // @ts-ignore
             canvas.height = HEIGHT;
+            // ctxUi.font = '30px Arial';
+            // ctxUi.fillStyle = 'white';
+            // ctxUi.fillText("123")
             ctx.font = '30px Arial';
+        
             ctx.mozImageSmoothingEnabled = false;	//better graphics for pixel art
             ctx.msImageSmoothingEnabled = false;
             ctx.imageSmoothingEnabled = false;
@@ -111,6 +111,10 @@ const Canvas = () => {
             canvas.style.width = '' + CANVAS_WIDTH + 'px';
             // @ts-ignore
             canvas.style.height = '' + CANVAS_HEIGHT + 'px';
+            // @ts-ignore
+            canvasUi.style.width = '' + CANVAS_WIDTH + 'px';
+            // @ts-ignore
+            canvasUi.style.height = '' + CANVAS_HEIGHT + 'px';
           }
           resizeCanvas();
           
@@ -459,7 +463,7 @@ const Canvas = () => {
 
     }, [])
     return (
-        <div className="middlepart">
+        <div>
             <canvas
                 width="1280px"
                 height="720px"
@@ -467,13 +471,13 @@ const Canvas = () => {
                 ref={canvasRef}>
                 Обновите браузер
             </canvas>
-            {/* <canvas
+            <canvas
                 width="1280px"
                 height="720px"
                 id="ctx-ui"
                 ref={canvasRefUi}>
                 Обновите браузер
-            </canvas> */}
+            </canvas>
         </div>
     );
 };
