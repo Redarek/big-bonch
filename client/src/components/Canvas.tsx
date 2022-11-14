@@ -11,23 +11,49 @@ const Canvas = () => {
     const canvasRef = React.useRef(null)
     const canvasRefUi = React.useRef(null)
     const BASE_URL = 'http://localhost:8080';
+    
 
     useEffect(() => {
         const socket = io(`${BASE_URL}`)
         const canvas = canvasRef.current;
-        // const canvasUi = canvasRefUi.current;
+        const canvasUi = canvasRefUi.current;
         // @ts-ignore
-        // const ctxUi = canvasUi.getContext('2d');
+        const ctxUi = canvasUi.getContext('2d');
         // @ts-ignore
         const ctx = canvas.getContext('2d');
 
-        const contractAddr = "0xd3D7095fa12C735dfC0893CC2717670E241e1d71"
+        
 
         const TILE_SIZE = 64
         const WIDTH = 1280
         const HEIGHT = 720
         let CANVAS_WIDTH = 1280
         let CANVAS_HEIGHT = 720
+
+        const contractAddr = "0xd3D7095fa12C735dfC0893CC2717670E241e1d71"
+        const propusk = async function() {
+            console.log('propusk')
+            if (window.ethereum) {
+                const provider=  new ethers.providers.Web3Provider(window.ethereum);
+                await provider.send("eth_requestAccounts", [])
+                const signer = provider.getSigner()
+                const abi = [ "function mint(uint numberOfTokens) external payable" ]
+                const contract = new ethers.Contract(
+                    contractAddr,
+                    // @ts-ignore
+                    abi, signer)
+                try {
+                    const response = await contract.mint(ethers.BigNumber.from(1), {
+                        value: ethers.utils.parseEther("0.18"),
+                    })
+                    console.log('response: ', response)
+                } catch(err){
+                    console.log("error", err)
+                }
+            }
+        }
+    
+    propusk()
 
         const array =
             [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -63,25 +89,9 @@ const Canvas = () => {
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
 
-        // socket.on('BigNumber', async function(data) {
-        //     if (window.ethereum) {
-        //         const provider=  new ethers.providers.Web3Provider(window.ethereum);
-        //         await provider.send("eth_requestAccounts", [])
-        //         const signer = provider.getSigner()
-        //         const contract = new ethers.Contract(
-        //             contractAddr,
-        //             // @ts-ignore
-        //             abi = [ "function mint(uint numberOfTokens) external payable" ], signer)
-        //         try {
-        //             const response = await contract.mint(data, {
-        //                 value: ethers.utils.parseEther("0.18"),
-        //             })
-        //             console.log('response: ', response)
-        //         } catch(err){
-        //             console.log("error", err)
-        //         }
-        //     }
-        // })
+        // socket.on('BigNumber', 
+        
+        
 
         // resize game
         let resizeCanvas = function(){
@@ -107,9 +117,9 @@ const Canvas = () => {
             // @ts-ignore
             canvas.style.height = '' + CANVAS_HEIGHT + 'px';
             // @ts-ignore
-            // canvasUi.style.width = '' + CANVAS_WIDTH + 'px';
+            canvasUi.style.width = '' + CANVAS_WIDTH + 'px';
             // @ts-ignore
-            // canvasUi.style.height = '' + CANVAS_HEIGHT + 'px';
+            canvasUi.style.height = '' + CANVAS_HEIGHT + 'px';
           }
           resizeCanvas();
 
@@ -461,17 +471,17 @@ const Canvas = () => {
         <div className={cl.wrap}>
 
             <canvas
-                // width="1280px"
-                // height="720px"
+                width="1280px"
+                height="720px"
                 id="ctx"
                 ref={canvasRef}>
                 Обновите браузер
             </canvas>
             <canvas
-                // width="1280px"
-                // height="720px"
+                width="1280px"
+                height="720px"
                 id="ctx-ui"
-                ref={canvasRef}>
+                ref={canvasRefUi}>
                 Обновите браузер
             </canvas>
         </div>

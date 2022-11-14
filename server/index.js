@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const errorMiddleware = require('./middlewares/errorMiddleware');
+const path = require('path');
 
 const { ethers, BigNumber} = require("ethers");
 const { Server } = require('socket.io');
@@ -14,7 +15,13 @@ const User = require('./models/userModel');
 
 const router = require('./router/index.js');
 
+
 const app = express();
+
+//static pictures for nft
+const dir = path.join(__dirname, 'img')
+app.use(express.static('img'));
+
 app.use(
     session({
         secret: process.env.SESSION_SECRET || 'Super Secret (change it)',
