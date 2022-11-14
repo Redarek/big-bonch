@@ -5,7 +5,8 @@
     flex-direction: column;
     height: 100vh;
     width: 100%;
-    background-color: #753d16;
+    position: relative;
+    /*background-color: #753d16;*/
 }
 
 
@@ -14,8 +15,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90%;
-    margin: 5% auto;
+    width: 100%;
+    margin: auto auto;
     height: 100vh;
     overflow: hidden;
     position: relative;

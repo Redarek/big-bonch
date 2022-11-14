@@ -11,14 +11,13 @@ const Canvas = () => {
     const canvasRef = React.useRef(null)
     const canvasRefUi = React.useRef(null)
     const BASE_URL = 'http://localhost:8080';
-    
 
     useEffect(() => {
         const socket = io(`${BASE_URL}`)
         const canvas = canvasRef.current;
-        const canvasUi = canvasRefUi.current;
+        // const canvasUi = canvasRefUi.current;
         // @ts-ignore
-        const ctxUi = canvasUi.getContext('2d');
+        // const ctxUi = canvasUi.getContext('2d');
         // @ts-ignore
         const ctx = canvas.getContext('2d');
 
@@ -89,20 +88,36 @@ const Canvas = () => {
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
 
-        // socket.on('BigNumber', 
-        
-        
+        // socket.on('BigNumber', async function(data) {
+        //     if (window.ethereum) {
+        //         const provider=  new ethers.providers.Web3Provider(window.ethereum);
+        //         await provider.send("eth_requestAccounts", [])
+        //         const signer = provider.getSigner()
+        //         const contract = new ethers.Contract(
+        //             contractAddr,
+        //             // @ts-ignore
+        //             abi = [ "function mint(uint numberOfTokens) external payable" ], signer)
+        //         try {
+        //             const response = await contract.mint(data, {
+        //                 value: ethers.utils.parseEther("0.18"),
+        //             })
+        //             console.log('response: ', response)
+        //         } catch(err){
+        //             console.log("error", err)
+        //         }
+        //     }
+        // })
 
         // resize game
-        let resizeCanvas = function(){
+        let resizeCanvas = function () {
             CANVAS_WIDTH = window.innerWidth - 4;
             CANVAS_HEIGHT = window.innerHeight - 4;
 
             let ratio = 16 / 9;
-            if(CANVAS_HEIGHT < CANVAS_WIDTH / ratio)
-              CANVAS_WIDTH = CANVAS_HEIGHT * ratio;
+            if (CANVAS_HEIGHT < CANVAS_WIDTH / ratio)
+                CANVAS_WIDTH = CANVAS_HEIGHT * ratio;
             else
-              CANVAS_HEIGHT = CANVAS_WIDTH / ratio;
+                CANVAS_HEIGHT = CANVAS_WIDTH / ratio;
             // @ts-ignore
             canvas.width = WIDTH;
             // @ts-ignore
@@ -117,15 +132,15 @@ const Canvas = () => {
             // @ts-ignore
             canvas.style.height = '' + CANVAS_HEIGHT + 'px';
             // @ts-ignore
-            canvasUi.style.width = '' + CANVAS_WIDTH + 'px';
+            // canvasUi.style.width = '' + CANVAS_WIDTH + 'px';
             // @ts-ignore
-            canvasUi.style.height = '' + CANVAS_HEIGHT + 'px';
+            // canvasUi.style.height = '' + CANVAS_HEIGHT + 'px';
           }
           resizeCanvas();
 
-          window.addEventListener('resize',function(){
+        window.addEventListener('resize', function () {
             resizeCanvas();
-          });
+        });
 
         //game
         let Img = {}
@@ -175,7 +190,7 @@ const Canvas = () => {
             // @ts-ignore
             self.draw = function () {
                 // @ts-ignore
-                if(Player.list[selfId].map !== self.map) {
+                if (Player.list[selfId].map !== self.map) {
                     return
                 }
                 // @ts-ignore
@@ -247,7 +262,7 @@ const Canvas = () => {
             // @ts-ignore
             self.draw = function () {
                 // @ts-ignore
-                if(Player.list[selfId].map !== self.map) {
+                if (Player.list[selfId].map !== self.map) {
                     return
                 }
                 // @ts-ignore
@@ -331,66 +346,66 @@ const Canvas = () => {
             }
         });
         // @ts-ignore
-        let Maps = function(id,imgSrc,grid){
+        let Maps = function (id, imgSrc, grid) {
             // @ts-ignore
 
             var self = {
-                id:id,
-                image:new Image(),
-                width:grid[0].length * TILE_SIZE,
-                height:grid.length * TILE_SIZE,
-                grid:grid,
+                id: id,
+                image: new Image(),
+                width: grid[0].length * TILE_SIZE,
+                height: grid.length * TILE_SIZE,
+                grid: grid,
             }
             self.image.src = imgSrc;
             // @ts-ignore
-            self.isPositionWall = function(pt){
+            self.isPositionWall = function (pt) {
                 var gridX = Math.floor(pt.x / TILE_SIZE);
                 var gridY = Math.floor(pt.y / TILE_SIZE);
-                if(gridX < 0 || gridX >= self.grid[0].length)
+                if (gridX < 0 || gridX >= self.grid[0].length)
                     return true;
-                if(gridY < 0 || gridY >= self.grid.length)
+                if (gridY < 0 || gridY >= self.grid.length)
                     return true;
                 return self.grid[gridY][gridX];
             }
             // @ts-ignore
-            self.draw = function(){
+            self.draw = function () {
 
                 // @ts-ignore
                 let player = Player.list[selfId];
                 // console.log(player.x, player.y)
                 // @ts-ignore
-                var x = WIDTH/2 - player.x;
+                var x = WIDTH / 2 - player.x;
                 // @ts-ignore
-                var y = HEIGHT/2 - player.y;
+                var y = HEIGHT / 2 - player.y;
                 // ctx.drawImage(self.image,0,0,self.image.width,self.image.height,x,y,self.image.width*2,self.image.height*2);
-                ctx.drawImage(self.image, x, y, WIDTH*2,HEIGHT*2);
+                ctx.drawImage(self.image, x, y, WIDTH * 2, HEIGHT * 2);
                 // @ts-ignore
                 // ctx.drawImage(Img.map[player.map],x,y, WIDTH*2, HEIGHT*2);
             }
             return self;
         }
         // @ts-ignore
-        Maps.current = Maps('vestibule','/images/map.png', array);
+        Maps.current = Maps('vestibule', '/images/map.png', array);
 
-            // // @ts-ignore
-            // let array2D = [];
-            // for(let i = 0 ; i < 32; i++){
-            //     // @ts-ignore
-            //     array2D[i] = [];
-            //     for(let j = 0 ; j < 51; j++){
-            //         // @ts-ignore
-            //         array2D[i][j] = array[i * 32 + j];
-            //     }
-            // }
+        // // @ts-ignore
+        // let array2D = [];
+        // for(let i = 0 ; i < 32; i++){
+        //     // @ts-ignore
+        //     array2D[i] = [];
+        //     for(let j = 0 ; j < 51; j++){
+        //         // @ts-ignore
+        //         array2D[i][j] = array[i * 32 + j];
+        //     }
+        // }
         let drawMap = function () {
             // @ts-ignore
             let player = Player.list[selfId];
             // @ts-ignore
-		    let x = WIDTH/2 - player.x;
+            let x = WIDTH / 2 - player.x;
             // @ts-ignore
-		    let y = HEIGHT/2 - player.y;
+            let y = HEIGHT / 2 - player.y;
             // @ts-ignore
-		    ctx.drawImage(Img.map[player.map],x,y, WIDTH*2, HEIGHT*2);
+            ctx.drawImage(Img.map[player.map], x, y, WIDTH * 2, HEIGHT * 2);
             // @ts-ignore
 
         }
@@ -413,7 +428,6 @@ const Canvas = () => {
                 // @ts-ignore
                 Bullet.list[i].draw()
         }, 40)
-
 
 
         //score
@@ -454,34 +468,32 @@ const Canvas = () => {
             // @ts-ignore
             var mouseX = mouse.clientX - canvas.getBoundingClientRect().left;
             // @ts-ignore
-	        var mouseY = mouse.clientY - canvas.getBoundingClientRect().top;
+            var mouseY = mouse.clientY - canvas.getBoundingClientRect().top;
 
-	        mouseX -= CANVAS_WIDTH/2;
-	        mouseY -= CANVAS_HEIGHT/2;
+            mouseX -= CANVAS_WIDTH / 2;
+            mouseY -= CANVAS_HEIGHT / 2;
 
             let angle = Math.atan2(mouseY, mouseX) / Math.PI * 180
             socket.emit('keyPress', {inputId: 'mouseAngle', state: angle})
             // socket.emit('moveMouse')
             //тут отдельный сокет эмит для aimAngle и на сервере вынести ON из keyPress
         }
-
-
     }, [])
-    return (
-        <div className={cl.wrap}>
 
+    return (
+        <div className={cl.wrap} style={{height: `${height}px`}}>
             <canvas
-                width="1280px"
-                height="720px"
+                // width="1280px"
+                // height="720px"
                 id="ctx"
                 ref={canvasRef}>
                 Обновите браузер
             </canvas>
             <canvas
-                width="1280px"
-                height="720px"
+                // width="1280px"
+                // height="720px"
                 id="ctx-ui"
-                ref={canvasRefUi}>
+                ref={canvasRef}>
                 Обновите браузер
             </canvas>
         </div>
