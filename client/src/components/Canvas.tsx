@@ -13,6 +13,7 @@ const Canvas = () => {
     const BASE_URL = 'http://localhost:8080';
 
     const [left, setLeft] = useState(0)
+    const [height, setHeight] = useState(100)
 
     useEffect(() => {
         const socket = io(`${BASE_URL}`)
@@ -114,6 +115,7 @@ const Canvas = () => {
             canvasUi.style.height = '' + CANVAS_HEIGHT + 'px';
             let left = (window.innerWidth - CANVAS_WIDTH) / 2;
             setLeft(left)
+            setHeight(CANVAS_HEIGHT)
         }
         resizeCanvas();
 
@@ -460,9 +462,9 @@ const Canvas = () => {
     }, [])
 
     return (
-        <div className={cl.wrap}>
+        <div className={cl.wrap} style={{height: `${height}px`}}>
             <canvas
-                style={{left: `${left}px`}}
+                style={{left: `${left}px`, height: `${height}px`}}
                 // width="1280px"
                 // height="720px"
                 id="ctx"
