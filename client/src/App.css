@@ -3,18 +3,9 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 html {
     width: 100%;
-}
-
-
-
-.wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: nowrap;
-    /*width: 100vw;*/
 }
 
 #ctx-ui {
@@ -22,12 +13,12 @@ html {
     top: 0;
     left: 0;
 }
+
 #ctx {
     position: absolute;
     top: 0;
     left: 0;
 }
-
 
 .wrapper {
     display: flex;
