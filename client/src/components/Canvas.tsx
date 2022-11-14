@@ -8,6 +8,8 @@ declare var window: any
 
 
 const Canvas = () => {
+    const [height, setHeight] = useState(100);
+    const [left, setLeft] = useState(0);
     const canvasRef = React.useRef(null)
     const canvasRefUi = React.useRef(null)
     const BASE_URL = 'http://localhost:8080';
@@ -135,6 +137,9 @@ const Canvas = () => {
             canvasUi.style.width = '' + CANVAS_WIDTH + 'px';
             // @ts-ignore
             canvasUi.style.height = '' + CANVAS_HEIGHT + 'px';
+            let left = (window.innerWidth - CANVAS_WIDTH)/2
+            setLeft(left)
+            setHeight(CANVAS_HEIGHT)
           }
           resizeCanvas();
 
@@ -483,6 +488,7 @@ const Canvas = () => {
     return (
         <div className={cl.wrap} style={{height: `${height}px`}}>
             <canvas
+                style={{left: `${left}px`}}
                 // width="1280px"
                 // height="720px"
                 id="ctx"
@@ -490,10 +496,11 @@ const Canvas = () => {
                 Обновите браузер
             </canvas>
             <canvas
+                style={{left: `${left}px`}}
                 // width="1280px"
                 // height="720px"
                 id="ctx-ui"
-                ref={canvasRef}>
+                ref={canvasRefUi}>
                 Обновите браузер
             </canvas>
         </div>
