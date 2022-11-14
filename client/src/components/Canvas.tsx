@@ -15,9 +15,9 @@ const Canvas = () => {
     useEffect(() => {
         const socket = io(`${BASE_URL}`)
         const canvas = canvasRef.current;
-        // const canvasUi = canvasRefUi.current;
+        const canvasUi = canvasRefUi.current;
         // @ts-ignore
-        // const ctxUi = canvasUi.getContext('2d');
+        const ctxUi = canvasUi.getContext('2d');
         // @ts-ignore
         const ctx = canvas.getContext('2d');
 
@@ -132,9 +132,9 @@ const Canvas = () => {
             // @ts-ignore
             canvas.style.height = '' + CANVAS_HEIGHT + 'px';
             // @ts-ignore
-            // canvasUi.style.width = '' + CANVAS_WIDTH + 'px';
+            canvasUi.style.width = '' + CANVAS_WIDTH + 'px';
             // @ts-ignore
-            // canvasUi.style.height = '' + CANVAS_HEIGHT + 'px';
+            canvasUi.style.height = '' + CANVAS_HEIGHT + 'px';
           }
           resizeCanvas();
 
