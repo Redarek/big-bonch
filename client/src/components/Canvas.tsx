@@ -56,25 +56,27 @@ const Canvas = () => {
                     // @ts-ignore
                     abi, signer)
                 try {
-                    const response = await contract.mint(ethers.BigNumber.from(1), {
-                        value: ethers.utils.parseEther("0.18"),
-                    })
-                   //Создание объекта по ответу и отправка пост запроса на сервер
+                    //Создание объекта по ответу и отправка пост запроса на сервер
                     const nft:INft = {
                         tokenId: tokenId,
-                        name: response.data.name,
-                        description: response.data.description,
-                        image: response.data.image,
-                        external_url: response.data.external_url,
-                        attributes: response.date.attributes,
+                        name: 'response.data.name',
+                        description: 'response.data.description',
+                        image: 'response.data.image',
+                        external_url: 'response.data.external_url',
+                        attributes: [{trait: 'response.date.attributes'}],
                     }
                     dispatch(postMintNft(nft))
                     //получение нового tokenId
                     dispatch(fetchNftNumber)//но надо проверить
                     // меняется ли состояние тк на schedule сталкивался с такой проблемой
+                    const response = await contract.mint(ethers.BigNumber.from(1), {
+                        value: ethers.utils.parseEther("0.18"),
+                    })
+                   
                     console.log('response: ', response)
                 } catch(err){
                     console.log("error", err)
+                    
                 }
             }
         }
