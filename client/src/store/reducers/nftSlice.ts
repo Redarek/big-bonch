@@ -1,17 +1,15 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {fetchNftNumber, postMintNft} from "./ActionCreators";
-import {INft} from "../../types/INft";
+import {postNftMetadata} from "./ActionCreators";
+import {INftMetadata} from "../../types/INftMetadata";
 
 interface nftSlice {
-    nft: INft
-   tokenId: number;
-   isLoading: boolean;
-   error: string;
+    nftMetadata: INftMetadata
+    isLoading: boolean;
+    error: string;
 }
 
 const initialState: nftSlice = {
-    nft: {} as INft,
-    tokenId: -1,
+    nftMetadata: {} as INftMetadata,
     isLoading: false,
     error: ''
 }
@@ -22,27 +20,14 @@ const nftSlice = createSlice({
 
     extraReducers: {
 
-        [fetchNftNumber.fulfilled.type]: (state, action: PayloadAction<number>) => {
-            state.tokenId = action.payload
+        [postNftMetadata.fulfilled.type]: (state, action: PayloadAction<number>) => {
             state.error = '';
             state.isLoading = false;
         },
-        [fetchNftNumber.pending.type]: (state) => {
+        [postNftMetadata.pending.type]: (state) => {
             state.isLoading = true;
         },
-        [fetchNftNumber.rejected.type]: (state, action: PayloadAction<string>) => {
-            state.error = action.payload
-            state.isLoading = false;
-        },
-
-        [postMintNft.fulfilled.type]: (state, action: PayloadAction<number>) => {
-            state.error = '';
-            state.isLoading = false;
-        },
-        [postMintNft.pending.type]: (state) => {
-            state.isLoading = true;
-        },
-        [postMintNft.rejected.type]: (state, action: PayloadAction<string>) => {
+        [postNftMetadata.rejected.type]: (state, action: PayloadAction<string>) => {
             state.error = action.payload
             state.isLoading = false;
         }

@@ -5,7 +5,7 @@ import AuthService from "../../services/AuthService";
 import {AuthResponse} from "../../types/AuthResponse";
 import {IUser} from "../../types/IUser";
 import NftService from "../../services/NftService";
-import {INft} from "../../types/INft";
+import {INftMetadata} from "../../types/INftMetadata";
 
 
 interface LoginObject {
@@ -77,24 +77,13 @@ export const checkAuth = createAsyncThunk(
     }
 )
 
-export const fetchNftNumber = createAsyncThunk(
-    '/token-id',
-    async () => {
+export const postNftMetadata = createAsyncThunk(
+    '/token-metadata',
+    async (nftMetadata:INftMetadata) => {
         try {
-            const response = await NftService.getNumberOfNfts();
-            return response.data;
-        } catch (e) {
-            console.log(e);
-        }
-    }
-)
-
-export const postMintNft = createAsyncThunk(
-    '/mint-nft',
-    async (nft:INft) => {
-        try {
-            console.log(nft)
-            const response = await NftService.mintNft(nft);
+            console.log('NFT metadata sent')
+            console.log(nftMetadata)
+            const response = await NftService.postNftMetadata(nftMetadata);
             return response.data;
         } catch (e) {
             console.log(e);

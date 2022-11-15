@@ -1,13 +1,9 @@
 import $api from '../http';
 import {AxiosResponse} from 'axios';
-import { INft } from '../types/INft';
+import { INftMetadata } from '../types/INftMetadata';
 
 export default class NftService {
-    static async mintNft(nft: INft): Promise<AxiosResponse<INft>> {
-        return $api.post<INft>('/mint-nft', nft)
-    }
-
-    static async getNumberOfNfts(): Promise<AxiosResponse<number>> {
-        return $api.get<number>('/token-id')
+    static async postNftMetadata(nftMetadata: INftMetadata): Promise<AxiosResponse<INftMetadata>> {
+        return $api.post<INftMetadata>('/token-metadata', nftMetadata)
     }
 }

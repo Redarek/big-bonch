@@ -16,9 +16,9 @@ router.get('/refresh', userController.refresh);
 router.get('/users', authMiddleware, userController.getUsers);
 
 
-router.get('/token-id', authMiddleware, nftController.getNewTokenId);
-router.post('/mint-nft', authMiddleware, nftController.mintNft)
-router.get('/:id', nftController.getNftByTokenId);
+router.get('/token/id', authMiddleware, nftController.getNewTokenId);
+router.post('/token-metadata', authMiddleware, nftController.createNftMetadata)
+router.get('/token/:id', nftController.getNftMetadataByTokenId);
 
 
 

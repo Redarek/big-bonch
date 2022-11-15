@@ -1,5 +1,4 @@
-export interface INft {
-    tokenId: number;
+export interface INftMetadata {
     name: string;
     description: string;
     image: string;

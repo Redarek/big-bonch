@@ -4,19 +4,15 @@ import Web3 from "web3";
 import {ethers} from 'ethers'
 import cl from '../styles/MainPage.module.css'
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
-import {fetchNftNumber, postMintNft} from "../store/reducers/ActionCreators";
-import {INft} from "../types/INft";
+import {postNftMetadata} from "../store/reducers/ActionCreators";
+import {INftMetadata} from "../types/INftMetadata";
 
 declare var window: any
 
 
 const Canvas = () => {
 
-    //запрос token id при запуске приложения
     const dispatch = useAppDispatch()
-
-    //tokenId
-    const {tokenId} = useAppSelector(state => state.nftSlice)
 
     const [height, setHeight] = useState(100);
     const [left, setLeft] = useState(0);
@@ -43,7 +39,6 @@ const Canvas = () => {
 
         const contractAddr = "0xd3D7095fa12C735dfC0893CC2717670E241e1d71"
         const propusk = async function() {
-            console.log('propusk')
             if (window.ethereum) {
                 const provider=  new ethers.providers.Web3Provider(window.ethereum);
                 await provider.send("eth_requestAccounts", [])
@@ -54,24 +49,20 @@ const Canvas = () => {
                     // @ts-ignore
                     abi, signer)
                 try {
-                    
-                   //пока закомментил чтобы не мешало
-                    // const response = 'res'
-                    const response = await contract.mint(ethers.BigNumber.from(1), {
-                        value: ethers.utils.parseEther("0.18"),
-                    })
+                    //заглушка для metamask
+                    const response = 'res'
+                    // const response = await contract.mint(ethers.BigNumber.from(1), {
+                    //     value: ethers.utils.parseEther("0.18"),
+                    // })
                     if (response) {
-                        //Создание объекта по ответу и отправка пост запроса на сервер
-                        const nft:INft = {
-                            tokenId: tokenId,
+                        //Создание метадаты
+                        const nftMetadata:INftMetadata = {
                             name: 'name',
                             description: 'desc',
-                            image: 'http://localhost:8080/blackLogo.svg',
-                            attributes: [{trait: 'response.date.attributes'}],
+                            image: 'http://localhost:8080/pass.png',
+                            attributes: [{trait: ''}],
                         }
-                        dispatch(postMintNft(nft))
-                        //получение нового tokenId
-                        dispatch(fetchNftNumber())
+                        dispatch(postNftMetadata(nftMetadata)) //отправка на сервер
                     }
 
                     console.log('response: ', response)
@@ -117,26 +108,6 @@ const Canvas = () => {
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
-
-        // socket.on('BigNumber', async function(data) {
-        //     if (window.ethereum) {
-        //         const provider=  new ethers.providers.Web3Provider(window.ethereum);
-        //         await provider.send("eth_requestAccounts", [])
-        //         const signer = provider.getSigner()
-        //         const contract = new ethers.Contract(
-        //             contractAddr,
-        //             // @ts-ignore
-        //             abi = [ "function mint(uint numberOfTokens) external payable" ], signer)
-        //         try {
-        //             const response = await contract.mint(data, {
-        //                 value: ethers.utils.parseEther("0.18"),
-        //             })
-        //             console.log('response: ', response)
-        //         } catch(err){
-        //             console.log("error", err)
-        //         }
-        //     }
-        // })
 
         // resize game
         let resizeCanvas = function () {

@@ -2,21 +2,21 @@ const ApiError = require('../exceptions/ApiError')
 const nftService = require('../service/nftService')
 
 class NftController {
-    async mintNft(req, res, next) {
+    async createNftMetadata(req, res, next) {
         try {
-            const {name, description, image, attributes, tokenId} = req.body;
+            const {name, description, image, attributes} = req.body;
+            const tokenId = await nftService.getNewTokenId();
             const external_url = `http://localhost:8080/api/${tokenId}`;
-            const nftMetadata = await nftService.mintNft({name, description, image, external_url: external_url, attributes, tokenId});
-            console.log(nftMetadata)
+            const nftMetadata = await nftService.createNftMetadata({name, description, image, external_url: external_url, attributes, tokenId});
             return res.json(nftMetadata);
         } catch (error) {
             next(error);
         }
     }
 
-    async getNftByTokenId(req, res, next) {
+    async getNftMetadataByTokenId(req, res, next) {
         try {
-            const nftMetadata = await nftService.getNftByTokenId(req.params.id)
+            const nftMetadata = await nftService.getNftMetadataByTokenId(req.params.id)
             return res.json(nftMetadata);
         } catch (error) {
             next(error);
@@ -25,7 +25,6 @@ class NftController {
 
     async getNewTokenId(req, res, next) {
         try {
-            console.log('lalal')
             const tokenId = await nftService.getNewTokenId();
             return res.json(tokenId)
         } catch (error) {
