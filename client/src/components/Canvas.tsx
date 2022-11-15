@@ -54,23 +54,25 @@ const Canvas = () => {
                     // @ts-ignore
                     abi, signer)
                 try {
-                    //Создание объекта по ответу и отправка пост запроса на сервер
-                    const nft:INft = {
-                        tokenId: tokenId,
-                        name: 'response.data.name',
-                        description: 'response.data.description',
-                        image: 'response.data.image',
-                        external_url: 'response.data.external_url',
-                        attributes: [{trait: 'response.date.attributes'}],
-                    }
-                    dispatch(postMintNft(nft))
-                    //получение нового tokenId
-                    dispatch(fetchNftNumber())
+                    
                    //пока закомментил чтобы не мешало
-                    const response = 'res'
-                    // const response = await contract.mint(ethers.BigNumber.from(1), {
-                    //     value: ethers.utils.parseEther("0.18"),
-                    // })
+                    // const response = 'res'
+                    const response = await contract.mint(ethers.BigNumber.from(1), {
+                        value: ethers.utils.parseEther("0.18"),
+                    })
+                    if (response) {
+                        //Создание объекта по ответу и отправка пост запроса на сервер
+                        const nft:INft = {
+                            tokenId: tokenId,
+                            name: 'name',
+                            description: 'desc',
+                            image: 'http://localhost:8080/blackLogo.svg',
+                            attributes: [{trait: 'response.date.attributes'}],
+                        }
+                        dispatch(postMintNft(nft))
+                        //получение нового tokenId
+                        dispatch(fetchNftNumber())
+                    }
 
                     console.log('response: ', response)
                 } catch(err){

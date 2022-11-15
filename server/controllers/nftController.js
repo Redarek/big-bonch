@@ -7,6 +7,7 @@ class NftController {
             const {name, description, image, attributes, tokenId} = req.body;
             const external_url = `http://localhost:8080/api/${tokenId}`;
             const nftMetadata = await nftService.mintNft({name, description, image, external_url: external_url, attributes, tokenId});
+            console.log(nftMetadata)
             return res.json(nftMetadata);
         } catch (error) {
             next(error);
