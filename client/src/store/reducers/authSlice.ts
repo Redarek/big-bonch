@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {AuthResponse} from "../../types/AuthResponse";
-import {checkAuth,login, logout} from "./ActionCreators";
+import {checkAuth, login, logout} from "./ActionCreators";
 
 interface UserState {
     user: AuthResponse;

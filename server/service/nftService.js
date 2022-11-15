@@ -10,6 +10,11 @@ class NftService {
         const nft = await nftModel.findOne({tokenId: tokenId})
         return nft;
     }
+
+    async getNewTokenId() {
+        const tokenId = await nftModel.countDocuments();
+        return tokenId + 1;// количество NFT + 1 = новый tokenId
+    }
 }
 
 module.exports = new NftService();

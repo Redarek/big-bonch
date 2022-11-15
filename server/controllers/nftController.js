@@ -15,7 +15,6 @@ class NftController {
 
     async getNftByTokenId(req, res, next) {
         try {
-            
             const nftMetadata = await nftService.getNftByTokenId(req.params.id)
             return res.json(nftMetadata);
         } catch (error) {
@@ -23,7 +22,15 @@ class NftController {
         }
     }
 
-    
+    async getNewTokenId(req, res, next) {
+        try {
+            console.log('lalal')
+            const tokenId = await nftService.getNewTokenId();
+            return res.json(tokenId)
+        } catch (error) {
+            next(error);
+        }
+    }
 
 }
 

@@ -47,6 +47,7 @@ const Canvas = () => {
                     const response = await contract.mint(ethers.BigNumber.from(1), {
                         value: ethers.utils.parseEther("0.18"),
                     })
+                    
                     console.log('response: ', response)
                 } catch(err){
                     console.log("error", err)
