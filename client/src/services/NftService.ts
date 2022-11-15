@@ -4,7 +4,7 @@ import { INft } from '../types/INft';
 
 export default class NftService {
     static async mintNft(nft: INft): Promise<AxiosResponse<INft>> {
-        return $api.post<INft>('/mint-nft', {})
+        return $api.post<INft>('/mint-nft', nft)
     }
 
     static async getNumberOfNfts(): Promise<AxiosResponse<number>> {

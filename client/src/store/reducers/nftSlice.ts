@@ -11,7 +11,7 @@ interface nftSlice {
 
 const initialState: nftSlice = {
     nft: {} as INft,
-    tokenId: 0,
+    tokenId: -1,
     isLoading: false,
     error: ''
 }

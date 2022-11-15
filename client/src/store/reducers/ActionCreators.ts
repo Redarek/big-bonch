@@ -93,6 +93,7 @@ export const postMintNft = createAsyncThunk(
     '/mint-nft',
     async (nft:INft) => {
         try {
+            console.log(nft)
             const response = await NftService.mintNft(nft);
             return response.data;
         } catch (e) {
