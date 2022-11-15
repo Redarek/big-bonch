@@ -3,11 +3,23 @@ import {io} from "socket.io-client";
 import Web3 from "web3";
 import {ethers} from 'ethers'
 import cl from '../styles/MainPage.module.css'
+import {useAppDispatch, useAppSelector} from "../hooks/redux";
+import {fetchNftNumber, postMintNft} from "../store/reducers/ActionCreators";
+import {INft} from "../types/INft";
 
 declare var window: any
 
 
 const Canvas = () => {
+
+    //запрос token id при запуске приложения
+    const dispatch = useAppDispatch()
+    useEffect(()=>{
+        dispatch(fetchNftNumber)
+    }, [])
+    //tokenId
+    const {tokenId} = useAppSelector(state => state.nftSlice)
+
     const [height, setHeight] = useState(100);
     const [left, setLeft] = useState(0);
     const canvasRef = React.useRef(null)
@@ -23,7 +35,7 @@ const Canvas = () => {
         // @ts-ignore
         const ctx = canvas.getContext('2d');
 
-        
+
 
         const TILE_SIZE = 64
         const WIDTH = 1280
@@ -47,14 +59,26 @@ const Canvas = () => {
                     const response = await contract.mint(ethers.BigNumber.from(1), {
                         value: ethers.utils.parseEther("0.18"),
                     })
-                    
+                   //Создание объекта по ответу и отправка пост запроса на сервер
+                    const nft:INft = {
+                        tokenId: tokenId,
+                        name: response.data.name,
+                        description: response.data.description,
+                        image: response.data.image,
+                        external_url: response.data.external_url,
+                        attributes: response.date.attributes,
+                    }
+                    dispatch(postMintNft(nft))
+                    //получение нового tokenId
+                    dispatch(fetchNftNumber)//но надо проверить
+                    // меняется ли состояние тк на schedule сталкивался с такой проблемой
                     console.log('response: ', response)
                 } catch(err){
                     console.log("error", err)
                 }
             }
         }
-    
+
     propusk()
 
         const array =

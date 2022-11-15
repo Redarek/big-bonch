@@ -1,5 +1,5 @@
 export interface INft {
-    tokenId: string;
+    tokenId: number;
     name: string;
     description: string;
     image: string;
