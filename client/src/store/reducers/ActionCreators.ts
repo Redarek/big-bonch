@@ -4,6 +4,8 @@ import {API_URL} from "../../http";
 import AuthService from "../../services/AuthService";
 import {AuthResponse} from "../../types/AuthResponse";
 import {IUser} from "../../types/IUser";
+import NftService from "../../services/NftService";
+import {INft} from "../../types/INft";
 
 
 interface LoginObject {
@@ -68,6 +70,30 @@ export const checkAuth = createAsyncThunk(
             const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {withCredentials: true});
             // console.log(response);
             localStorage.setItem('token', response.data.accessToken);
+            return response.data;
+        } catch (e) {
+            console.log(e);
+        }
+    }
+)
+
+export const fetchNftNumber = createAsyncThunk(
+    '/token-id',
+    async () => {
+        try {
+            const response = await NftService.getNumberOfNfts();
+            return response.data;
+        } catch (e) {
+            console.log(e);
+        }
+    }
+)
+
+export const postMintNft = createAsyncThunk(
+    '/mint-nft',
+    async (nft:INft) => {
+        try {
+            const response = await NftService.mintNft(nft);
             return response.data;
         } catch (e) {
             console.log(e);
