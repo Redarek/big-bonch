@@ -19,7 +19,8 @@ const Canvas = () => {
     const canvasRef = React.useRef(null)
     const canvasRefUi = React.useRef(null)
     const BASE_URL = 'http://localhost:8080';
-    
+
+    const {user} =useAppSelector(state => state.authSlice.user)
 
     useEffect(() => {
         const socket = io(`${BASE_URL}`)
@@ -98,29 +99,35 @@ const Canvas = () => {
                         description: 'Пластиковая карта, необходимая для прохода через турникет',
                         image: 'http://localhost:8080/pass.png',
                         attributes: [
+                            //@todo добавить sex на сервере
+                            //@todo отредактировать route на сервере при регистрации // вместо name universityData
                             {
-                                trait_type: 'Имя', 
-                                value: 'Имя'
+                                trait_type: 'Имя',
+                                value: `${user.universityData.firstName}`
                             },
                             {
-                                trait_type: 'Фамилия', 
-                                value: 'Фамилия'
+                                trait_type: 'Фамилия',
+                                value: `${user.universityData.secondName}`
                             },
                             {
-                                trait_type: 'Отчество', 
-                                value: 'Отчество'
+                                trait_type: 'Отчество',
+                                value: `${user.universityData.patronymic}`
                             },
                             {
-                                trait_type: "Факультет", 
-                                value: "Факультет"
+                                trait_type: "Факультет",
+                                value: `${user.universityData.faculty}`
                             },
                             {
-                                trait_type: "Должность", 
-                                value: "Должность"
+                                trait_type: "Должность",
+                                value: `${user.universityData.job}`
                             },
                             {
-                                "display_type": "date", 
-                                "trait_type": "Выдан", 
+                                trait_type: "Пол",
+                                value: `${user.universityData.sex}`
+                            },
+                            {
+                                "display_type": "date",
+                                "trait_type": "Выдан",
                                 "value": new Date()
                               }
                         ],
@@ -130,7 +137,7 @@ const Canvas = () => {
                 console.log('response: ', response)
             } catch(err){
                 console.log("error", err)
-    
+
             }
         }
     }
