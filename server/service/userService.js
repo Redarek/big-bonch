@@ -5,9 +5,10 @@ const mailService = require('./mailService');
 const tokenService = require('./tokenService');
 const UserDto = require('../dtos/user-dto');
 const ApiError = require('../exceptions/ApiError');
+const API_URL = process.env.NODE_ENV === "production" ? 'https://big-bonch.herokuapp.com/api' : 'http://localhost:8080/api';
 
 class UserService {
-    async registration(email, password, walletAddress, name) {
+    async registration(email, password, walletAddress, universityData) {
         const candidate = await userModel.findOne({email});
         const candidateWallet = await userModel.findOne({walletAddress});
         // Проверяем, есть ли email и кошелек в БД
@@ -18,8 +19,8 @@ class UserService {
         const hashPassword = await bcrypt.hash(password, 3); //хэшируем пароль
         const activationLink = uuid.v4(); // генерация ссылки активации для письма на email
 
-        const user = await userModel.create({email, password: hashPassword, walletAddress, name, activationLink}); // сохраняем польз-ля в БД
-        await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
+        const user = await userModel.create({email, password: hashPassword, walletAddress, universityData, activationLink}); // сохраняем польз-ля в БД
+        await mailService.sendActivationMail(email, `${API_URL}/activate/${activationLink}`);
 
         const userDto = new UserDto(user); //id, email, isActivated, walletAddress, name Отправляем письмо для активации
         const tokens = tokenService.generateTokens({...userDto}); // генерируем JWT токены payload=userDto

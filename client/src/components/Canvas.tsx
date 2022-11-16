@@ -59,7 +59,7 @@ const Canvas = () => {
                         const nftMetadata: INftMetadata = {
                             name: 'Пропуск',
                             description: 'Пластиковая карта, необходимая для прохода через турникет',
-                            image: 'http://localhost:8080/pass.png',
+                            image: `${BASE_URL}/pass.png'`,
                             attributes: [
                                 //@todo добавить sex на сервере
                                 //@todo отредактировать route на сервере при регистрации // вместо name universityData

@@ -23,12 +23,12 @@ const userSchema =  new Schema({
         type: String
     },
     universityData: {
-        firstName: { type: String },
-        secondName: { type: String },
-        patronymic: { type: String },
-        faculty: { type: String },
-        job: { type: String },
-        sex: { type: String }
+        firstName: { type: String, required: true},
+        secondName: { type: String, required: true},
+        patronymic: { type: String, required: true},
+        faculty: { type: String, required: true},
+        job: { type: String, required: true},
+        sex: { type: String, required: true}
     },
 });
 
