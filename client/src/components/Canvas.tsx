@@ -9,7 +9,6 @@ import {INftMetadata} from "../types/INftMetadata";
 
 declare var window: any
 
-
 const Canvas = () => {
 
     const dispatch = useAppDispatch()
@@ -18,9 +17,9 @@ const Canvas = () => {
     const [left, setLeft] = useState(0);
     const canvasRef = React.useRef(null)
     const canvasRefUi = React.useRef(null)
-    const BASE_URL = 'http://localhost:8080';
 
     const {user} =useAppSelector(state => state.authSlice.user)
+    const BASE_URL = process.env.NODE_ENV === "production" ? 'https://big-bonch.herokuapp.com' : 'http://localhost:8080';
 
     useEffect(() => {
         const socket = io(`${BASE_URL}`)
@@ -31,117 +30,82 @@ const Canvas = () => {
         // @ts-ignore
         const ctx = canvas.getContext('2d');
 
-
-
+        //размеры чанков карты и первоначальные размеры canvas
         const TILE_SIZE = 64
         const WIDTH = 1280
         const HEIGHT = 720
         let CANVAS_WIDTH = 1280
         let CANVAS_HEIGHT = 720
 
-        // const contractAddr = "0xd3D7095fa12C735dfC0893CC2717670E241e1d71"
-        // const propusk = async function() {
-        //     if (window.ethereum) {
-        //         const provider=  new ethers.providers.Web3Provider(window.ethereum);
-        //         await provider.send("eth_requestAccounts", [])
-        //         const signer = provider.getSigner()
-        //         const abi = [ "function mint(uint numberOfTokens) external payable" ]
-        //         const contract = new ethers.Contract(
-        //             contractAddr,
-        //             // @ts-ignore
-        //             abi, signer)
-        //         try {
-        //             //заглушка для metamask
-        //             const response = 'res'
-        //             // const response = await contract.mint(ethers.BigNumber.from(1), {
-        //             //     value: ethers.utils.parseEther("0.18"),
-        //             // })
-        //             if (response) {
-        //                 //Создание метадаты
-        //                 const nftMetadata:INftMetadata = {
-        //                     name: 'name',
-        //                     description: 'desc',
-        //                     image: 'http://localhost:8080/pass.png',
-        //                     attributes: [{trait: ''}],
-        //                 }
-        //                 dispatch(postNftMetadata(nftMetadata)) //отправка на сервер
-        //             }
-
-        //             console.log('response: ', response)
-        //         } catch(err){
-        //             console.log("error", err)
-
-        //         }
-        //     }
-        // }
-
-    // propusk()
-    const mintNftAndMetadata = async function() {
-        const contractAddr = "0xd3D7095fa12C735dfC0893CC2717670E241e1d71"
-        if (window.ethereum) {
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            await provider.send("eth_requestAccounts", [])
-            const signer = provider.getSigner()
-            const abi = [ "function mint(uint numberOfTokens) external payable" ]
-            const contract = new ethers.Contract(
-                contractAddr,
-                abi, signer)
-            try {
-                //заглушка для metamask
-                const response = 'res'
-                // const response = await contract.mint(ethers.BigNumber.from(1), {
-                //     value: ethers.utils.parseEther("0.18"),
-                // })
-                if (response) {
-                    //Создание метадаты
-                    const nftMetadata:INftMetadata = {
-                        name: 'Пропуск',
-                        description: 'Пластиковая карта, необходимая для прохода через турникет',
-                        image: 'http://localhost:8080/pass.png',
-                        attributes: [
-                            //@todo добавить sex на сервере
-                            //@todo отредактировать route на сервере при регистрации // вместо name universityData
-                            {
-                                trait_type: 'Имя',
-                                value: `${user.universityData.firstName}`
-                            },
-                            {
-                                trait_type: 'Фамилия',
-                                value: `${user.universityData.secondName}`
-                            },
-                            {
-                                trait_type: 'Отчество',
-                                value: `${user.universityData.patronymic}`
-                            },
-                            {
-                                trait_type: "Факультет",
-                                value: `${user.universityData.faculty}`
-                            },
-                            {
-                                trait_type: "Должность",
-                                value: `${user.universityData.job}`
-                            },
-                            {
-                                trait_type: "Пол",
-                                value: `${user.universityData.sex}`
-                            },
-                            {
-                                "display_type": "date",
-                                "trait_type": "Выдан",
-                                "value": new Date()
-                              }
-                        ],
+        // функция создания NFT и отправки метадаты на сервер
+        const mintNftAndMetadata = async () => {
+            const contractAddr = process.env.REACT_APP_SMART_CONTRACT_ADDRESS || ''
+            if (window.ethereum) {
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                await provider.send("eth_requestAccounts", [])
+                const signer = provider.getSigner()
+                const abi = ["function mint(uint numberOfTokens) external payable"]
+                const contract = new ethers.Contract(
+                    contractAddr,
+                    abi, signer)
+                try {
+                    //заглушка для metamask
+                    const response = 'res'
+                    // const response = await contract.mint(ethers.BigNumber.from(1), {
+                    //     value: ethers.utils.parseEther("0.18"),
+                    // })
+                    if (response) {
+                        //Создание метадаты
+                        const nftMetadata: INftMetadata = {
+                            name: 'Пропуск',
+                            description: 'Пластиковая карта, необходимая для прохода через турникет',
+                            image: 'http://localhost:8080/pass.png',
+                            attributes: [
+                                //@todo добавить sex на сервере
+                                //@todo отредактировать route на сервере при регистрации // вместо name universityData
+                                {
+                                    trait_type: 'Имя',
+                                    value: `${user.universityData.firstName}`
+                                },
+                                {
+                                    trait_type: 'Фамилия',
+                                    value: `${user.universityData.secondName}`
+                                },
+                                {
+                                    trait_type: 'Отчество',
+                                    value: `${user.universityData.patronymic}`
+                                },
+                                {
+                                    trait_type: "Факультет",
+                                    value: `${user.universityData.faculty}`
+                                },
+                                {
+                                    trait_type: "Должность",
+                                    value: `${user.universityData.job}`
+                                },
+                                {
+                                    trait_type: "Пол",
+                                    value: `${user.universityData.sex}`
+                                },
+                                {
+                                    "display_type": "date",
+                                    "trait_type": "Выдан",
+                                    "value": new Date()
+                                }
+                            ],
+                        }
+                        dispatch(postNftMetadata(nftMetadata)) //отправка на сервер
                     }
-                    dispatch(postNftMetadata(nftMetadata)) //отправка на сервер
+                    console.log('response: ', response)
+                } catch (err) {
+                    console.log("error", err)
                 }
-                console.log('response: ', response)
-            } catch(err){
-                console.log("error", err)
-
             }
         }
-    }
-    mintNftAndMetadata();
+
+        mintNftAndMetadata();
+
+
         const array =
             [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],

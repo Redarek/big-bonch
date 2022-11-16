@@ -27,7 +27,8 @@ const userSchema =  new Schema({
         secondName: { type: String },
         patronymic: { type: String },
         faculty: { type: String },
-        job: { type: String }
+        job: { type: String },
+        sex: { type: String }
     },
 });
 
