@@ -7,14 +7,12 @@ const cookieParser = require('cookie-parser');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 const path = require('path');
 
-const { ethers, BigNumber} = require("ethers");
 const { Server } = require('socket.io');
 const http = require('http');
 
-const User = require('./models/userModel');
-
 const router = require('./router/index.js');
 
+const CLIENT_URL = process.env.NODE_ENV === "production" ? process.env.PROD_CLIENT_URL : process.env.DEV_CLIENT_URL
 
 const app = express();
 
@@ -24,7 +22,7 @@ app.use(express.static('img'));
 
 app.use(
     session({
-        secret: process.env.SESSION_SECRET || 'Super Secret (change it)',
+        secret: process.env.SESSION_SECRET || 'Super Secret bonch',
         resave: true,
         saveUninitialized: false,
         // cookie: {
@@ -37,7 +35,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
     credentials: true,
-    origin: process.env.CLIENT_URL
+    origin: CLIENT_URL
 }));
 app.use('/api', router);
 app.use(errorMiddleware); // middleware ошибок всегда последний app.use
@@ -45,11 +43,9 @@ app.use(errorMiddleware); // middleware ошибок всегда последн
 const server = http.createServer(app)
 const io = new Server(server,{ 
     cors: {
-      origin: ['http://localhost:3000']
+      origin: [CLIENT_URL]
     }
 })
-
-const big_number = BigNumber.from(1) // BigNumber для функции выдачи NFT
 
 const start = async () => {
     try {
@@ -411,8 +407,6 @@ const start = async () => {
 
             Player.onConnect(socket)
 
-            socket.emit('BigNumber', big_number)
-
             socket.on('disconnect', function() {
                 delete SOCKET_LIST[socket.id]
                 Player.onDisconnect(socket)
@@ -506,23 +500,5 @@ const start = async () => {
 app.get('/', (req, res) => {
     res.send('root route')
 });
-
-// app.get('/api/users', async (req, res) => {
-//     try {
-//         const users = await User.find();
-//         res.json(users);
-//     } catch (error) {
-//         res.status(500).json({ error: error.message});
-//     }
-// });
-
-// app.get('/api/tasks', async (req, res) => {
-//     try {
-//         const tasks = await Task.find();
-//         res.json(tasks);
-//     } catch (error) {
-//         res.status(500).json({ error: error.message});
-//     }
-// });
 
 start();

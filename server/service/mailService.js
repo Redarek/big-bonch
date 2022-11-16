@@ -1,4 +1,6 @@
 const nodemailer = require('nodemailer');
+require('dotenv').config();
+const CLIENT_URL = process.env.NODE_ENV === "production" ? process.env.PROD_CLIENT_URL : process.env.DEV_CLIENT_URL
 
 class MailService {
 
@@ -22,7 +24,7 @@ class MailService {
         await this.transporter.sendMail({
             from: process.env.SMTP_USER,
             to,
-            subject: 'Активация аккаунта на ' + process.env.API_URL, 
+            subject: 'Активация аккаунта на ' + CLIENT_URL, 
             text: '',
             html:
                 `
