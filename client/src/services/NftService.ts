@@ -1,5 +1,5 @@
 import $api from '../http';
-import {AxiosResponse} from 'axios';
+import { AxiosResponse } from 'axios';
 import { INftMetadata } from '../types/INftMetadata';
 
 export default class NftService {

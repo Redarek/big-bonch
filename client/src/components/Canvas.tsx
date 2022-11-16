@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {io} from "socket.io-client";
-import Web3 from "web3";
+// import Web3 from "web3";
 import {ethers} from 'ethers'
 import cl from '../styles/MainPage.module.css'
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
@@ -19,6 +19,7 @@ const Canvas = () => {
     const canvasRef = React.useRef(null)
     const canvasRefUi = React.useRef(null)
     const BASE_URL = 'http://localhost:8080';
+    
 
     useEffect(() => {
         const socket = io(`${BASE_URL}`)
@@ -37,44 +38,103 @@ const Canvas = () => {
         let CANVAS_WIDTH = 1280
         let CANVAS_HEIGHT = 720
 
+        // const contractAddr = "0xd3D7095fa12C735dfC0893CC2717670E241e1d71"
+        // const propusk = async function() {
+        //     if (window.ethereum) {
+        //         const provider=  new ethers.providers.Web3Provider(window.ethereum);
+        //         await provider.send("eth_requestAccounts", [])
+        //         const signer = provider.getSigner()
+        //         const abi = [ "function mint(uint numberOfTokens) external payable" ]
+        //         const contract = new ethers.Contract(
+        //             contractAddr,
+        //             // @ts-ignore
+        //             abi, signer)
+        //         try {
+        //             //заглушка для metamask
+        //             const response = 'res'
+        //             // const response = await contract.mint(ethers.BigNumber.from(1), {
+        //             //     value: ethers.utils.parseEther("0.18"),
+        //             // })
+        //             if (response) {
+        //                 //Создание метадаты
+        //                 const nftMetadata:INftMetadata = {
+        //                     name: 'name',
+        //                     description: 'desc',
+        //                     image: 'http://localhost:8080/pass.png',
+        //                     attributes: [{trait: ''}],
+        //                 }
+        //                 dispatch(postNftMetadata(nftMetadata)) //отправка на сервер
+        //             }
+
+        //             console.log('response: ', response)
+        //         } catch(err){
+        //             console.log("error", err)
+
+        //         }
+        //     }
+        // }
+
+    // propusk()
+    const mintNftAndMetadata = async function() {
         const contractAddr = "0xd3D7095fa12C735dfC0893CC2717670E241e1d71"
-        const propusk = async function() {
-            if (window.ethereum) {
-                const provider=  new ethers.providers.Web3Provider(window.ethereum);
-                await provider.send("eth_requestAccounts", [])
-                const signer = provider.getSigner()
-                const abi = [ "function mint(uint numberOfTokens) external payable" ]
-                const contract = new ethers.Contract(
-                    contractAddr,
-                    // @ts-ignore
-                    abi, signer)
-                try {
-                    //заглушка для metamask
-                    const response = 'res'
-                    // const response = await contract.mint(ethers.BigNumber.from(1), {
-                    //     value: ethers.utils.parseEther("0.18"),
-                    // })
-                    if (response) {
-                        //Создание метадаты
-                        const nftMetadata:INftMetadata = {
-                            name: 'name',
-                            description: 'desc',
-                            image: 'http://localhost:8080/pass.png',
-                            attributes: [{trait: ''}],
-                        }
-                        dispatch(postNftMetadata(nftMetadata)) //отправка на сервер
+        if (window.ethereum) {
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            await provider.send("eth_requestAccounts", [])
+            const signer = provider.getSigner()
+            const abi = [ "function mint(uint numberOfTokens) external payable" ]
+            const contract = new ethers.Contract(
+                contractAddr,
+                abi, signer)
+            try {
+                //заглушка для metamask
+                const response = 'res'
+                // const response = await contract.mint(ethers.BigNumber.from(1), {
+                //     value: ethers.utils.parseEther("0.18"),
+                // })
+                if (response) {
+                    //Создание метадаты
+                    const nftMetadata:INftMetadata = {
+                        name: 'Пропуск',
+                        description: 'Пластиковая карта, необходимая для прохода через турникет',
+                        image: 'http://localhost:8080/pass.png',
+                        attributes: [
+                            {
+                                trait_type: 'Имя', 
+                                value: 'Имя'
+                            },
+                            {
+                                trait_type: 'Фамилия', 
+                                value: 'Фамилия'
+                            },
+                            {
+                                trait_type: 'Отчество', 
+                                value: 'Отчество'
+                            },
+                            {
+                                trait_type: "Факультет", 
+                                value: "Факультет"
+                            },
+                            {
+                                trait_type: "Должность", 
+                                value: "Должность"
+                            },
+                            {
+                                "display_type": "date", 
+                                "trait_type": "Выдан", 
+                                "value": new Date()
+                              }
+                        ],
                     }
-
-                    console.log('response: ', response)
-                } catch(err){
-                    console.log("error", err)
-
+                    dispatch(postNftMetadata(nftMetadata)) //отправка на сервер
                 }
+                console.log('response: ', response)
+            } catch(err){
+                console.log("error", err)
+    
             }
         }
-
-    propusk()
-
+    }
+    mintNftAndMetadata();
         const array =
             [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],

@@ -1,6 +1,6 @@
 const Router = require('express').Router;
 const userController = require('../controllers/userController');
-const nftController = require('../controllers/nftController');
+const nftMetadataController = require('../controllers/nftMetadataController');
 const router = new Router();
 const {body} = require('express-validator');
 const authMiddleware = require('../middlewares/authMiddleware');
@@ -16,10 +16,8 @@ router.get('/refresh', userController.refresh);
 router.get('/users', authMiddleware, userController.getUsers);
 
 
-router.get('/token/id', authMiddleware, nftController.getNewTokenId);
-router.post('/token-metadata', authMiddleware, nftController.createNftMetadata)
-router.get('/token/:id', nftController.getNftMetadataByTokenId);
-
-
+router.get('/token/id', authMiddleware, nftMetadataController.getNewTokenId);
+router.post('/token-metadata', authMiddleware, nftMetadataController.createNftMetadata)
+router.get('/token/:id', nftMetadataController.getNftMetadataByTokenId);
 
 module.exports = router;

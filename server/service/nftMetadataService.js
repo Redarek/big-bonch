@@ -1,13 +1,13 @@
-const nftModel = require('../models/nftModel');
+const nftMetadataModel = require('../models/nftMetadataModel');
 
-class NftService {
+class NftMetadataService {
     async createNftMetadata (nftMetadata) {
-        const nft = await nftModel.create(nftMetadata)
+        const nft = await nftMetadataModel.create(nftMetadata)
         return nft;
     }
 
     async getNftMetadataByTokenId(tokenId) {
-        const nftMetadata = await nftModel.findOne({tokenId: tokenId})
+        const nftMetadata = await nftMetadataModel.findOne({tokenId: tokenId})
         const croppedNftMetadata = {
             tokenId: nftMetadata.tokenId,
             name: nftMetadata.name,
@@ -19,9 +19,9 @@ class NftService {
     }
 
     async getNewTokenId() {
-        const tokenId = await nftModel.countDocuments();
+        const tokenId = await nftMetadataModel.countDocuments();
         return tokenId + 1;// количество NFT + 1 = новый tokenId
     }
 }
 
-module.exports = new NftService();
+module.exports = new NftMetadataService();

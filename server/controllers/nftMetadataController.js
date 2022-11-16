@@ -1,13 +1,13 @@
 const ApiError = require('../exceptions/ApiError')
-const nftService = require('../service/nftService')
+const nftMetadataService = require('../service/nftMetadataService')
 
-class NftController {
+class NftMetadataController {
     async createNftMetadata(req, res, next) {
         try {
             const {name, description, image, attributes} = req.body;
-            const tokenId = await nftService.getNewTokenId();
+            const tokenId = await nftMetadataService.getNewTokenId();
             const external_url = `http://localhost:8080/api/${tokenId}`;
-            const nftMetadata = await nftService.createNftMetadata({name, description, image, external_url: external_url, attributes, tokenId});
+            const nftMetadata = await nftMetadataService.createNftMetadata({name, description, image, external_url: external_url, attributes, tokenId});
             return res.json(nftMetadata);
         } catch (error) {
             next(error);
@@ -16,7 +16,7 @@ class NftController {
 
     async getNftMetadataByTokenId(req, res, next) {
         try {
-            const nftMetadata = await nftService.getNftMetadataByTokenId(req.params.id)
+            const nftMetadata = await nftMetadataService.getNftMetadataByTokenId(req.params.id)
             return res.json(nftMetadata);
         } catch (error) {
             next(error);
@@ -25,7 +25,7 @@ class NftController {
 
     async getNewTokenId(req, res, next) {
         try {
-            const tokenId = await nftService.getNewTokenId();
+            const tokenId = await nftMetadataService.getNewTokenId();
             return res.json(tokenId)
         } catch (error) {
             next(error);
@@ -34,4 +34,4 @@ class NftController {
 
 }
 
-module.exports = new NftController();
+module.exports = new NftMetadataController();

@@ -22,9 +22,12 @@ const userSchema =  new Schema({
     activationLink: {
         type: String
     },
-    name: {
-        type: String,
-        default: "unknown"
+    universityData: {
+        firstName: { type: String },
+        secondName: { type: String },
+        patronymic: { type: String },
+        faculty: { type: String },
+        job: { type: String }
     },
 });
 
