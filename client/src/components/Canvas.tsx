@@ -17,6 +17,8 @@ const Canvas = () => {
     const [left, setLeft] = useState(0);
     const canvasRef = React.useRef(null)
     const canvasRefUi = React.useRef(null)
+
+    const {user} =useAppSelector(state => state.authSlice.user)
     const BASE_URL = process.env.NODE_ENV === "production" ? 'https://big-bonch.herokuapp.com' : 'http://localhost:8080';
 
     useEffect(() => {
@@ -42,7 +44,7 @@ const Canvas = () => {
                 const provider = new ethers.providers.Web3Provider(window.ethereum);
                 await provider.send("eth_requestAccounts", [])
                 const signer = provider.getSigner()
-                const abi = [ "function mint(uint numberOfTokens) external payable" ]
+                const abi = ["function mint(uint numberOfTokens) external payable"]
                 const contract = new ethers.Contract(
                     contractAddr,
                     abi, signer)
@@ -54,34 +56,40 @@ const Canvas = () => {
                     // })
                     if (response) {
                         //Создание метадаты
-                        const nftMetadata:INftMetadata = {
+                        const nftMetadata: INftMetadata = {
                             name: 'Пропуск',
                             description: 'Пластиковая карта, необходимая для прохода через турникет',
                             image: 'http://localhost:8080/pass.png',
                             attributes: [
+                                //@todo добавить sex на сервере
+                                //@todo отредактировать route на сервере при регистрации // вместо name universityData
                                 {
-                                    trait_type: 'Имя', 
-                                    value: 'Имя'
+                                    trait_type: 'Имя',
+                                    value: `${user.universityData.firstName}`
                                 },
                                 {
-                                    trait_type: 'Фамилия', 
-                                    value: 'Фамилия'
+                                    trait_type: 'Фамилия',
+                                    value: `${user.universityData.secondName}`
                                 },
                                 {
-                                    trait_type: 'Отчество', 
-                                    value: 'Отчество'
+                                    trait_type: 'Отчество',
+                                    value: `${user.universityData.patronymic}`
                                 },
                                 {
-                                    trait_type: "Факультет", 
-                                    value: "Факультет"
+                                    trait_type: "Факультет",
+                                    value: `${user.universityData.faculty}`
                                 },
                                 {
-                                    trait_type: "Должность", 
-                                    value: "Должность"
+                                    trait_type: "Должность",
+                                    value: `${user.universityData.job}`
                                 },
                                 {
-                                    "display_type": "date", 
-                                    "trait_type": "Дата выдачи", 
+                                    trait_type: "Пол",
+                                    value: `${user.universityData.sex}`
+                                },
+                                {
+                                    "display_type": "date",
+                                    "trait_type": "Выдан",
                                     "value": new Date()
                                 }
                             ],
@@ -89,15 +97,15 @@ const Canvas = () => {
                         dispatch(postNftMetadata(nftMetadata)) //отправка на сервер
                     }
                     console.log('response: ', response)
-                } catch(err){
+                } catch (err) {
                     console.log("error", err)
                 }
             }
         }
 
         mintNftAndMetadata();
-    
-    
+
+
         const array =
             [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],

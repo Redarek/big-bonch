@@ -58,6 +58,41 @@
     margin: 100px 0 0 0;
 }
 
+.reg__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 350px;
+    border-radius: 15px;
+    margin: 0;
+}
+
+.reg__radio {
+    margin-top: 25px;
+    /*border: 1px solid rgba(0, 0, 0, 0.6);*/
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    /*justify-content: space-between;*/
+    padding: 0 2px;
+}
+
+.reg__radio label {
+    cursor: pointer;
+    margin: 0 0;
+}
+.reg__radio input {
+    margin-top: 5px;
+    cursor: pointer;
+}
+.reg__radio_btns {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 .auth__text {
     color: #0078D4;
     font-size: 14px;

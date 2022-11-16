@@ -4,12 +4,25 @@ import {login} from "../store/reducers/ActionCreators";
 import cl from "../styles/RegistrationForm.module.css";
 import cx from "classnames";
 import {useNavigate} from "react-router-dom";
+import {IUser} from "../types/IUser";
 
 const LoginForm: FC = () => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [name, setName] = useState<string>("");
 
+
+    const handleLogin = (e: React.MouseEvent<HTMLElement>) => {
+        // const user =
+        //     {
+        //         email: email,
+        //         walletAddress: walletAddress,
+        //         password: password
+        //     }
+        dispatch(login({email: email, password: password, walletAddress: walletAddress}));
+        navigate('/')
+        e.preventDefault()
+    }
     const {walletAddress} = useAppSelector(state => state.authSlice)
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -44,11 +57,9 @@ const LoginForm: FC = () => {
                 />
                 <button className={cx(cl.auth__button, cl.auth__button_login)}
                         onClick={(e) => {
-                            dispatch(login({email: email, password: password, walletAddress: walletAddress}));
-                            navigate('/')
-                            e.preventDefault()
+                            handleLogin(e)
                         }
-                        }
+                }
                 >Войти
                 </button>
                 <div

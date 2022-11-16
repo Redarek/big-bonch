@@ -3,27 +3,18 @@ import axios from "axios";
 import {API_URL} from "../../http";
 import AuthService from "../../services/AuthService";
 import {AuthResponse} from "../../types/AuthResponse";
-import {IUser} from "../../types/IUser";
+import {ILoginUser, IRegUser, IUser} from "../../types/IUser";
 import NftService from "../../services/NftService";
 import {INftMetadata} from "../../types/INftMetadata";
 
 
-interface LoginObject {
-    email: string;
-    password: string;
-    walletAddress: string;
-}
 
-interface RegObject {
-    walletAddress: string;
-    email: string;
-    password: string;
-    name: string;
-}
+
+
 
 export const login = createAsyncThunk(
     'user/login',
-    async (loginObject: LoginObject) => {
+    async (loginObject: ILoginUser) => {
         try {
             const response = await AuthService.login(loginObject.email, loginObject.password, loginObject.walletAddress);
             // console.log(response);
@@ -37,9 +28,9 @@ export const login = createAsyncThunk(
 
 export const registration = createAsyncThunk(
     'user/registration',
-    async (regObject: RegObject) => {
+    async (regObject:IRegUser) => {
         try {
-            const response = await AuthService.registration(regObject.email, regObject.password, regObject.name, regObject.walletAddress);
+            const response = await AuthService.registration(regObject.email, regObject.universityData, regObject.password, regObject.walletAddress);
             // console.log(response);
             localStorage.setItem('token', response.data.accessToken);
             return response.data;
