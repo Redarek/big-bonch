@@ -6,6 +6,9 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 const path = require('path');
+// const web3 = require('web3');
+// const ethers = require('ethers')
+// const abi = require('./BigBonchNFT.json')
 
 const { Server } = require('socket.io');
 const http = require('http');
@@ -18,6 +21,9 @@ const app = express();
 
 //static pictures for nft
 const dir = path.join(__dirname, 'img')
+
+// contract = new ethers.Contract(0xd3D7095fa12C735dfC0893CC2717670E241e1d71, abi );
+
 app.use(express.static('img'));
 
 app.use(
