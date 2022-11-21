@@ -8,7 +8,10 @@ const nftMetadataSchema = new Schema({
     description: {type: String},
     image: {type: String},
     external_url: {type: String},
-    attributes: {type: Array}
+    attributes: {type: Array},
+    ownerId: {type: String, ref: 'User'},
+    expectedOwnerAddress: {type: String},
+    actualOwnerAddress: {type: String}
 });
 
 module.exports = model('NftMetadata', nftMetadataSchema);

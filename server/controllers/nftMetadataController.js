@@ -11,7 +11,19 @@ class NftMetadataController {
             const {name, description, image, attributes} = req.body;
             const tokenId = await nftMetadataService.getNewTokenId();
             const external_url = `${API_URL}${tokenId}`;
-            const nftMetadata = await nftMetadataService.createNftMetadata({name, description, image, external_url: external_url, attributes, tokenId});
+            const expectedOwnerAddress = await nftMetadataService.getWalletAddressByUserId(req.user._id);
+
+            const nftMetadata = await nftMetadataService.createNftMetadata({
+                tokenId, 
+                name, 
+                description, 
+                image, 
+                external_url: external_url, 
+                attributes, 
+                ownerId: req.user._id,
+                expectedOwnerAddress: expectedOwnerAddress,
+                actualOwnerAddress: expectedOwnerAddress});
+
             return res.json(nftMetadata);
         } catch (error) {
             next(error);
