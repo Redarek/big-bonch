@@ -3,13 +3,15 @@ import {postNftMetadata} from "./ActionCreators";
 import {INftMetadata} from "../../types/INftMetadata";
 
 interface nftSlice {
-    nftMetadata: INftMetadata
+    nftMetadata: INftMetadata;
+    nftsMetadata: INftMetadata[];
     isLoading: boolean;
     error: string;
 }
 
 const initialState: nftSlice = {
     nftMetadata: {} as INftMetadata,
+    nftsMetadata: [] as INftMetadata[],
     isLoading: false,
     error: ''
 }

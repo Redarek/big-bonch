@@ -2,10 +2,12 @@ import React, {useEffect, useState} from 'react';
 import {io} from "socket.io-client";
 // import Web3 from "web3";
 import {ethers} from 'ethers'
-import cl from '../styles/MainPage.module.css'
+import cl from './Canvas.module.css'
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
 import {postNftMetadata} from "../store/reducers/ActionCreators";
 import {INftMetadata} from "../types/INftMetadata";
+import Menu from "./UI/Menu/Menu";
+
 
 declare var window: any
 

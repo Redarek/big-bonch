@@ -81,3 +81,16 @@ export const postNftMetadata = createAsyncThunk(
         }
     }
 )
+
+
+export const fetctNfts = createAsyncThunk(
+    '/nfts/',
+    async (id:string, thunkAPI) => {
+        try {
+            const response = await BonusService.getAllBonuses(id)
+            return response.data;
+        } catch (e) {
+            return thunkAPI.rejectWithValue("Не удалось получить награды")
+        }
+    }
+)

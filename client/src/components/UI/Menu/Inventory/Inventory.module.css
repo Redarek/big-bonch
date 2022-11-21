@@ -1,0 +1,32 @@
+.inventory {
+    width: 100%;
+}
+
+.info {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    height: calc((60vh - 40px) / 3);
+}
+
+.infoPlayer {
+    width: 50%;
+}
+
+.infoAbout {
+    width: 50%;
+    background-color: rgba(255, 255, 255, .5);
+}
+
+.staff {
+    padding-top: 5px;
+    width: 60%;
+    height: calc((60vh - 40px) / 3 * 2);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.card {
+    height: 50px;
+    width: 100%;
+}
