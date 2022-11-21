@@ -19,5 +19,6 @@ router.get('/users', authMiddleware, userController.getUsers);
 router.get('/token/id', authMiddleware, nftMetadataController.getNewTokenId);
 router.post('/token-metadata', authMiddleware, nftMetadataController.createNftMetadata)
 router.get('/token/:id', nftMetadataController.getNftMetadataByTokenId);
+router.get('/tokens/:id', nftMetadataController.getNftMetadatasByUserId)
 
 module.exports = router;

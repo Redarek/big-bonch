@@ -22,6 +22,11 @@ class NftMetadataService {
         const tokenId = await nftMetadataModel.countDocuments();
         return tokenId + 1;// количество NFT + 1 = новый tokenId
     }
+
+    async getNftMetadatasByUserId(id) {
+        const nftMetadatas = await nftMetadataModel.find();
+        return nftMetadatas;
+    }
 }
 
 module.exports = new NftMetadataService();

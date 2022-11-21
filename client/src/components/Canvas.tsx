@@ -23,8 +23,26 @@ const Canvas = () => {
     const {user} =useAppSelector(state => state.authSlice.user)
     const BASE_URL = process.env.NODE_ENV === "production" ? 'https://big-bonch.herokuapp.com' : 'http://localhost:8080';
 
+
+    const [socketState, setSocket] = useState()
+    // @ts-ignore
+    const onMouseAttack = (index) => {
+        console.log(index)
+        if (index === true) {
+            console.log('down')
+            // @ts-ignore
+            socketState.emit('keyPress', {inputId: 'attack', state: true})
+        } else {
+            console.log('up')
+            // @ts-ignore
+            socketState.emit('keyPress', {inputId: 'attack', state: false})
+        }
+    }
+
     useEffect(() => {
         const socket = io(`${BASE_URL}`)
+        // @ts-ignore
+        setSocket(socket)
         const canvas = canvasRef.current;
         const canvasUi = canvasRefUi.current;
         // @ts-ignore
@@ -58,7 +76,9 @@ const Canvas = () => {
                     // })
                     if (response) {
                         //Создание метадаты
+                        //Добавить expectedOwner и actualOwner
                         const nftMetadata: INftMetadata = {
+                            // owner: 
                             name: 'Пропуск',
                             description: 'Пластиковая карта, необходимая для прохода через турникет',
                             image: `${BASE_URL}/pass.png'`,
@@ -494,13 +514,15 @@ const Canvas = () => {
             else if (event.keyCode === 87) //press "W"
                 socket.emit('keyPress', {inputId: 'up', state: false})
         }
-
-        document.onmousedown = function (event) {
-            socket.emit('keyPress', {inputId: 'attack', state: true})
-        }
-        document.onmouseup = function (event) {
-            socket.emit('keyPress', {inputId: 'attack', state: false})
-        }
+        // document.onmousedown = function (event) {
+        //     socket.emit('keyPress', {inputId: 'attack', state: true})
+        //     console.log('down')
+        // }
+        // document.onmouseup = function (event) {
+        //     console.log('up')
+        //     socket.emit('keyPress', {inputId: 'attack', state: false})
+        // }
+        
         document.onmousemove = function (mouse) {
             // @ts-ignore
             var mouseX = mouse.clientX - canvas.getBoundingClientRect().left;
@@ -518,7 +540,12 @@ const Canvas = () => {
     }, [])
 
     return (
-        <div className={cl.wrap} style={{height: `${height}px`}}>
+        <div  
+        onMouseDown={() => {onMouseAttack(true)} }
+        onMouseUp={() => {onMouseAttack(false)} }
+        className={cl.wrap} 
+        style={{height: `${height}px`}}
+        >
             <canvas
                 style={{left: `${left}px`}}
                 // width="1280px"
