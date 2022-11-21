@@ -1,3 +1,4 @@
+const { trusted } = require('mongoose');
 const ApiError = require('../exceptions/ApiError')
 const nftMetadataService = require('../service/nftMetadataService')
 const API_URL = process.env.NODE_ENV === "production" ? 'https://big-bonch.herokuapp.com/api' : 'http://localhost:8080/api';
@@ -30,6 +31,15 @@ class NftMetadataController {
         try {
             const tokenId = await nftMetadataService.getNewTokenId();
             return res.json(tokenId)
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async getNftMetadatasByUserId(req, res, next) {
+        try {
+            const nftMetadatas = await nftMetadataService.getNftMetadatasByUserId(req.params.id);
+            return res.json(nftMetadatas)
         } catch (error) {
             next(error);
         }
