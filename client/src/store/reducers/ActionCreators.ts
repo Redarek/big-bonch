@@ -8,10 +8,6 @@ import NftService from "../../services/NftService";
 import {INftMetadata} from "../../types/INftMetadata";
 
 
-
-
-
-
 export const login = createAsyncThunk(
     'user/login',
     async (loginObject: ILoginUser) => {
@@ -28,7 +24,7 @@ export const login = createAsyncThunk(
 
 export const registration = createAsyncThunk(
     'user/registration',
-    async (regObject:IRegUser) => {
+    async (regObject: IRegUser) => {
         try {
             const response = await AuthService.registration(regObject.email, regObject.universityData, regObject.password, regObject.walletAddress);
             // console.log(response);
@@ -70,7 +66,7 @@ export const checkAuth = createAsyncThunk(
 
 export const postNftMetadata = createAsyncThunk(
     '/token-metadata',
-    async (nftMetadata:INftMetadata) => {
+    async (nftMetadata: INftMetadata) => {
         try {
             console.log('NFT metadata sent')
             console.log(nftMetadata)
@@ -83,14 +79,14 @@ export const postNftMetadata = createAsyncThunk(
 )
 
 
-export const fetctNfts = createAsyncThunk(
-    '/nfts/',
-    async (id:string, thunkAPI) => {
+export const fetchTokensByUserId = createAsyncThunk(
+    '/tokens/:id',
+    async (id: string, thunkAPI) => {
         try {
-            const response = await BonusService.getAllBonuses(id)
+            const response = await NftService.fetchTokensByUserId(id)
             return response.data;
         } catch (e) {
-            return thunkAPI.rejectWithValue("Не удалось получить награды")
+            return thunkAPI.rejectWithValue("Не удалось получить tokens")
         }
     }
 )

@@ -72,6 +72,7 @@
 
 .menuNavWrap {
     padding-left: 5px;
+    padding-right: 5px;
     overflow-y: auto;
     height: calc(60vh - 40px);
     width: 20%;
@@ -91,6 +92,12 @@
     color: black;
     padding: 5px;
     cursor: pointer;
+}
+
+.itemTitle {
+    /*margin-top: 5px;*/
+    /*text-align: center;*/
+    padding: 5px;
 }
 
 .menuNavItem:hover {

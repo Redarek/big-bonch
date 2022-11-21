@@ -7,6 +7,7 @@ import {useAppDispatch, useAppSelector} from "../hooks/redux";
 import {postNftMetadata} from "../store/reducers/ActionCreators";
 import {INftMetadata} from "../types/INftMetadata";
 import Menu from "./UI/Menu/Menu";
+import {setIsShow, setTitle} from "../store/reducers/inventorySlice";
 
 
 declare var window: any
@@ -14,6 +15,8 @@ declare var window: any
 const Canvas = () => {
 
     const dispatch = useAppDispatch()
+
+    const {isShowMenu, menuTitle} = useAppSelector(state => state.inventorySlice)
 
     const [height, setHeight] = useState(100);
     const [left, setLeft] = useState(0);
@@ -78,10 +81,10 @@ const Canvas = () => {
                         //Создание метадаты
                         //Добавить expectedOwner и actualOwner
                         const nftMetadata: INftMetadata = {
-                            // owner: 
+                            // owner:
                             name: 'Пропуск',
                             description: 'Пластиковая карта, необходимая для прохода через турникет',
-                            image: `${BASE_URL}/pass.png'`,
+                            image: `${BASE_URL}/pass.png`,
                             attributes: [
                                 //@todo добавить sex на сервере
                                 //@todo отредактировать route на сервере при регистрации // вместо name universityData
@@ -110,9 +113,9 @@ const Canvas = () => {
                                     value: `${user.universityData.sex}`
                                 },
                                 {
-                                    "display_type": "date",
+                                    // "display_type": "date",
                                     "trait_type": "Выдан",
-                                    "value": Date.now()
+                                    "value": new Date().toLocaleString("RUS",{day: 'numeric', month: "short", year: 'numeric' } )
                                 }
                             ],
                         }
@@ -494,6 +497,7 @@ const Canvas = () => {
             ctx.fillText(Player.list[selfId].score, 40, 80);
         }
 
+        let localMenuShow = false;
         document.onkeydown = function (event) {
             if (event.keyCode === 68) //press "D"
                 socket.emit('keyPress', {inputId: 'right', state: true})
@@ -503,6 +507,26 @@ const Canvas = () => {
                 socket.emit('keyPress', {inputId: 'left', state: true})
             else if (event.keyCode === 87) //press "W"
                 socket.emit('keyPress', {inputId: 'up', state: true})
+            else if (event.keyCode === 73) {
+                if(localMenuShow) {
+                    dispatch(setIsShow(false))
+                    localMenuShow = false
+                } else  {
+                    localMenuShow = true
+                    dispatch(setIsShow(true))
+                    dispatch(setTitle(0))
+                }
+
+        } else if (event.keyCode === 81) {
+                if(localMenuShow) {
+                    dispatch(setIsShow(false))
+                    localMenuShow = false
+                } else {
+                    localMenuShow = true
+                    dispatch(setIsShow(true))
+                    dispatch(setTitle(1))
+                }
+            }
         }
         document.onkeyup = function (event) {
             if (event.keyCode === 68) //press "D"
@@ -522,7 +546,7 @@ const Canvas = () => {
         //     console.log('up')
         //     socket.emit('keyPress', {inputId: 'attack', state: false})
         // }
-        
+
         document.onmousemove = function (mouse) {
             // @ts-ignore
             var mouseX = mouse.clientX - canvas.getBoundingClientRect().left;
@@ -540,10 +564,10 @@ const Canvas = () => {
     }, [])
 
     return (
-        <div  
+        <div
         onMouseDown={() => {onMouseAttack(true)} }
         onMouseUp={() => {onMouseAttack(false)} }
-        className={cl.wrap} 
+        className={cl.wrap}
         style={{height: `${height}px`}}
         >
             <canvas

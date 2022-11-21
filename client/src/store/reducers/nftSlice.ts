@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {postNftMetadata} from "./ActionCreators";
+import {fetchTokensByUserId, postNftMetadata} from "./ActionCreators";
 import {INftMetadata} from "../../types/INftMetadata";
 
 interface nftSlice {
@@ -21,7 +21,18 @@ const nftSlice = createSlice({
     reducers: {},
 
     extraReducers: {
-
+        [fetchTokensByUserId.fulfilled.type]: (state, action: PayloadAction<INftMetadata[]>) => {
+            state.nftsMetadata = action.payload
+            state.error = '';
+            state.isLoading = false;
+        },
+        [fetchTokensByUserId.pending.type]: (state) => {
+            state.isLoading = true;
+        },
+        [fetchTokensByUserId.rejected.type]: (state, action: PayloadAction<string>) => {
+            state.error = action.payload
+            state.isLoading = false;
+        },
         [postNftMetadata.fulfilled.type]: (state, action: PayloadAction<number>) => {
             state.error = '';
             state.isLoading = false;
