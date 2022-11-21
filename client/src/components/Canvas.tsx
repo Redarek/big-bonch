@@ -90,7 +90,7 @@ const Canvas = () => {
                                 {
                                     "display_type": "date",
                                     "trait_type": "Выдан",
-                                    "value": new Date()
+                                    "value": Date.now()
                                 }
                             ],
                         }
