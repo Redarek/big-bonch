@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
 import {registration} from "../store/reducers/ActionCreators";
 import {IRegUser} from "../types/IUser";
+import DropDownMenu from "./UI/DropDownMenu/DropDownMenu";
 
 
 const RegistrationForm: FC = () => {
@@ -19,13 +20,13 @@ const RegistrationForm: FC = () => {
     const [firstName, setFirstName] = useState<string>("");
     const [secondName, setSecondName] = useState<string>("");
     const [patronymic, setPatronymic] = useState<string>("");
-    const [faculty, setFaculty] = useState<string>("");
+    const [faculty, setFaculty] = useState<string>("ИКСС");
     const [job, setJob] = useState<'Преподаватель' | 'Студент' | 'Сотрудник'>("Преподаватель");
     const [sex, setSex] = useState<'Мужской' | 'Женский' | 'Не знаю'>("Мужской");
 
 
     const handleRegistration = (e: React.MouseEvent<HTMLElement>) => {
-        const user:IRegUser =
+        const user: IRegUser =
             {
                 password: password,
                 email: email,
@@ -45,21 +46,13 @@ const RegistrationForm: FC = () => {
         setFirstName('')
         setSecondName('')
         setPatronymic('')
-        setFaculty('')
+        setFaculty('ИКСС')
         setJob("Преподаватель")
         setSex("Мужской")
         navigate('/')
         e.preventDefault()
     }
 
-
-    // const handleRegistration = (e: any) => {
-    //     dispatch(registration({email: email, password: password, name: name, walletAddress: walletAddress}))
-    //     setEmail('')
-    //     setPassword('')
-    //     setName('')
-    //     e.preventDefault();
-    // }
     return (
         <div className={cl.auth}>
             <form className={cl.reg__form}>
@@ -113,15 +106,24 @@ const RegistrationForm: FC = () => {
                     onChange={(e) => setPatronymic(e.target.value)}
                 />
                 <label htmlFor='registration-faculty' className={cl.auth__label}>Факультет</label>
-                <input
-                    className={cx(cl.auth__input, cl.auth__input_password)}
-                    placeholder="Ваш факультет"
-                    type="text"
-                    name="name"
-                    id='registration-faculty'
-                    value={faculty}
-                    onChange={(e) => setFaculty(e.target.value)}
+                <DropDownMenu
+                    menuType={'faculty'}
+                    title={faculty}
+                    menuItems={[]}
+                    dropMenuItem={'faculty'}
+                    setDropMenuItem={setFaculty}
+                    viewMode={"bottom"}
                 />
+                {/*<input*/}
+                {/*    className={cx(cl.auth__input, cl.auth__input_password)}*/}
+                {/*    placeholder="Ваш факультет"*/}
+                {/*    type="text"*/}
+                {/*    name="name"*/}
+                {/*    id='registration-faculty'*/}
+                {/*    value={faculty}*/}
+                {/*    onChange={(e) => setFaculty(e.target.value)}*/}
+                {/*/>*/}
+                <label htmlFor='registration-teacher' className={cl.auth__label}>Должность</label>
                 <div className={cl.reg__radio}>
                     <div className={cl.reg__radio_btns}>
                         <label htmlFor='registration-teacher' className={cl.auth__label}>Преподаватель</label>
@@ -154,7 +156,9 @@ const RegistrationForm: FC = () => {
                         />
                     </div>
                 </div>
+                <label htmlFor='registration-male' className={cl.auth__label}>Пол</label>
                 <div className={cl.reg__radio}>
+
                     <div className={cl.reg__radio_btns}>
                         <label htmlFor='registration-male' className={cl.auth__label}>Мужской</label>
                         <input type="radio"
