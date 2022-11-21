@@ -1,8 +1,10 @@
 const nftMetadataModel = require('../models/nftMetadataModel');
+const userModel = require('../models/userModel');
 
 class NftMetadataService {
     async createNftMetadata (nftMetadata) {
         const nft = await nftMetadataModel.create(nftMetadata)
+        console.log(nft)
         return nft;
     }
 
@@ -24,8 +26,15 @@ class NftMetadataService {
     }
 
     async getNftMetadatasByUserId(id) {
-        const nftMetadatas = await nftMetadataModel.find();
+        const nftMetadatas = await nftMetadataModel.find({ownerId: id});
         return nftMetadatas;
+    }
+
+    async getWalletAddressByUserId(id) {
+        const user = await userModel.findOne({_id: id})
+        console.log('получен адрес')
+        console.log(user.walletAddress)
+        return user.walletAddress;
     }
 }
 
