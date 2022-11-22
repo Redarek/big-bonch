@@ -37,7 +37,7 @@ const Inventory: FC<InventoryProps> = () => {
                 {/*<div className={cl.infoPlayer}>1</div>*/}
                 <div className={cl.staff}>
                     {nftsMetadata.map((obj, index) =>
-                        <div key={obj.name} className={cl.card} style={cardStyle(index)}
+                        <div key={obj.tokenId} className={cl.card} style={cardStyle(index)}
                              onClick={() => dispatch(setNft(obj))}>
                             <img src={obj.image} alt=""/>
                         </div>
