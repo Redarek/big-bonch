@@ -4,16 +4,29 @@ import {useAppDispatch, useAppSelector} from "../../../../hooks/redux";
 import {setNft} from "../../../../store/reducers/inventorySlice";
 import {fetchTokensByUserId} from "../../../../store/reducers/ActionCreators";
 
+interface Reward {
+    img: string;
+    name: string
+}
 interface InventoryProps {
-
+    setNotificationMintNFTIsVisible: (bool: boolean) => void;
+    setNotificationItem: (obj: Reward) => void;
 }
 
-const Inventory: FC<InventoryProps> = () => {
+
+
+const Inventory: FC<InventoryProps> = ({setNotificationMintNFTIsVisible, setNotificationItem}) => {
     const {nftsMetadata} = useAppSelector(state => state.nftSlice)
     const {nft} = useAppSelector(state => state.inventorySlice)
     const {user} = useAppSelector(state => state.authSlice.user)
     const dispatch = useAppDispatch()
 
+
+    const handeCreateNFT = () => {
+        //создание и выпуск нфт
+        setNotificationItem({img: nft.image, name: nft.name})
+        setNotificationMintNFTIsVisible(true)
+    }
     useEffect(() => {
         dispatch(fetchTokensByUserId(user._id))
         setNft(
@@ -58,6 +71,7 @@ const Inventory: FC<InventoryProps> = () => {
                                 </div>
                             )}
                         </div>
+                        <button onClick={()=> handeCreateNFT()}>Выпустить NFT</button>
                     </div>
                     : ''
                 }
