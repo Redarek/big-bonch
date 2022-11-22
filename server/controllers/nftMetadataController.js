@@ -9,16 +9,16 @@ class NftMetadataController {
         try {
             console.log('create nft')
             const {name, description, image, attributes} = req.body;
-            const tokenId = await nftMetadataService.getNewTokenId();
-            const external_url = `${API_URL}${tokenId}`;
+            // const tokenId = await nftMetadataService.getNewTokenId();
+            // const external_url = `${API_URL}${tokenId}`;
             const expectedOwnerAddress = await nftMetadataService.getWalletAddressByUserId(req.user._id);
 
             const nftMetadata = await nftMetadataService.createNftMetadata({
-                tokenId, 
+                // tokenId, 
                 name, 
                 description, 
                 image, 
-                external_url: external_url, 
+                // external_url: external_url, 
                 attributes, 
                 ownerId: req.user._id,
                 expectedOwnerAddress: expectedOwnerAddress,
@@ -54,6 +54,18 @@ class NftMetadataController {
             return res.json(nftMetadatas)
         } catch (error) {
             next(error);
+        }
+    }
+
+    async assignIdToNftMetadata(req, res, next) {
+        try {
+            const tokenId = await nftMetadataService.getNewTokenId();
+            const external_url = `${API_URL}${tokenId}`;
+            const update = {tokenId: tokenId, external_url: external_url}
+            const nftMetadata = await nftMetadataService.assignIdToNftMetadata(req.params.id, update)
+            return res.json(nftMetadata);
+        } catch (error) {
+          next(error);  
         }
     }
 
