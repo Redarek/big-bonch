@@ -24,6 +24,12 @@ const RegistrationForm: FC = () => {
     const [job, setJob] = useState<'Преподаватель' | 'Студент' | 'Сотрудник'>("Преподаватель");
     const [sex, setSex] = useState<'Мужской' | 'Женский' | 'Не знаю'>("Мужской");
 
+    const radioStyle = (value:string) => {
+        switch (value){
+            case job: return {backgroundColor: 'rgba(88, 162, 248, 1)'}
+            case sex: return {backgroundColor: 'rgba(88, 162, 248, 1)'}
+        }
+    }
 
     const handleRegistration = (e: React.MouseEvent<HTMLElement>) => {
         const user: IRegUser =
@@ -114,80 +120,28 @@ const RegistrationForm: FC = () => {
                     setDropMenuItem={setFaculty}
                     viewMode={"bottom"}
                 />
-                {/*<input*/}
-                {/*    className={cx(cl.auth__input, cl.auth__input_password)}*/}
-                {/*    placeholder="Ваш факультет"*/}
-                {/*    type="text"*/}
-                {/*    name="name"*/}
-                {/*    id='registration-faculty'*/}
-                {/*    value={faculty}*/}
-                {/*    onChange={(e) => setFaculty(e.target.value)}*/}
-                {/*/>*/}
                 <label htmlFor='registration-teacher' className={cl.auth__label}>Должность</label>
                 <div className={cl.reg__radio}>
-                    <div className={cl.reg__radio_btns}>
-                        <label htmlFor='registration-teacher' className={cl.auth__label}>Преподаватель</label>
-                        <input type="radio"
-                               value={job}
-                               checked={job === 'Преподаватель'}
-                               name={'Преподаватель'}
-                               onChange={() => setJob('Преподаватель')}
-                               id={'registration-teacher'}
-                        />
+                    <div className={cl.reg__radio_btn} style={radioStyle('Преподаватель')} onClick={()=> setJob('Преподаватель')}>
+                        Преподаватель
                     </div>
-                    <div className={cl.reg__radio_btns}>
-                        <label htmlFor='registration-student' className={cl.auth__label}>Студент</label>
-                        <input type="radio"
-                               value={job}
-                               checked={job === "Студент"}
-                               name={"Студент"}
-                               onChange={() => setJob('Студент')}
-                               id={'registration-student'}
-                        />
+                    <div className={cl.reg__radio_btn} style={radioStyle('Студент')} onClick={()=> setJob('Студент')}>
+                        Студент
                     </div>
-                    <div className={cl.reg__radio_btns}>
-                        <label htmlFor='registration-worker' className={cl.auth__label}>Сотрудник</label>
-                        <input type="radio"
-                               value={job}
-                               checked={job === "Сотрудник"}
-                               name={"Сотрудник"}
-                               onChange={() => setJob('Сотрудник')}
-                               id={'registration-worker'}
-                        />
+                    <div className={cl.reg__radio_btn} style={radioStyle('Сотрудник')} onClick={()=> setJob('Сотрудник')}>
+                        Сотрудник
                     </div>
                 </div>
                 <label htmlFor='registration-male' className={cl.auth__label}>Пол</label>
                 <div className={cl.reg__radio}>
-
-                    <div className={cl.reg__radio_btns}>
-                        <label htmlFor='registration-male' className={cl.auth__label}>Мужской</label>
-                        <input type="radio"
-                               value={sex}
-                               checked={sex === 'Мужской'}
-                               name={'Мужской'}
-                               onChange={() => setSex('Мужской')}
-                               id={'registration-male'}
-                        />
+                    <div className={cl.reg__radio_btn} style={radioStyle('Мужской')} onClick={()=> setSex("Мужской")}>
+                        Мужской
                     </div>
-                    <div className={cl.reg__radio_btns}>
-                        <label htmlFor='registration-female' className={cl.auth__label}>Женский</label>
-                        <input type="radio"
-                               value={sex}
-                               checked={sex === "Женский"}
-                               name={"Женский"}
-                               onChange={() => setSex('Женский')}
-                               id={'registration-female'}
-                        />
+                    <div className={cl.reg__radio_btn} style={radioStyle('Женский')} onClick={()=> setSex("Женский")}>
+                        Женский
                     </div>
-                    <div className={cl.reg__radio_btns}>
-                        <label htmlFor='registration-unknown' className={cl.auth__label}>Не знаю</label>
-                        <input type="radio"
-                               value={sex}
-                               checked={sex === "Не знаю"}
-                               name={"Не знаю"}
-                               onChange={() => setSex('Не знаю')}
-                               id={'registration-unknown'}
-                        />
+                    <div className={cl.reg__radio_btn} style={radioStyle('Не знаю')} onClick={()=> setSex("Не знаю")}>
+                        Не знаю
                     </div>
                 </div>
                 <button
