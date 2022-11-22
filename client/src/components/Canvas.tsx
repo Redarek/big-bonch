@@ -57,7 +57,7 @@ const Canvas = () => {
 
         // функция создания NFT и отправки метадаты на сервер
         const mintNftAndMetadata = async () => {
-            const contractAddr = process.env.REACT_APP_SMART_CONTRACT_ADDRESS || ''
+            const contractAddr = '0xd57354f4AbF8B0A15fc480874c70CB21260cee3d'
             if (window.ethereum) {
                 const provider = new ethers.providers.Web3Provider(window.ethereum);
                 await provider.send("eth_requestAccounts", [])
@@ -74,15 +74,12 @@ const Canvas = () => {
                     // })
                     if (response) {
                         //Создание метадаты
-                        //Добавить expectedOwner и actualOwner
                         const nftMetadata: INftMetadata = {
                             // owner: 
                             name: 'Пропуск',
                             description: 'Пластиковая карта, необходимая для прохода через турникет',
                             image: `${BASE_URL}/pass.png'`,
                             attributes: [
-                                //@todo добавить sex на сервере
-                                //@todo отредактировать route на сервере при регистрации // вместо name universityData
                                 {
                                     trait_type: 'Имя',
                                     value: `${user.universityData.firstName}`
@@ -124,6 +121,36 @@ const Canvas = () => {
         }
 
         mintNftAndMetadata();
+
+        const getActualOwnerOfNft = async () => {
+            const contractAddr = '0xd57354f4AbF8B0A15fc480874c70CB21260cee3d'
+            if (window.ethereum) {
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                await provider.send("eth_requestAccounts", [])
+                const signer = provider.getSigner()
+                console.log(signer)
+                console.log(provider)
+                const abi = ["function ownerOf(uint256 tokenId) external view returns (address)",
+                            "function mint(uint numberOfTokens) external payable",
+                            "function balanceOf(address owner) view returns (uint256)"]
+                const contract = new ethers.Contract(
+                    contractAddr,
+                    abi, signer)
+                    // @ts-ignore
+                // const tokenContract = await IERC721.at('0xd57354f4AbF8B0A15fc480874c70CB21260cee3d')
+                try {
+                    //заглушка для metamask
+                    // const response = 'res'
+                    const response = await contract.ownerOf(ethers.BigNumber.from(0))
+                    // const response = await contract.balanceOf(signer.getAddress())
+                    // const response = await tokenContract.ownerOf(ethers.BigNumber.from(0))
+                    console.log('response: ', response)
+                } catch (err) {
+                    console.log("error", err)
+                }
+            }
+        }
+        getActualOwnerOfNft();
 
 
         const array =
