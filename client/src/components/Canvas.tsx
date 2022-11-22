@@ -380,7 +380,7 @@ const Canvas = () => {
                     // @ts-ignore
                     0, 0, Img.bullet.width, Img.bullet.height,
                     // @ts-ignore
-                    x, y, width / 10, height / 10)
+                    x, y, width, height)
             }
             // @ts-ignore
             Bullet.list[self.id] = self
