@@ -6,7 +6,8 @@ export interface INftMetadata {
     name: string;
     description: string;
     image: string;
-    tokenId?: string
+    tokenId?: string;
+    _id:string;
     attributes: attributes[];
 }
 // export interface INftMetadataFetched {

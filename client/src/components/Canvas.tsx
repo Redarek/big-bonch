@@ -89,6 +89,7 @@ const Canvas = () => {
                         //Создание метадаты
                         const nftMetadata: INftMetadata = {
                             // owner:
+                            _id: '',
                             name: 'Пропуск',
                             description: 'Пластиковая карта, необходимая для прохода через турникет',
                             image: `${BASE_URL}/pass.png`,

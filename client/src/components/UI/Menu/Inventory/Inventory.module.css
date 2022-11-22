@@ -35,6 +35,7 @@
 .aboutTitle {
     /*margin-left: 5px;*/
     margin-left: auto;
+    margin-right: auto;
     /*margin-right: auto;*/
     /*text-align: center;*/
 }
@@ -45,6 +46,14 @@
     /*margin: 0 0;*/
 }
 
+.btn {
+    cursor: pointer;
+    background-color: #753d16;
+    border-radius: 5px;
+    width: 50%;
+    text-align: center;
+    margin: 5px auto;
+}
 
 .aboutDescription {
     width: 90%;
@@ -69,20 +78,23 @@
 }
 
 .staff {
-    border-top-style: solid;
-    border-top-color: black;
-    border-top-width: 2px;
-    border-right-style: solid;
-    border-right-color: black;
-    border-right-width: 2px;
+    /*border-top-style: solid;*/
+    /*border-top-color: black;*/
+    /*border-top-width: 2px;*/
+    /*border-right-style: solid;*/
+    /*border-right-color: black;*/
+    /*border-right-width: 2px;*/
+    border: 1px solid black;
     padding-top: 5px;
+    padding-left: 5px;
     width: 300px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(10, 1fr);
     grid-row-gap: 5px;
     grid-column-gap: 5px;
     overflow-y: auto;
-    height: 300px;
+    max-height: 400px;
 }
 
 .card {

@@ -90,3 +90,16 @@ export const fetchTokensByUserId = createAsyncThunk(
         }
     }
 )
+
+export const patchNftMetadata = createAsyncThunk(
+    '/token/:id',
+    async (id: string, thunkAPI) => {
+        try {
+            const response = await NftService.patchNftMetadata(id)
+            console.log(response.data)
+            return response.data;
+        } catch (e) {
+            return thunkAPI.rejectWithValue("Не удалось выпустить NFT")
+        }
+    }
+)

@@ -2,17 +2,17 @@ import React, {FC, useEffect, useState} from 'react';
 import cl from './Inventory.module.css'
 import {useAppDispatch, useAppSelector} from "../../../../hooks/redux";
 import {setNft} from "../../../../store/reducers/inventorySlice";
-import {fetchTokensByUserId} from "../../../../store/reducers/ActionCreators";
+import {fetchTokensByUserId, patchNftMetadata} from "../../../../store/reducers/ActionCreators";
 
 interface Reward {
     img: string;
     name: string
 }
+
 interface InventoryProps {
     setNotificationMintNFTIsVisible: (bool: boolean) => void;
     setNotificationItem: (obj: Reward) => void;
 }
-
 
 
 const Inventory: FC<InventoryProps> = ({setNotificationMintNFTIsVisible, setNotificationItem}) => {
@@ -24,8 +24,11 @@ const Inventory: FC<InventoryProps> = ({setNotificationMintNFTIsVisible, setNoti
 
     const handeCreateNFT = () => {
         //создание и выпуск нфт
+
+        dispatch(patchNftMetadata(nft._id))
         setNotificationItem({img: nft.image, name: nft.name})
         setNotificationMintNFTIsVisible(true)
+
     }
     useEffect(() => {
         dispatch(fetchTokensByUserId(user._id))
@@ -35,6 +38,7 @@ const Inventory: FC<InventoryProps> = ({setNotificationMintNFTIsVisible, setNoti
                 description: '',
                 image: '',
                 attributes: [],
+                _id: '',
             })
     }, [])
 
@@ -43,7 +47,7 @@ const Inventory: FC<InventoryProps> = ({setNotificationMintNFTIsVisible, setNoti
             return {backgroundColor: 'rgba(255,255,255, .1)'}
         }
     }
-    console.log(nft)
+
     return (
         <div className={cl.inventory}>
             <div className={cl.info}>
@@ -61,7 +65,6 @@ const Inventory: FC<InventoryProps> = ({setNotificationMintNFTIsVisible, setNoti
                         <div className={cl.aboutHeader}>
                             <div className={cl.aboutImg}><img src={nft.image} alt=""/></div>
                             <div className={cl.aboutTitle}>{nft.name}</div>
-                            <div className={cl.tokenId}>id: {nft.tokenId}</div>
                         </div>
                         <div className={cl.aboutDescription}>{nft.description}</div>
                         <div className={cl.attributes}>
@@ -71,7 +74,10 @@ const Inventory: FC<InventoryProps> = ({setNotificationMintNFTIsVisible, setNoti
                                 </div>
                             )}
                         </div>
-                        <button onClick={()=> handeCreateNFT()}>Выпустить NFT</button>
+                        {nft.tokenId
+                            ? ''
+                            : <div className={cl.btn} onClick={() => handeCreateNFT()}>Выпустить NFT</div>
+                        }
                     </div>
                     : ''
                 }
