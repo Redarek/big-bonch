@@ -21,8 +21,8 @@ class NftMetadataService {
     }
 
     async getNewTokenId() {
-        const tokenId = await nftMetadataModel.countDocuments();
-        return tokenId + 1;// количество NFT + 1 = новый tokenId
+        const tokenId = await nftMetadataModel.countDocuments({tokenId: {$exists: true}});
+        return tokenId - 1;// количество NFT - 1 = новый tokenId
     }
 
     async getNftMetadatasByUserId(id) {
@@ -35,6 +35,11 @@ class NftMetadataService {
         console.log('получен адрес')
         console.log(user.walletAddress)
         return user.walletAddress;
+    }
+
+    async assignIdToNftMetadata(id, update) {
+        const nftMetadata = await nftMetadataModel.findByIdAndUpdate({_id: id}, update)
+        return nftMetadata;
     }
 }
 
