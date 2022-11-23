@@ -1,5 +1,4 @@
 .auth {
-    /*font-family: Arial, Helvetica, sans-serif;*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,35 +7,13 @@
     width: 100%;
     background-color: #70350B;
     padding: 15px;
-}
-
-.auth__title {
-    font-size: 24px;
-    line-height: 29px;
-    margin: 30px 0 0 0;
-}
-
-.auth__link {
-    text-decoration: underline;
-
-    transition: opacity 0.3s ease-in-out;
-}
-
-.auth__link:hover {
-    opacity: 0.6;
-}
-
-.auth__label {
-    align-self: flex-start;
-    text-align: left;
-    margin-top: 30px;
-    font-size: 25px;
+    font-size: 14px;
 }
 
 .auth__input {
     border: 1px solid rgba(0, 0, 0, 0.6);
     background-color: #DEB07B;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 20px;
     font-weight: 400;
     color: #000;
@@ -49,39 +26,12 @@
     margin-top: 10px;
 }
 
-.auth__input_password {
-    /*margin-top: 7px;*/
-}
 
-.auth__input_email {
-    /*margin-top: 10px;*/
-}
-
-.logo {
-    width: 200px;
-    height: 120px;
-    z-index: 1;
-}
-
-.reg__logo {
-    cursor: pointer;
-    height: 80px;
-    width: 150px;
-}
-.reg__logo img {
-    width: 100%;
-    height: 100%;
-}
-.logo img {
-    width: 100%;
-    height: 100%;
-}
-
-.btns {
-
+.auth__btns {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     min-width: 220px;
     width: 100%;
     max-width: 494px;
@@ -89,11 +39,10 @@
     margin-top: 30px;
 }
 
-.btns button {
+.auth__btns button {
     font-size: 15px;
     cursor: pointer;
     background-color: #583719;
-    margin-left: 8%;
     max-width: 230px;
     width: 100%;
     min-height: 65px;
@@ -101,19 +50,18 @@
     border-radius: 5px;
 }
 
-.btns button a {
-    color: white;
+.auth__btns p {
+    margin-top: 15px;
+}
+
+.auth__btns a {
+    color: black;
     text-decoration: none;
 }
 
-.btns button:hover {
+.auth__btns button:hover {
     background-color: #7a4d24;
 }
-
-.btns button:first-child {
-    margin-left: 0;
-}
-
 
 .auth__form {
     display: flex;
@@ -125,11 +73,11 @@
     width: 100%;
     height: 100vh;
     border-radius: 15px;
-    /*margin: auto 0 auto 0;*/
     padding: 30px;
 }
 
 .reg__form {
+    font-size: 14px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -139,14 +87,14 @@
     background-color: #F1ECCD;
     max-height: 840px;
     width: 100%;
-    max-width: 800px;
+    max-width: 500px;
     margin: 0;
 }
 
 .reg__input {
     border: 1px solid rgba(0, 0, 0, 0.6);
     background-color: #DEB07B;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 20px;
     font-weight: 400;
     color: #000;
@@ -162,26 +110,34 @@
 .reg__label {
     align-self: flex-start;
     text-align: left;
-    margin-top: 20px;
-    margin-left: 20px;
-    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.reg__radio_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .reg__radio {
     margin-top: 8px;
     display: flex;
-    min-width: 220px;
+    min-width: 190px;
     width: 100%;
-    max-width: 800px;
+    max-width: 215px;
     padding: 0 2px;
     align-items: center;
     justify-content: space-between;
+    flex-direction: column;
 }
 
 .reg__radio_btn {
     cursor: pointer;
-    /*background-color: #F1ECCD;*/
-
+    margin: 2px 0;
     background-color: rgba(241, 236, 205, 1);
     width: 100%;
     height: 35px;
@@ -189,113 +145,46 @@
     padding: 8px;
     border: 1px solid #DEB07B;
     border-radius: 5px;
-    /*margin: 0 10px;*/
-    margin-left: 10px;
 }
 
-.reg__radio_btn_checked {
-    background-color: #DEB07B;
-}
-
-.reg__radio_btn:first-child {
-    margin-left: 0;
-    /*border-top-left-radius: 5px;*/
-    /*border-bottom-left-radius: 5px;*/
-}
-
-.reg__radio_btn:last-child {
-    /*border: none;*/
-    /*border-top-right-radius: 5px;*/
-    /*border-bottom-right-radius: 5px;*/
-}
 
 .reg__radio_btn:hover {
     background-color: rgba(222, 176, 123, 1);
 }
 
-.active {
-    background-color: rgba(222, 176, 123, 1);
+.reg__btns {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .reg__btn {
     margin-top: 10px;
 }
 
-.reg__btns {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    align-items: center;
-   justify-content: center;
+.reg__btns p {
+    cursor: pointer;
+    margin-top: 15px;
 }
+
 .reg__btns button {
-    width: 200px;
-    font-size: 10px;
+    width: 280px;
     cursor: pointer;
     background-color: #583719;
-    /*margin-left: 8%;*/
-    /*width: 100%;*/
-    margin-left: 5px;
-
-    min-height: 65px;
+    min-height: 35px;
     color: white;
     border-radius: 5px;
 }
 
-.reg__btns button a {
+.reg__btns a {
     color: white;
     text-decoration: none;
 }
 
 .reg__btns button:hover {
     background-color: #7a4d24;
-}
-
-.reg__btns button:first-child {
-    margin-left: 0;
-}
-
-/*.reg__radio label {*/
-/*    cursor: pointer;*/
-/*    margin: 0 0;*/
-/*}*/
-/*.reg__radio input {*/
-/*    margin-top: 5px;*/
-/*    cursor: pointer;*/
-/*}*/
-/*.reg__radio_btns {*/
-/*    margin: 0 auto;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-items: center;*/
-/*}*/
-
-
-
-.auth__text {
-    color: #0078D4;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 400;
-    margin: 30px 0 30px 0;
-    cursor: pointer;
-}
-
-.auth__button {
-    min-height: 32px;
-    width: 100%;
-    background-color: #0078D4;
-    border: none;
-    border-radius: 2px;
-    color: #fff;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    padding: 0;
-    transition: opacity 0.3s ease-in-out;
-    cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 55px 0 0 0;
 }
 
 .auth__button_registration {
@@ -311,30 +200,12 @@
 }
 
 
-@media (max-width: 491px) {
-    .btns {
-        flex-direction: column;
-    }
-
-    .btns button {
-        margin-left: 0;
-    }
-    .btns button:first-child {
-        margin-bottom: 5px;
-    }
-}
-
-@media (max-width: 615px) {
+@media (max-width: 500px) {
     .reg__radio {
-        flex-direction: column;
+        max-width: 100%;
     }
-    .reg__radio_btn {
-        margin: 2px 0;
-    }
-}
 
-@media (max-width: 475px) {
-    .reg__btns button {
-       width: 100%;
+    .reg__radio_btn {
+        min-width: 180px;
     }
 }
