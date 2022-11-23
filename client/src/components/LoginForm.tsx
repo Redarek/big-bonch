@@ -49,7 +49,7 @@ const LoginForm: FC = () => {
                     <p onClick={() => {
                         navigate("/registration");
                     }}
-                    ><a href="/registration">Создать аккаунт</a>
+                    ><a onClick={(e)=>e.preventDefault()} href="/registration">Создать аккаунт</a>
                     </p>
                 </div>
             </form>
