@@ -26,8 +26,8 @@ const RegistrationForm: FC = () => {
 
     const radioStyle = (value:string) => {
         switch (value){
-            case job: return {backgroundColor: 'rgba(88, 162, 248, 1)'}
-            case sex: return {backgroundColor: 'rgba(88, 162, 248, 1)'}
+            case job: return {backgroundColor: 'rgba(222, 176, 123, 1)'}
+            case sex: return {backgroundColor: 'rgba(222, 176, 123, 1)'}
         }
     }
 
@@ -62,56 +62,57 @@ const RegistrationForm: FC = () => {
     return (
         <div className={cl.auth}>
             <form className={cl.reg__form}>
-                <label htmlFor='registration-email' className={cl.auth__label}>Email</label>
+                <div className={cl.reg__logo} onClick={()=> navigate('/login')}><img src="/images/blackLogo.svg" alt=""/></div>
+                <label htmlFor='registration-email' className={cl.reg__label}>Email</label>
                 <input
-                    className={cx(cl.auth__input, cl.auth__input_email)}
-                    placeholder="Введите email"
+                    className={cx(cl.reg__input, cl.auth__input_email)}
+                    placeholder="Email"
                     name="email"
                     id='registration-email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <label htmlFor='registration-password' className={cl.auth__label}>Пароль</label>
+                <label htmlFor='registration-password' className={cl.reg__label}>Пароль</label>
                 <input
-                    className={cx(cl.auth__input, cl.auth__input_password)}
-                    placeholder="Введите пароль"
+                    className={cx(cl.reg__input, cl.auth__input_password)}
+                    placeholder="Пароль"
                     type="password"
                     name="password"
                     id='registration-password'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <label htmlFor='registration-fName' className={cl.auth__label}>Имя</label>
+                <label htmlFor='registration-fName' className={cl.reg__label}>Имя</label>
                 <input
-                    className={cx(cl.auth__input, cl.auth__input_password)}
-                    placeholder="Введите имя"
+                    className={cx(cl.reg__input, cl.auth__input_password)}
+                    placeholder="Имя"
                     type="text"
                     name="name"
                     id='registration-fName'
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                 />
-                <label htmlFor='registration-sName' className={cl.auth__label}>Фамилия</label>
+                <label htmlFor='registration-sName' className={cl.reg__label}>Фамилия</label>
                 <input
-                    className={cx(cl.auth__input, cl.auth__input_password)}
-                    placeholder="Введите фамилию"
+                    className={cx(cl.reg__input, cl.auth__input_password)}
+                    placeholder="Фамилия"
                     type="text"
                     name="name"
                     id='registration-sName'
                     value={secondName}
                     onChange={(e) => setSecondName(e.target.value)}
                 />
-                <label htmlFor='registration-patronymic' className={cl.auth__label}>Отчество</label>
+                <label htmlFor='registration-patronymic' className={cl.reg__label}>Отчество</label>
                 <input
-                    className={cx(cl.auth__input, cl.auth__input_password)}
-                    placeholder="Введите отчество"
+                    className={cx(cl.reg__input, cl.auth__input_password)}
+                    placeholder="Отчество"
                     type="text"
                     name="name"
                     id='registration-patronymic'
                     value={patronymic}
                     onChange={(e) => setPatronymic(e.target.value)}
                 />
-                <label htmlFor='registration-faculty' className={cl.auth__label}>Факультет</label>
+                <label htmlFor='registration-faculty' className={cl.reg__label} style={{marginBottom: '10px'}}>Факультет</label>
                 <DropDownMenu
                     menuType={'faculty'}
                     title={faculty}
@@ -120,7 +121,7 @@ const RegistrationForm: FC = () => {
                     setDropMenuItem={setFaculty}
                     viewMode={"bottom"}
                 />
-                <label htmlFor='registration-teacher' className={cl.auth__label}>Должность</label>
+                <label htmlFor='registration-teacher' className={cl.reg__label}>Должность</label>
                 <div className={cl.reg__radio}>
                     <div className={cl.reg__radio_btn} style={radioStyle('Преподаватель')} onClick={()=> setJob('Преподаватель')}>
                         Преподаватель
@@ -132,31 +133,32 @@ const RegistrationForm: FC = () => {
                         Сотрудник
                     </div>
                 </div>
-                <label htmlFor='registration-male' className={cl.auth__label}>Пол</label>
-                <div className={cl.reg__radio}>
-                    <div className={cl.reg__radio_btn} style={radioStyle('Мужской')} onClick={()=> setSex("Мужской")}>
-                        Мужской
-                    </div>
-                    <div className={cl.reg__radio_btn} style={radioStyle('Женский')} onClick={()=> setSex("Женский")}>
-                        Женский
-                    </div>
-                    <div className={cl.reg__radio_btn} style={radioStyle('Не знаю')} onClick={()=> setSex("Не знаю")}>
-                        Не знаю
-                    </div>
+                {/*<label htmlFor='registration-male' className={cl.reg__label}>Пол</label>*/}
+                {/*<div className={cl.reg__radio}>*/}
+                {/*    <div className={cl.reg__radio_btn} style={radioStyle('Мужской')} onClick={()=> setSex("Мужской")}>*/}
+                {/*        Мужской*/}
+                {/*    </div>*/}
+                {/*    <div className={cl.reg__radio_btn} style={radioStyle('Женский')} onClick={()=> setSex("Женский")}>*/}
+                {/*        Женский*/}
+                {/*    </div>*/}
+                {/*    <div className={cl.reg__radio_btn} style={radioStyle('Не знаю')} onClick={()=> setSex("Не знаю")}>*/}
+                {/*        Не знаю*/}
+                {/*    </div>*/}
+                {/*</div>*/}
+                <div className={cl.reg__btns}>
+                    <button className={cl.reg__btn} style={{maxWidth: '400px'}}
+                        onClick={(e) => handleRegistration(e)}
+                    >Зарегистрироваться
+                    </button>
                 </div>
-                <button
-                    className={cx(cl.auth__button, cl.auth__button_registration)}
-                    onClick={(e) => handleRegistration(e)}
-                >Зарегистрироваться
-                </button>
-                <div
-                    className={cl.auth__text}
-                    onClick={(e) => {
-                        e.preventDefault();
-                        navigate("/login");
-                    }}>
-                    <p className={cl.auth__link}>Вход</p>
-                </div>
+                {/*<div*/}
+                {/*    className={cl.auth__text}*/}
+                {/*    onClick={(e) => {*/}
+                {/*        e.preventDefault();*/}
+                {/*        navigate("/login");*/}
+                {/*    }}>*/}
+                {/*    <p className={cl.auth__link}>Вход</p>*/}
+                {/*</div>*/}
             </form>
         </div>
     );

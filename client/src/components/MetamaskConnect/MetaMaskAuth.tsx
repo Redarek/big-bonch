@@ -47,26 +47,25 @@ const MetaMaskAuth = ({onAddressChanged}) => {
 
     useEffect(() => {
         onAddressChanged(userAddress);
-        if (userAddress !== '') dispatch(setUserWalletAddress(userAddress))
+        if (userAddress !== '') {
+            dispatch(setUserWalletAddress(userAddress))
+        }
     }, [userAddress]);
 
     return (
         <div>
             {userAddress
-                ? <div></div>
-                : <button className={styles.button} onClick={() => connect(setUserAddress)}>
-                    Connect to MetaMask
-                </button>
+                ? ''
+                : <div className={styles.metaMask}>
+                    <div className={styles.foxBtn} onClick={() => connect(setUserAddress)}>
+                        <img src="/images/fox.png" alt=""/>
+                    </div>
+                    <div className={styles.btn} onClick={() => connect(setUserAddress)}>
+                        <p>Чтобы начать, нажми на лисёнка и подключись к MetaMask</p>
+                    </div>
+                </div>
             }
         </div>
-        // <div>
-        //     Connected with
-        //     <span
-        //         className={styles.address}>
-        //         {userAddress.substring(0, 5)}
-        //         …{userAddress.substring(userAddress.length - 4)}
-        //     </span>
-        // </div>
     )
 };
 

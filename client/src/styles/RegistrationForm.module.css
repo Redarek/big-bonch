@@ -1,10 +1,13 @@
 .auth {
-    font-family: Arial, Helvetica, sans-serif;
+    /*font-family: Arial, Helvetica, sans-serif;*/
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 94vh;
+    justify-content: center;
+    min-height: 100vh;
     width: 100%;
+    background-color: #70350B;
+    padding: 15px;
 }
 
 .auth__title {
@@ -26,83 +29,223 @@
 .auth__label {
     align-self: flex-start;
     text-align: left;
-    margin-top: 25px
+    margin-top: 30px;
+    font-size: 25px;
 }
 
 .auth__input {
     border: 1px solid rgba(0, 0, 0, 0.6);
-    font-size: 14px;
+    background-color: #DEB07B;
+    font-size: 18px;
     line-height: 20px;
     font-weight: 400;
     color: #000;
-    min-width: 296px;
-    min-height: 32px;
+    min-width: 220px;
+    width: 100%;
+    max-width: 494px;
+    min-height: 65px;
     border-radius: 2px;
-    padding: 0 0 0 12px
+    padding: 0 0 0 12px;
+    margin-top: 10px;
 }
 
 .auth__input_password {
-    margin-top: 7px;
+    /*margin-top: 7px;*/
 }
 
 .auth__input_email {
-    margin-top: 7px;
+    /*margin-top: 10px;*/
 }
+
+.logo {
+    width: 200px;
+    height: 120px;
+    z-index: 1;
+}
+
+.reg__logo {
+    cursor: pointer;
+    height: 80px;
+    width: 150px;
+}
+.reg__logo img {
+    width: 100%;
+    height: 100%;
+}
+.logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.btns {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    width: 100%;
+    max-width: 494px;
+    min-height: 65px;
+    margin-top: 30px;
+}
+
+.btns button {
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #583719;
+    margin-left: 8%;
+    max-width: 230px;
+    width: 100%;
+    min-height: 65px;
+    color: white;
+    border-radius: 5px;
+}
+
+.btns button a {
+    color: white;
+    text-decoration: none;
+}
+
+.btns button:hover {
+    background-color: #7a4d24;
+}
+
+.btns button:first-child {
+    margin-left: 0;
+}
+
 
 .auth__form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 350px;
+    background-color: #F1ECCD;
+    max-width: 550px;
+    max-height: 550px;
+    width: 100%;
+    height: 100vh;
     border-radius: 15px;
-    margin: 100px 0 0 0;
+    /*margin: auto 0 auto 0;*/
+    padding: 30px;
 }
 
 .reg__form {
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 350px;
     border-radius: 15px;
+    background-color: #F1ECCD;
+    max-height: 840px;
+    width: 100%;
+    max-width: 800px;
     margin: 0;
+}
+
+.reg__input {
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    background-color: #DEB07B;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #000;
+    min-width: 220px;
+    width: 100%;
+    max-width: 800px;
+    min-height: 35px;
+    border-radius: 2px;
+    padding: 0 0 0 12px;
+    margin-top: 10px;
+}
+
+.reg__label {
+    align-self: flex-start;
+    text-align: left;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 18px;
 }
 
 .reg__radio {
     margin-top: 8px;
     display: flex;
+    min-width: 220px;
     width: 100%;
+    max-width: 800px;
     padding: 0 2px;
+    align-items: center;
+    justify-content: space-between;
 }
+
 .reg__radio_btn {
     cursor: pointer;
-    background-color: rgba(88, 162, 248, 0.8);
+    /*background-color: #F1ECCD;*/
+
+    background-color: rgba(241, 236, 205, 1);
     width: 100%;
-    height: 30px;
+    height: 35px;
     text-align: center;
-    padding: 5px;
-    border-right: 1px solid black;
+    padding: 8px;
+    border: 1px solid #DEB07B;
+    border-radius: 5px;
+    /*margin: 0 10px;*/
+    margin-left: 10px;
 }
 
 .reg__radio_btn_checked {
-    background-color: rgba(88, 162, 248, 1);
+    background-color: #DEB07B;
 }
 
 .reg__radio_btn:first-child {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    margin-left: 0;
+    /*border-top-left-radius: 5px;*/
+    /*border-bottom-left-radius: 5px;*/
 }
+
 .reg__radio_btn:last-child {
-    border: none;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    /*border: none;*/
+    /*border-top-right-radius: 5px;*/
+    /*border-bottom-right-radius: 5px;*/
 }
+
 .reg__radio_btn:hover {
-    background-color: rgba(88, 162, 248, 1);
+    background-color: rgba(222, 176, 123, 1);
 }
 
 .active {
-    background-color: rgba(88, 162, 248, 1);
+    background-color: rgba(222, 176, 123, 1);
 }
+
+.reg__btn {
+    margin-top: 10px;
+}
+
+.reg__btns button {
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #583719;
+    margin-left: 8%;
+    max-width: 230px;
+    width: 100%;
+    min-height: 65px;
+    color: white;
+    border-radius: 5px;
+}
+
+.reg__btns button a {
+    color: white;
+    text-decoration: none;
+}
+
+.reg__btns button:hover {
+    background-color: #7a4d24;
+}
+
+.reg__btns button:first-child {
+    margin-left: 0;
+}
+
 /*.reg__radio label {*/
 /*    cursor: pointer;*/
 /*    margin: 0 0;*/
@@ -118,13 +261,7 @@
 /*    align-items: center;*/
 /*}*/
 
-.radioBtns {
 
-}
-
-.radioBtn {
-
-}
 
 .auth__text {
     color: #0078D4;
@@ -162,4 +299,27 @@
 
 .auth__button:hover {
     opacity: 0.8;
+}
+
+
+@media (max-width: 491px) {
+    .btns {
+        flex-direction: column;
+    }
+
+    .btns button {
+        margin-left: 0;
+    }
+    .btns button:first-child {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 615px) {
+    .reg__radio {
+        flex-direction: column;
+    }
+    .reg__radio_btn {
+        margin: 2px 0;
+    }
 }

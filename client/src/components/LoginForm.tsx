@@ -4,39 +4,29 @@ import {login} from "../store/reducers/ActionCreators";
 import cl from "../styles/RegistrationForm.module.css";
 import cx from "classnames";
 import {useNavigate} from "react-router-dom";
-import {IUser} from "../types/IUser";
 
 const LoginForm: FC = () => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const [name, setName] = useState<string>("");
-
 
     const handleLogin = (e: React.MouseEvent<HTMLElement>) => {
-        // const user =
-        //     {
-        //         email: email,
-        //         walletAddress: walletAddress,
-        //         password: password
-        //     }
         dispatch(login({email: email, password: password, walletAddress: walletAddress}));
         navigate('/')
-        e.preventDefault()
     }
     const {walletAddress} = useAppSelector(state => state.authSlice)
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-
     return (
         <div className={cl.auth}>
             <form className={cl.auth__form}>
+                <div className={cl.logo}><img src="/images/blackLogo.svg" alt=""/></div>
                 <label htmlFor="login-email" className={cl.auth__label}>
                     Email
                 </label>
                 <input
                     className={cx(cl.auth__input, cl.auth__input_email)}
-                    placeholder="Введите email"
+                    placeholder="Email"
                     name="email"
                     id="login-email"
                     onChange={e => setEmail(e.target.value)}
@@ -48,28 +38,28 @@ const LoginForm: FC = () => {
                 </label>
                 <input
                     className={cx(cl.auth__input, cl.auth__input_password)}
-                    placeholder="Введите пароль"
+                    placeholder="Пароль"
                     type="password"
                     name="password"
                     id="login-password"
                     onChange={e => setPassword(e.target.value)}
                     value={password}
                 />
-                <button className={cx(cl.auth__button, cl.auth__button_login)}
+                <div className={cl.btns}>
+                    <button
                         onClick={(e) => {
+                            e.preventDefault()
                             handleLogin(e)
-                        }
-                }
-                >Войти
-                </button>
-                <div
-                    className={cl.auth__text}
-                    onClick={(e) => {
-                        navigate("/registration");
-                        e.preventDefault();
-                    }}
-                >
-                    <p className={cl.auth__link}>Регистрация</p>
+                        }}
+                    >Войти
+                    </button>
+                    <button
+                        onClick={(e) => {
+                            navigate("/registration");
+                            e.preventDefault();
+                        }}
+                    ><a href="/registration">Регистрация</a>
+                    </button>
                 </div>
             </form>
         </div>
