@@ -10,7 +10,8 @@ function App() {
     const {isAuth, isLoading, user, walletAddress} = useAppSelector(state => state.authSlice)
     const dispatch = useAppDispatch()
 
-    const userId = localStorage.getItem("userId")
+    const token = localStorage.getItem("token")
+    const walletAdd = localStorage.getItem("address")
     // Проверка наличия токена доступа при первом запуске приложения
     useEffect(() => {
         if (localStorage.getItem('token')) {
@@ -24,21 +25,21 @@ function App() {
             {walletAddress === ''
                 ? <MetaMaskAuth onAddressChanged={setFetchWalletAddress}/>
                 : <BrowserRouter>
-                    <div className="loader">
-                        {isLoading
-                            ? 'Loader will be soon...'
-                            : ''
-                        }
-                    </div>
-                    {isAuth
-                        ? <div className="isAuth">
-                            <div className="wrapper">
-                                <AppRouter/>
-                            </div>
-                        </div>
-                        : <AppRouter/>
+                    {isLoading
+                        ? 'Loader will be soon...'
+                        : token
+                            ? isAuth
+                                ? <div className="isAuth">
+                                    <div className="wrapper">
+                                        <AppRouter/>
+                                    </div>
+                                </div>
+                                : <AppRouter/>
 
+                            : ''
                     }
+
+
                 </BrowserRouter>
             }
         </div>

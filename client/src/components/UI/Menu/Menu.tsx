@@ -25,9 +25,9 @@ const Menu: FC<MenuProps> = ({menuIndex}) => {
     const title = () => {
         switch (menuIndex) {
             case 0:
-                return 'Inventory';
+                return 'Инвентарь';
             case 1:
-                return 'Quests'
+                return 'Задания'
         }
     }
     return (
@@ -44,10 +44,10 @@ const Menu: FC<MenuProps> = ({menuIndex}) => {
                 </div>
                 <div className={cl.menuContent}>
                     <div className={cl.menuNavWrap}>
-                        <div className={cl.itemTitle}>Progress:</div>
-                        <div className={cl.menuNavItem} onClick={() => dispatch(setTitle(0))}>Inventory</div>
-                        <div className={cl.itemTitle}>Combat:</div>
-                        <div className={cl.menuNavItem} onClick={() => dispatch(setTitle(1))}>Quests</div>
+                        <div className={cl.itemTitle}>Прогресс:</div>
+                        <div className={cl.menuNavItem} onClick={() => dispatch(setTitle(0))}>Инвентарь</div>
+                        <div className={cl.itemTitle}>Задания:</div>
+                        <div className={cl.menuNavItem} onClick={() => dispatch(setTitle(1))}>Квесты</div>
                     </div>
                     <div className={cl.menuWindow}>
                         {menuWindows[menuIndex]}

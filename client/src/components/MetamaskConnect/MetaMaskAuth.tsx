@@ -47,7 +47,9 @@ const MetaMaskAuth = ({onAddressChanged}) => {
 
     useEffect(() => {
         onAddressChanged(userAddress);
-        if (userAddress !== '') dispatch(setUserWalletAddress(userAddress))
+        if (userAddress !== '') {
+            dispatch(setUserWalletAddress(userAddress))
+        }
     }, [userAddress]);
 
     return (
