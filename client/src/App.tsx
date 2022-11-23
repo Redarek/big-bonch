@@ -11,7 +11,6 @@ function App() {
     const dispatch = useAppDispatch()
 
     const token = localStorage.getItem("token")
-    const walletAdd = localStorage.getItem("address")
     // Проверка наличия токена доступа при первом запуске приложения
     useEffect(() => {
         if (localStorage.getItem('token')) {
@@ -19,6 +18,8 @@ function App() {
         }
     }, [])
 
+    console.log(walletAddress)
+    console.log(isAuth)
     const [fetchWalletAddress, setFetchWalletAddress] = useState<string>("");
     return (
         <div className="App">
@@ -36,7 +37,7 @@ function App() {
                                 </div>
                                 : <AppRouter/>
 
-                            : ''
+                            : <AppRouter/>
                     }
 
 
