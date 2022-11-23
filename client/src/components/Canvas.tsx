@@ -140,7 +140,7 @@ const Canvas = () => {
             }
         }
 
-        mintNftAndMetadata();
+        // mintNftAndMetadata();
 
         const getActualOwnerOfNft = async () => {
             const contractAddr = '0xd57354f4AbF8B0A15fc480874c70CB21260cee3d'
@@ -156,21 +156,15 @@ const Canvas = () => {
                 const contract = new ethers.Contract(
                     contractAddr,
                     abi, signer)
-                // @ts-ignore
-                // const tokenContract = await IERC721.at('0xd57354f4AbF8B0A15fc480874c70CB21260cee3d')
                 try {
-                    //заглушка для metamask
-                    // const response = 'res'
                     const response = await contract.ownerOf(ethers.BigNumber.from(0))
-                    // const response = await contract.balanceOf(signer.getAddress())
-                    // const response = await tokenContract.ownerOf(ethers.BigNumber.from(0))
                     console.log('response: ', response)
                 } catch (err) {
                     console.log("error", err)
                 }
             }
         }
-        getActualOwnerOfNft();
+        // getActualOwnerOfNft();
 
 
         const array =

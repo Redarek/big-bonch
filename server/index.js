@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 const path = require('path');
 // const web3 = require('web3');
-// const ethers = require('ethers')
+const ethers = require('ethers')
 // const abi = require('./BigBonchNFT.json')
 
 const { Server } = require('socket.io');

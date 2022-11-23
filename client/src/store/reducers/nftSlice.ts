@@ -1,6 +1,8 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {fetchTokensByUserId, postNftMetadata} from "./ActionCreators";
 import {INftMetadata} from "../../types/INftMetadata";
+import {ethers} from 'ethers'
+declare var window: any
 
 interface nftSlice {
     nftMetadata: INftMetadata;
@@ -46,5 +48,6 @@ const nftSlice = createSlice({
         }
     }
 })
+
 export const {} = nftSlice.actions;
 export default nftSlice.reducer;

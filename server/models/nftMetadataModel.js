@@ -11,7 +11,7 @@ const nftMetadataSchema = new Schema({
     attributes: {type: Array},
     ownerId: {type: String, ref: 'User'},
     expectedOwnerAddress: {type: String},
-    actualOwnerAddress: {type: String}
+    // actualOwnerAddress: {type: String}
 });
 
 module.exports = model('NftMetadata', nftMetadataSchema);

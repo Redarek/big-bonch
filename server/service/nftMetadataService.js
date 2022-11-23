@@ -1,5 +1,6 @@
 const nftMetadataModel = require('../models/nftMetadataModel');
 const userModel = require('../models/userModel');
+const { ethers } = require("ethers");
 
 class NftMetadataService {
     async createNftMetadata (nftMetadata) {
@@ -40,6 +41,43 @@ class NftMetadataService {
     async assignIdToNftMetadata(id, update) {
         const nftMetadata = await nftMetadataModel.findByIdAndUpdate({_id: id}, update)
         return nftMetadata;
+    }
+
+    async setActualOwnerOfNft(nftMetadatas) {
+        const contractAddr = '0xd57354f4AbF8B0A15fc480874c70CB21260cee3d'
+        if (window.ethereum) {
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            await provider.send("eth_requestAccounts", [])
+            const signer = provider.getSigner()
+            const abi = [
+                "function ownerOf(uint256 tokenId) external view returns (address)",
+                "function mint(uint numberOfTokens) external payable",
+                "function balanceOf(address owner) view returns (uint256)"
+            ]
+            const contract = new ethers.Contract(
+                contractAddr,
+                abi, signer)
+            try {
+                // nftMetadatas.forEach (async (metadata, index) => {
+                //     const expected = metadata.expectedOwnerAddress
+                //     const actual = await contract.ownerOf(ethers.BigNumber.from(metadata.tokenId))
+                //     if (expected != actual) {
+                //         return metadata[index].expectedOwnerAddress = actual;
+                //     }
+                // })
+                const actualNftMetadatas = nftMetadatas.map(async (metadata, index) => {
+                    const expected = metadata.expectedOwnerAddress
+                    const actual = await contract.ownerOf(ethers.BigNumber.from(metadata.tokenId))
+                    if (expected === actual) {
+                        return metadata[index]
+                    }
+                })
+                return actualNftMetadatas
+                // console.log('response: ', response)
+            } catch (error) {
+                console.log("error", error)
+            }
+        }
     }
 }
 

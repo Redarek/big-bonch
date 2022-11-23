@@ -54,7 +54,7 @@ const Inventory: FC<InventoryProps> = ({setNotificationMintNFTIsVisible, setNoti
                 {/*<div className={cl.infoPlayer}>1</div>*/}
                 <div className={cl.staff}>
                     {nftsMetadata.map((obj, index) =>
-                        <div key={obj.tokenId} className={cl.card} style={cardStyle(index)}
+                        <div key={obj._id} className={cl.card} style={cardStyle(index)}
                              onClick={() => dispatch(setNft(obj))}>
                             <img src={obj.image} alt=""/>
                         </div>
@@ -69,7 +69,7 @@ const Inventory: FC<InventoryProps> = ({setNotificationMintNFTIsVisible, setNoti
                         <div className={cl.aboutDescription}>{nft.description}</div>
                         <div className={cl.attributes}>
                             {nft.attributes.map(att =>
-                                <div className={cl.attribute}>
+                                <div key={att.trait_type} className={cl.attribute}>
                                     {att.trait_type}: {att.value}
                                 </div>
                             )}

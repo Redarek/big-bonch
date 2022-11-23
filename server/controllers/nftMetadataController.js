@@ -22,7 +22,8 @@ class NftMetadataController {
                 attributes, 
                 ownerId: req.user._id,
                 expectedOwnerAddress: expectedOwnerAddress,
-                actualOwnerAddress: expectedOwnerAddress});
+                // actualOwnerAddress: expectedOwnerAddress
+            });
 
             return res.json(nftMetadata);
         } catch (error) {
@@ -51,6 +52,7 @@ class NftMetadataController {
     async getNftMetadatasByUserId(req, res, next) {
         try {
             const nftMetadatas = await nftMetadataService.getNftMetadatasByUserId(req.params.id);
+            // const actualNftMetadatas = await nftMetadataService.setActualOwnerOfNft(nftMetadatas)
             return res.json(nftMetadatas)
         } catch (error) {
             next(error);
