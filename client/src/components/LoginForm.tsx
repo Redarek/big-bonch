@@ -26,7 +26,7 @@ const LoginForm: FC = () => {
                 </label>
                 <input
                     className={cx(cl.auth__input, cl.auth__input_email)}
-                    // placeholder="Введите email"
+                    placeholder="Email"
                     name="email"
                     id="login-email"
                     onChange={e => setEmail(e.target.value)}
@@ -38,7 +38,7 @@ const LoginForm: FC = () => {
                 </label>
                 <input
                     className={cx(cl.auth__input, cl.auth__input_password)}
-                    // placeholder="Введите пароль"
+                    placeholder="Пароль"
                     type="password"
                     name="password"
                     id="login-password"

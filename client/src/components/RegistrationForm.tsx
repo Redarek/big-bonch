@@ -66,7 +66,7 @@ const RegistrationForm: FC = () => {
                 <label htmlFor='registration-email' className={cl.reg__label}>Email</label>
                 <input
                     className={cx(cl.reg__input, cl.auth__input_email)}
-                    // placeholder="Введите email"
+                    placeholder="Email"
                     name="email"
                     id='registration-email'
                     value={email}
@@ -75,7 +75,7 @@ const RegistrationForm: FC = () => {
                 <label htmlFor='registration-password' className={cl.reg__label}>Пароль</label>
                 <input
                     className={cx(cl.reg__input, cl.auth__input_password)}
-                    // placeholder="Введите пароль"
+                    placeholder="Пароль"
                     type="password"
                     name="password"
                     id='registration-password'
@@ -85,7 +85,7 @@ const RegistrationForm: FC = () => {
                 <label htmlFor='registration-fName' className={cl.reg__label}>Имя</label>
                 <input
                     className={cx(cl.reg__input, cl.auth__input_password)}
-                    // placeholder="Введите имя"
+                    placeholder="Имя"
                     type="text"
                     name="name"
                     id='registration-fName'
@@ -95,7 +95,7 @@ const RegistrationForm: FC = () => {
                 <label htmlFor='registration-sName' className={cl.reg__label}>Фамилия</label>
                 <input
                     className={cx(cl.reg__input, cl.auth__input_password)}
-                    // placeholder="Введите фамилию"
+                    placeholder="Фамилия"
                     type="text"
                     name="name"
                     id='registration-sName'
@@ -105,7 +105,7 @@ const RegistrationForm: FC = () => {
                 <label htmlFor='registration-patronymic' className={cl.reg__label}>Отчество</label>
                 <input
                     className={cx(cl.reg__input, cl.auth__input_password)}
-                    // placeholder="Введите отчество"
+                    placeholder="Отчество"
                     type="text"
                     name="name"
                     id='registration-patronymic'
