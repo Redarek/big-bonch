@@ -60,9 +60,9 @@ const MetaMaskAuth = ({onAddressChanged}) => {
                     <div className={styles.foxBtn} onClick={() => connect(setUserAddress)}>
                         <img src="/images/fox.png" alt=""/>
                     </div>
-                    <div className={styles.btn} onClick={() => connect(setUserAddress)}>
-                        <p>Чтобы начать, нажми на лисёнка и подключись к MetaMask</p>
-                    </div>
+                    {/*<div className={styles.btn} onClick={() => connect(setUserAddress)}>*/}
+                    {/*    <p>Чтобы начать, нажми на лисёнка и подключись к MetaMask</p>*/}
+                    {/*</div>*/}
                 </div>
             }
         </div>

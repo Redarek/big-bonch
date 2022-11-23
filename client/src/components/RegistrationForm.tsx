@@ -9,8 +9,6 @@ import DropDownMenu from "./UI/DropDownMenu/DropDownMenu";
 
 
 const RegistrationForm: FC = () => {
-
-    // const [name, setName] = useState<string>("");
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const {walletAddress, result, error} = useAppSelector(state => state.authSlice)
@@ -24,10 +22,12 @@ const RegistrationForm: FC = () => {
     const [job, setJob] = useState<'Преподаватель' | 'Студент' | 'Сотрудник'>("Преподаватель");
     const [sex, setSex] = useState<'Мужской' | 'Женский' | 'Не знаю'>("Мужской");
 
-    const radioStyle = (value:string) => {
-        switch (value){
-            case job: return {backgroundColor: 'rgba(222, 176, 123, 1)'}
-            case sex: return {backgroundColor: 'rgba(222, 176, 123, 1)'}
+    const radioStyle = (value: string) => {
+        switch (value) {
+            case job:
+                return {backgroundColor: 'rgba(222, 176, 123, 1)'}
+            case sex:
+                return {backgroundColor: 'rgba(222, 176, 123, 1)'}
         }
     }
 
@@ -62,8 +62,6 @@ const RegistrationForm: FC = () => {
     return (
         <div className={cl.auth}>
             <form className={cl.reg__form}>
-                {/*<div className={cl.reg__logo} onClick={()=> navigate('/login')}><img src="/images/blackLogo.svg" alt=""/></div>*/}
-                {/*<label htmlFor='registration-email' className={cl.reg__label}>Email</label>*/}
                 <input
                     className={cx(cl.reg__input, cl.auth__input_email)}
                     placeholder="Email"
@@ -72,7 +70,6 @@ const RegistrationForm: FC = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                {/*<label htmlFor='registration-password' className={cl.reg__label}>Пароль</label>*/}
                 <input
                     className={cx(cl.reg__input, cl.auth__input_password)}
                     placeholder="Пароль"
@@ -82,7 +79,6 @@ const RegistrationForm: FC = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                {/*<label htmlFor='registration-fName' className={cl.reg__label}>Имя</label>*/}
                 <input
                     className={cx(cl.reg__input, cl.auth__input_password)}
                     placeholder="Имя"
@@ -92,7 +88,6 @@ const RegistrationForm: FC = () => {
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                 />
-                {/*<label htmlFor='registration-sName' className={cl.reg__label}>Фамилия</label>*/}
                 <input
                     className={cx(cl.reg__input, cl.auth__input_password)}
                     placeholder="Фамилия"
@@ -102,7 +97,6 @@ const RegistrationForm: FC = () => {
                     value={secondName}
                     onChange={(e) => setSecondName(e.target.value)}
                 />
-                {/*<label htmlFor='registration-patronymic' className={cl.reg__label}>Отчество</label>*/}
                 <input
                     className={cx(cl.reg__input, cl.auth__input_password)}
                     placeholder="Отчество"
@@ -112,7 +106,6 @@ const RegistrationForm: FC = () => {
                     value={patronymic}
                     onChange={(e) => setPatronymic(e.target.value)}
                 />
-                {/*<label htmlFor='registration-faculty' className={cl.reg__label} style={{marginBottom: '10px'}}>Факультет</label>*/}
                 <DropDownMenu
                     menuType={'faculty'}
                     title={faculty}
@@ -121,48 +114,49 @@ const RegistrationForm: FC = () => {
                     setDropMenuItem={setFaculty}
                     viewMode={"bottom"}
                 />
-                {/*<label htmlFor='registration-teacher' className={cl.reg__label}>Должность</label>*/}
-                <div className={cl.reg__radio}>
-                    <div className={cl.reg__radio_btn} style={radioStyle('Преподаватель')} onClick={()=> setJob('Преподаватель')}>
-                        Преподаватель
+                <div className={cl.reg__radio_container}>
+                    <div className={cl.reg__radio}>
+                        <label htmlFor='registration-teacher' className={cl.reg__label}>Должность</label>
+                        <div className={cl.reg__radio_btn} style={radioStyle('Преподаватель')}
+                             onClick={() => setJob('Преподаватель')}>
+                            Преподаватель
+                        </div>
+                        <div className={cl.reg__radio_btn} style={radioStyle('Студент')}
+                             onClick={() => setJob('Студент')}>
+                            Студент
+                        </div>
+                        <div className={cl.reg__radio_btn} style={radioStyle('Сотрудник')}
+                             onClick={() => setJob('Сотрудник')}>
+                            Сотрудник
+                        </div>
                     </div>
-                    <div className={cl.reg__radio_btn} style={radioStyle('Студент')} onClick={()=> setJob('Студент')}>
-                        Студент
-                    </div>
-                    <div className={cl.reg__radio_btn} style={radioStyle('Сотрудник')} onClick={()=> setJob('Сотрудник')}>
-                        Сотрудник
+                    <div className={cl.reg__radio}>
+                        <label htmlFor='registration-male' className={cl.reg__label}>Пол</label>
+                        <div className={cl.reg__radio_btn} style={radioStyle('Мужской')}
+                             onClick={() => setSex("Мужской")}>
+                            Мужской
+                        </div>
+                        <div className={cl.reg__radio_btn} style={radioStyle('Женский')}
+                             onClick={() => setSex("Женский")}>
+                            Женский
+                        </div>
+                        <div className={cl.reg__radio_btn} style={radioStyle('Не знаю')}
+                             onClick={() => setSex("Не знаю")}>
+                            Не знаю
+                        </div>
                     </div>
                 </div>
-                {/*<label htmlFor='registration-male' className={cl.reg__label}>Пол</label>*/}
-                <div className={cl.reg__radio}>
-                    <div className={cl.reg__radio_btn} style={radioStyle('Мужской')} onClick={()=> setSex("Мужской")}>
-                        Мужской
-                    </div>
-                    <div className={cl.reg__radio_btn} style={radioStyle('Женский')} onClick={()=> setSex("Женский")}>
-                        Женский
-                    </div>
-                    <div className={cl.reg__radio_btn} style={radioStyle('Не знаю')} onClick={()=> setSex("Не знаю")}>
-                        Не знаю
-                    </div>
-                </div>
+
                 <div className={cl.reg__btns}>
                     <button className={cl.reg__btn}
-                        onClick={(e) => handleRegistration(e)}
+                            onClick={(e) => handleRegistration(e)}
                     >Зарегистрироваться
                     </button>
-                    <button className={cl.reg__btn}
-                        onClick={() =>navigate('/login')}
-                    >Войти
-                    </button>
+                    <p
+                        onClick={() => navigate('/login')}
+                    >Уже есть аккаунт
+                    </p>
                 </div>
-                {/*<div*/}
-                {/*    className={cl.auth__text}*/}
-                {/*    onClick={(e) => {*/}
-                {/*        e.preventDefault();*/}
-                {/*        navigate("/login");*/}
-                {/*    }}>*/}
-                {/*    <p className={cl.auth__link}>Вход</p>*/}
-                {/*</div>*/}
             </form>
         </div>
     );
