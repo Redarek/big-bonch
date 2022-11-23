@@ -20,10 +20,10 @@ const LoginForm: FC = () => {
     return (
         <div className={cl.auth}>
             <form className={cl.auth__form}>
-                <div className={cl.logo}><img src="/images/blackLogo.svg" alt=""/></div>
-                <label htmlFor="login-email" className={cl.auth__label}>
-                    Email
-                </label>
+                {/*<div className={cl.logo}><img src="/images/blackLogo.svg" alt=""/></div>*/}
+                {/*<label htmlFor="login-email" className={cl.auth__label}>*/}
+                {/*    Email*/}
+                {/*</label>*/}
                 <input
                     className={cx(cl.auth__input, cl.auth__input_email)}
                     placeholder="Email"
@@ -33,9 +33,9 @@ const LoginForm: FC = () => {
                     value={email}
                     type='text'
                 />
-                <label htmlFor="login-password" className={cl.auth__label}>
-                    Пароль
-                </label>
+                {/*<label htmlFor="login-password" className={cl.auth__label}>*/}
+                {/*    Пароль*/}
+                {/*</label>*/}
                 <input
                     className={cx(cl.auth__input, cl.auth__input_password)}
                     placeholder="Пароль"
