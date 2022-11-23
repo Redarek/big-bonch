@@ -21,7 +21,7 @@ const LoginForm: FC = () => {
         <div className={cl.auth}>
             <form className={cl.auth__form}>
                 <input
-                    className={cl.auth__input}
+                    className={cl.reg__input}
                     placeholder="Email"
                     name="email"
                     id="login-email"
@@ -30,7 +30,7 @@ const LoginForm: FC = () => {
                     type='text'
                 />
                 <input
-                    className={cl.auth__input}
+                    className={cl.reg__input}
                     placeholder="Пароль"
                     type="password"
                     name="password"
@@ -38,18 +38,14 @@ const LoginForm: FC = () => {
                     onChange={e => setPassword(e.target.value)}
                     value={password}
                 />
-                <div className={cl.auth__btns}>
-                    <button
-                        onClick={(e) => {
-                            e.preventDefault()
-                            handleLogin(e)
-                        }}
+                <div className={cl.reg__btns}>
+                    <button className={cl.reg__btn}
+                    onClick={(e) => {handleLogin(e)}}
                     >Войти
                     </button>
-                    <p onClick={() => {
-                        navigate("/registration");
-                    }}
-                    ><a onClick={(e)=>e.preventDefault()} href="/registration">Создать аккаунт</a>
+                    <p className={cl.reg__btn}
+                        onClick={() => {navigate("/registration");}}
+                    >Создать аккаунт
                     </p>
                 </div>
             </form>

@@ -152,8 +152,7 @@ const RegistrationForm: FC = () => {
                             onClick={(e) => handleRegistration(e)}
                     >Зарегистрироваться
                     </button>
-                    <p
-                        onClick={() => navigate('/login')}
+                    <p onClick={() => navigate('/login')}
                     >Уже есть аккаунт
                     </p>
                 </div>

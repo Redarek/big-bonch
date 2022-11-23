@@ -6,6 +6,9 @@
     min-height: 100vh;
     width: 100%;
     background-color: #70350B;
+    background-image: url("../../public/images/blackLogoPattern.svg");
+    background-repeat: repeat;
+    background-size: 20%;
     padding: 15px;
     font-size: 14px;
 }
@@ -27,35 +30,35 @@
 }
 
 
+
 .auth__btns {
     display: flex;
+    width: 100%;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    min-width: 220px;
-    width: 100%;
-    max-width: 494px;
-    min-height: 65px;
-    margin-top: 30px;
+}
+
+.auth__btn {
+    margin-top: 10px;
 }
 
 .auth__btns button {
-    font-size: 15px;
+    width: 280px;
     cursor: pointer;
     background-color: #583719;
-    max-width: 230px;
-    width: 100%;
-    min-height: 65px;
+    min-height: 35px;
     color: white;
     border-radius: 5px;
 }
 
 .auth__btns p {
+    cursor: pointer;
     margin-top: 15px;
 }
 
 .auth__btns a {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
@@ -69,11 +72,12 @@
     align-items: center;
     background-color: #F1ECCD;
     max-width: 550px;
-    max-height: 300px;
+    max-height: 210px;
     width: 100%;
     height: 100vh;
-    border-radius: 15px;
-    padding: 30px;
+    border: 1px solid rgba(0, 0, 0);
+    border-radius: 5px;
+    padding: 20px;
 }
 
 .reg__form {
@@ -83,7 +87,8 @@
     flex-direction: column;
     align-items: center;
     min-height: 350px;
-    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0);
+    border-radius: 5px;
     background-color: #F1ECCD;
     max-height: 840px;
     width: 100%;
