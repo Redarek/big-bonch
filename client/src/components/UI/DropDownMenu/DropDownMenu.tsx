@@ -45,7 +45,7 @@ const DropDownMenu: FC<DropDownMenuProps> = ({
             wrapStyle.width = '100%'
             menuListWrapStyle.width = '100%'
             menuListWrapStyle.left = '0'
-            menuListWrapStyle.marginTop = '32px'
+            menuListWrapStyle.marginTop = '42px'
             break;
     }
 
