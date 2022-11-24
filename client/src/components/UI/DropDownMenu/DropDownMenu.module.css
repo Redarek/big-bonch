@@ -12,14 +12,14 @@
     width: 100%;
     max-width: 800px;
     /*width: 75%;*/
-    margin: 10px auto 0 auto;
+    margin: 0 auto 0 auto;
     height: 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-radius: 2px;
     cursor: pointer;
-    border: 1px solid rgba(0, 0, 0, 0.6);
+    /*border: 1px solid rgba(0, 0, 0, 0.6);*/
     background: rgba(222, 176, 123, 1);
     /*background-color: rgba(255, 255, 255, 0.9);*/
 }

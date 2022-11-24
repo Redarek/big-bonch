@@ -62,58 +62,70 @@ const RegistrationForm: FC = () => {
     return (
         <div className={cl.auth}>
             <form className={cl.reg__form}>
-                <input
-                    className={cx(cl.reg__input, cl.auth__input_email)}
-                    placeholder="Email"
-                    name="email"
-                    id='registration-email'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    className={cx(cl.reg__input, cl.auth__input_password)}
-                    placeholder="Пароль"
-                    type="password"
-                    name="password"
-                    id='registration-password'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <input
-                    className={cx(cl.reg__input, cl.auth__input_password)}
-                    placeholder="Имя"
-                    type="text"
-                    name="name"
-                    id='registration-fName'
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                />
-                <input
-                    className={cx(cl.reg__input, cl.auth__input_password)}
-                    placeholder="Фамилия"
-                    type="text"
-                    name="name"
-                    id='registration-sName'
-                    value={secondName}
-                    onChange={(e) => setSecondName(e.target.value)}
-                />
-                <input
-                    className={cx(cl.reg__input, cl.auth__input_password)}
-                    placeholder="Отчество"
-                    type="text"
-                    name="name"
-                    id='registration-patronymic'
-                    value={patronymic}
-                    onChange={(e) => setPatronymic(e.target.value)}
-                />
-                <DropDownMenu
-                    menuType={'faculty'}
-                    title={faculty}
-                    menuItems={[]}
-                    dropMenuItem={'faculty'}
-                    setDropMenuItem={setFaculty}
-                    viewMode={"bottom"}
-                />
+                <div className={cl.reg__input_wrap}>
+                    <input
+                        className={cx(cl.reg__input, cl.auth__input_email)}
+                        placeholder="Email"
+                        name="email"
+                        id='registration-email'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </div>
+                <div className={cl.reg__input_wrap}>
+                    <input
+                        className={cx(cl.reg__input, cl.auth__input_password)}
+                        placeholder="Пароль"
+                        type="password"
+                        name="password"
+                        id='registration-password'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <div className={cl.reg__input_wrap}>
+                    <input
+                        className={cx(cl.reg__input, cl.auth__input_password)}
+                        placeholder="Имя"
+                        type="text"
+                        name="name"
+                        id='registration-fName'
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                    />
+                </div>
+                <div className={cl.reg__input_wrap}>
+                    <input
+                        className={cx(cl.reg__input, cl.auth__input_password)}
+                        placeholder="Фамилия"
+                        type="text"
+                        name="name"
+                        id='registration-sName'
+                        value={secondName}
+                        onChange={(e) => setSecondName(e.target.value)}
+                    />
+                </div>
+                <div className={cl.reg__input_wrap}>
+                    <input
+                        className={cx(cl.reg__input, cl.auth__input_password)}
+                        placeholder="Отчество"
+                        type="text"
+                        name="name"
+                        id='registration-patronymic'
+                        value={patronymic}
+                        onChange={(e) => setPatronymic(e.target.value)}
+                    />
+                </div>
+                <div className={cl.reg__input_wrap}>
+                    <DropDownMenu
+                        menuType={'faculty'}
+                        title={faculty}
+                        menuItems={[]}
+                        dropMenuItem={'faculty'}
+                        setDropMenuItem={setFaculty}
+                        viewMode={"bottom"}
+                    />
+                </div>
                 <div className={cl.reg__radio_container}>
                     <div className={cl.reg__radio}>
                         <label htmlFor='registration-teacher' className={cl.reg__label}>Должность</label>
@@ -148,10 +160,9 @@ const RegistrationForm: FC = () => {
                 </div>
 
                 <div className={cl.reg__btns}>
-                    <button className={cl.reg__btn}
-                            onClick={(e) => handleRegistration(e)}
-                    >Зарегистрироваться
-                    </button>
+                    <div className={cl.reg__btn} onClick={(e) => handleRegistration(e)}>
+                        <span>Зарегистрироваться</span>
+                    </div>
                     <p onClick={() => navigate('/login')}
                     >Уже есть аккаунт
                     </p>

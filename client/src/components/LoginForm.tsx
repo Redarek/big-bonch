@@ -20,31 +20,40 @@ const LoginForm: FC = () => {
     return (
         <div className={cl.auth}>
             <form className={cl.auth__form}>
-                <input
-                    className={cl.reg__input}
-                    placeholder="Email"
-                    name="email"
-                    id="login-email"
-                    onChange={e => setEmail(e.target.value)}
-                    value={email}
-                    type='text'
-                />
-                <input
-                    className={cl.reg__input}
-                    placeholder="Пароль"
-                    type="password"
-                    name="password"
-                    id="login-password"
-                    onChange={e => setPassword(e.target.value)}
-                    value={password}
-                />
+                <div className={cl.auth__input_wrap}>
+
+                    <input
+                        className={cl.reg__input}
+                        placeholder="Email"
+                        name="email"
+                        id="login-email"
+                        onChange={e => setEmail(e.target.value)}
+                        value={email}
+                        type='text'
+                    />
+                </div>
+                <div className={cl.auth__input_wrap}>
+                    <input
+                        className={cl.reg__input}
+                        placeholder="Пароль"
+                        type="password"
+                        name="password"
+                        id="login-password"
+                        onChange={e => setPassword(e.target.value)}
+                        value={password}
+                    />
+                </div>
                 <div className={cl.reg__btns}>
-                    <button className={cl.reg__btn}
-                    onClick={(e) => {handleLogin(e)}}
-                    >Войти
-                    </button>
-                    <p className={cl.reg__btn}
-                        onClick={() => {navigate("/registration");}}
+                    <div className={cl.reg__btn}
+                            onClick={(e) => {
+                                handleLogin(e)
+                            }}
+                    ><span>Войти</span>
+                    </div>
+                    <p
+                       onClick={() => {
+                           navigate("/registration");
+                       }}
                     >Создать аккаунт
                     </p>
                 </div>
