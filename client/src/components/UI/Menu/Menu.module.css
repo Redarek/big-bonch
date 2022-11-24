@@ -17,20 +17,88 @@
     width: 50vw;
     min-width: 700px;
     min-height: 450px;
-    color: white;
+
+    border-style: solid;
+    border-color: black;
+    border-width: 0.225em 0;
+    position: relative;
+    z-index: 4;
+    box-shadow: -.35em 0 0 -.125em,
+    .35em 0 0 -.125em;
 }
 
+
+.menu:before {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 .225em;
+    bottom: 0.20em;
+    content: "";
+    left: -0.4em;
+    pointer-events: none;
+    position: absolute;
+    top: 0.20em;
+    right: -0.4em;
+    z-index: -2;
+}
+
+.menu:after {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 0.225em;
+    bottom: 0.48em;
+    content: "";
+    left: -0.6em;
+    position: absolute;
+    top: 0.48em;
+    right: -0.6em;
+    z-index: -1;
+}
 .menuHeader {
     width: 98%;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     margin: 0.5% 1%;
     background-color: #5d3011;
+
+    border-style: solid;
+    border-color: black;
+    border-width: 0.225em 0;
+    position: relative;
+    z-index: 4;
+    box-shadow: -.35em 0 0 -.125em,
+    .35em 0 0 -.125em;
 }
 
+.menuHeader:before {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 .225em;
+    bottom: 0.20em;
+    content: "";
+    left: -0.4em;
+    pointer-events: none;
+    position: absolute;
+    top: 0.20em;
+    right: -0.4em;
+    z-index: -2;
+}
+
+.menuHeader:after {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 0.225em;
+    bottom: 0.48em;
+    content: "";
+    left: -0.6em;
+    position: absolute;
+    top: 0.48em;
+    right: -0.6em;
+    z-index: -1;
+}
 .menuHeaderExitbtn {
     cursor: pointer;
     width: 40px;
@@ -40,6 +108,7 @@
 }
 
 .menuTitle {
+    color: white;
     padding-left: 5px;
     font-weight: 500;
 }
@@ -83,22 +152,62 @@
 .menuNav {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
     /*width: 15%;*/
 }
 
 .menuNavItem {
     font-size: 12px;
-    border: 1px solid black;
-    width: 100%;
+    /*border: 1px solid black;*/
+
+    width: 98%;
     height: 30px;
-    background-color: rgba(255, 255, 255, .5);
+    background-color: rgba(255, 255, 255, 1);
     color: black;
     padding: 8px;
     cursor: pointer;
+
+    border-style: solid;
+    border-color: black;
+    border-width: 0.225em 0;
+    position: relative;
+    z-index: 4;
+    box-shadow: -.35em 0 0 -.125em,
+    .35em 0 0 -.125em;
+}
+
+.menuNavItem:before {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 .225em;
+    bottom: 0.20em;
+    content: "";
+    left: -0.4em;
+    pointer-events: none;
+    position: absolute;
+    top: 0.20em;
+    right: -0.4em;
+    z-index: -2;
+}
+
+.menuNavItem:after {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 0.225em;
+    bottom: 0.48em;
+    content: "";
+    left: -0.6em;
+    position: absolute;
+    top: 0.48em;
+    right: -0.6em;
+    z-index: -1;
 }
 
 .itemTitle {
     padding: 5px;
+    color: white;
 }
 
 .menuNavItem:hover {

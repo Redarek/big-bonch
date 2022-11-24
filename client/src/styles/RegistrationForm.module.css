@@ -29,6 +29,51 @@
     margin-top: 10px;
 }
 
+.auth__input_wrap {
+    background-color: #DEB07B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 10px;
+    border-style: solid;
+    border-color: black;
+    border-width: 0.225em 0;
+    position: relative;
+    z-index: 4;
+    box-shadow: -.35em 0 0 -.125em,
+    .35em 0 0 -.125em;
+}
+
+.auth__input_wrap:before {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 .225em;
+    bottom: 0.20em;
+    content: "";
+    left: -0.4em;
+    pointer-events: none;
+    position: absolute;
+    top: 0.20em;
+    right: -0.4em;
+    z-index: -2;
+}
+
+.auth__input_wrap:after {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 0.225em;
+    bottom: 0.48em;
+    content: "";
+    left: -0.6em;
+    position: absolute;
+    top: 0.48em;
+    right: -0.6em;
+    z-index: -1;
+}
+
 
 .auth__btns {
     display: flex;
@@ -42,21 +87,24 @@
     margin-top: 10px;
 }
 
-.auth__btns button {
-    width: 280px;
-    cursor: pointer;
-    background-color: #583719;
-    min-height: 35px;
-    color: white;
-    border-radius: 5px;
-}
+/*.auth__btns button {*/
+/*    width: 280px;*/
+/*    cursor: pointer;*/
+/*    background-color: #583719;*/
+/*    min-height: 35px;*/
+/*    color: white;*/
+/*    border-radius: 5px;*/
+/*}*/
 
-.auth__btns p {
+.reg__btns p {
     cursor: pointer;
     margin-top: 15px;
 }
+.reg__btns span{
+    color: white;
+}
 
-.auth__btns a {
+.reg__btns a {
     color: white;
     text-decoration: none;
 }
@@ -71,14 +119,46 @@
     align-items: center;
     background-color: #F1ECCD;
     max-width: 500px;
-    min-height: 210px;
-    max-height: 210px;
+    min-height: 230px;
+    max-height: 230px;
     width: 100%;
     height: 100vh;
-    border: 1px solid rgba(0, 0, 0);
-    border-radius: 5px;
     padding: 20px;
+    border-style: solid;
+    border-width: 0.325em 0;
+    position: relative;
+    z-index: 3;
+    box-shadow: -.45em 0 0 -.125em,
+    .45em 0 0 -.125em;
 }
+
+.auth__form:before {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 .325em;
+    bottom: 0.15em;
+    content: "";
+    left: -0.64em;
+    pointer-events: none;
+    position: absolute;
+    top: 0.15em;
+    right: -0.64em;
+    z-index: -21;
+}
+
+.auth__form:after {
+     background-color: inherit;
+     border: inherit;
+     border-width: 0 0.325em;
+     bottom: 0.495em;
+     content: "";
+     left: -0.9em;
+     position: absolute;
+     top: 0.495em;
+     right: -0.9em;
+     z-index: -2;
+}
+
 
 .reg__form {
     font-size: 14px;
@@ -87,29 +167,104 @@
     flex-direction: column;
     align-items: center;
     min-height: 350px;
-    border: 1px solid rgba(0, 0, 0);
-    border-radius: 5px;
     background-color: #F1ECCD;
     max-height: 840px;
     width: 100%;
     max-width: 500px;
     margin: 0;
+
+    border-style: solid;
+    border-width: 0.325em 0;
+    position: relative;
+    z-index: 3;
+    box-shadow: -.45em 0 0 -.125em,
+    .45em 0 0 -.125em;
+}
+
+.reg__form:before {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 .325em;
+    bottom: 0.15em;
+    content: "";
+    left: -0.64em;
+    pointer-events: none;
+    position: absolute;
+    top: 0.15em;
+    right: -0.64em;
+    z-index: -21;
+}
+
+.reg__form:after {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 0.325em;
+    bottom: 0.495em;
+    content: "";
+    left: -0.9em;
+    position: absolute;
+    top: 0.495em;
+    right: -0.9em;
+    z-index: -2;
+}
+
+.reg__input_wrap {
+    background-color: #DEB07B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 10px;
+    border-style: solid;
+    border-color: black;
+    border-width: 0.225em 0;
+    position: relative;
+    z-index: 4;
+    box-shadow: -.35em 0 0 -.125em,
+    .35em 0 0 -.125em;
+}
+
+.reg__input_wrap:before {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 .225em;
+    bottom: 0.20em;
+    content: "";
+    left: -0.4em;
+    pointer-events: none;
+    position: absolute;
+    top: 0.20em;
+    right: -0.4em;
+    z-index: -2;
+}
+
+.reg__input_wrap:after {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 0.225em;
+    bottom: 0.48em;
+    content: "";
+    left: -0.6em;
+    position: absolute;
+    top: 0.48em;
+    right: -0.6em;
+    z-index: -1;
 }
 
 .reg__input {
-    border: 1px solid rgba(0, 0, 0, 0.6);
+    border: none;
     background-color: #DEB07B;
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
     color: #000;
-    min-width: 220px;
     width: 100%;
-    max-width: 800px;
     min-height: 35px;
     border-radius: 2px;
     padding: 0 0 0 12px;
-    margin-top: 10px;
+    outline: none;
 }
 
 .reg__label {
@@ -148,10 +303,44 @@
     height: 35px;
     text-align: center;
     padding: 8px;
-    border: 1px solid #DEB07B;
+    /*border: 1px solid #DEB07B;*/
     border-radius: 5px;
+
+    border-style: solid;
+    border-color: black;
+    border-width: 0.225em 0;
+    position: relative;
+    z-index: 4;
+    box-shadow: -.35em 0 0 -.125em,
+    .35em 0 0 -.125em;
 }
 
+.reg__radio_btn:before {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 .225em;
+    bottom: 0.20em;
+    content: "";
+    left: -0.4em;
+    pointer-events: none;
+    position: absolute;
+    top: 0.20em;
+    right: -0.4em;
+    z-index: -2;
+}
+
+.reg__radio_btn:after {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 0.225em;
+    bottom: 0.48em;
+    content: "";
+    left: -0.6em;
+    position: absolute;
+    top: 0.48em;
+    right: -0.6em;
+    z-index: -1;
+}
 
 .reg__radio_btn:hover {
     background-color: rgba(222, 176, 123, 1);
@@ -166,7 +355,50 @@
 }
 
 .reg__btn {
+    cursor: pointer;
+    min-height: 35px;
+    /*color: white;*/
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #583719;
+   width: 280px;
     margin-top: 10px;
+    border-style: solid;
+    border-color: black;
+    border-width: 0.225em 0;
+    position: relative;
+    z-index: 4;
+    box-shadow: -.35em 0 0 -.125em,
+    .35em 0 0 -.125em #000000;
+}
+
+.reg__btn:before {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 .225em;
+    bottom: 0.20em;
+    content: "";
+    left: -0.4em;
+    pointer-events: none;
+    position: absolute;
+    top: 0.20em;
+    right: -0.4em;
+    z-index: -2;
+}
+
+.reg__btn:after {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 0.225em;
+    bottom: 0.48em;
+    content: "";
+    left: -0.6em;
+    position: absolute;
+    top: 0.48em;
+    right: -0.6em;
+    z-index: -1;
 }
 
 .reg__btns p {
@@ -174,21 +406,20 @@
     margin-top: 15px;
 }
 
-.reg__btns button {
-    width: 280px;
-    cursor: pointer;
-    background-color: #583719;
-    min-height: 35px;
-    color: white;
-    border-radius: 5px;
-}
+/*.reg__btn button {*/
+/*    border: none;*/
+/*    width: 280px;*/
+/*    */
+/*    background-color: #583719;*/
+/*    !*border-radius: 5px;*!*/
+/*}*/
 
 .reg__btns a {
     color: white;
     text-decoration: none;
 }
 
-.reg__btns button:hover {
+.reg__btn:hover {
     background-color: #7a4d24;
 }
 
