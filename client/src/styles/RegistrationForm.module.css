@@ -265,7 +265,28 @@
     border-radius: 2px;
     padding: 0 0 0 12px;
     outline: none;
+    filter: none;
 }
+
+.reg__input:-webkit-autofill,
+.reg__input:-webkit-autofill:hover,
+.reg__input:-webkit-autofill:focus,
+.reg__input:-webkit-autofill:active {
+    box-shadow: 0 0 0 40px #DEB07B inset !important;
+}
+/* .reg__input:autofill {
+    border: none;
+    background-color: #DEB07B;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #000;
+    width: 100%;
+    min-height: 35px;
+    border-radius: 2px;
+    padding: 0 0 0 12px;
+    outline: none;  
+} */
 
 .reg__label {
     align-self: flex-start;
