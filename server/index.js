@@ -153,6 +153,8 @@ const start = async () => {
             self.pressingUp = false
             self.pressingDown = false
             self.pressingAttack = false
+            self.atkSpd = 2; // скорость увеличения счетчика для выпуска пули
+	        self.attackCounter = 0; // счетчик для выпуска пули
 	        self.mouseAngle = 0 // угол наведения курсора
             self.maxSpd = 10 // скорость передвижения игрока
             self.hp = 10
@@ -163,10 +165,14 @@ const start = async () => {
             let super_update = self.update
             self.update = function() {
                 self.updateSpd() //обновление скорости при нажатии клавиш
+                self.attackCounter += self.atkSpd; // рост счетчика для выпуска пули
                 super_update()   
                 
                 if (self.pressingAttack) { //стрельба по нажатии клавиши мыши
-                    self.shootBullet(self.mouseAngle)
+                    if (self.attackCounter > 25) { // счетчик для выпуска пули
+                        self.attackCounter = 0
+                        self.shootBullet(self.mouseAngle)
+                    }
                 }
             }
 
@@ -180,21 +186,65 @@ const start = async () => {
                 });
             }
 
+            self.isPositionWall = function(pt){
+                // const TILE_SIZE = 128
+                const TILE_SIZE_X = 50.19607843
+                const TILE_SIZE_Y = 45
+                // console.log(pt.x, pt.y)
+                let gridX = Math.floor(pt.x / TILE_SIZE_X);
+                let gridY = Math.floor(pt.y / TILE_SIZE_Y);
+                if(gridX < 0 || gridX >= array[0].length)
+                    return true;
+                if(gridY < 0 || gridY >= array.length)
+                    return true;
+                return array[gridY][gridX];
+            }
+
             self.updateSpd = function() {
 
-                if(self.pressingRight)
-			        self.spdX = self.maxSpd;
-		        else if(self.pressingLeft)
+                //if bumber touches a wall, you can't go
+                const rightBumper = {x: self.x + 30, y: self.y}
+                const leftBumper = {x: self.x - 30, y: self.y}
+                const upBumper = {x: self.x, y: self.y - 30}
+                const downBumper = {x: self.x, y: self.y + 30}
+
+                if (self.isPositionWall(rightBumper)) {
+                    self.spdX = -self.maxSpd/10
+                } else if (self.pressingRight) {
+                    self.spdX = self.maxSpd;
+                } else if (self.isPositionWall(leftBumper)) {
+                    self.spdX = self.maxSpd/10
+                } else if (self.pressingLeft) {
                     self.spdX = -self.maxSpd;
-                else
+                } else {
                     self.spdX = 0;
-                
-                if(self.pressingUp)
+                }
+
+                if (self.isPositionWall(upBumper)) {
+                    self.spdY = self.maxSpd/10
+                } else if (self.pressingUp) {
                     self.spdY = -self.maxSpd;
-                else if(self.pressingDown)
+                } else if (self.isPositionWall(downBumper)) {
+                    self.spdY = -self.maxSpd/10
+                } else if (self.pressingDown) {
                     self.spdY = self.maxSpd;
-                else
-                    self.spdY = 0;	
+                } else {
+                    self.spdY = 0;
+                }
+                
+                // if(self.pressingRight && !self.isPositionWall(rightBumper))
+			    //     self.spdX = self.maxSpd;
+		        // else if(self.pressingLeft && !self.isPositionWall(leftBumper))
+                //     self.spdX = -self.maxSpd;
+                // else
+                //     self.spdX = 0;
+                
+                // if(self.pressingUp && !self.isPositionWall(upBumper))
+                //     self.spdY = -self.maxSpd;
+                // else if(self.pressingDown && !self.isPositionWall(downBumper))
+                //     self.spdY = self.maxSpd;
+                // else
+                //     self.spdY = 0;	
 
                 // анимация спрайта
                 if (self.pressingRight || self.pressingLeft || self.pressingUp || self.pressingDown)

@@ -1,8 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {fetchTokensByUserId, postNftMetadata} from "./ActionCreators";
 import {INftMetadata} from "../../types/INftMetadata";
-import {ethers} from 'ethers'
-declare var window: any
 
 interface nftSlice {
     nftMetadata: INftMetadata;
@@ -24,7 +22,7 @@ const nftSlice = createSlice({
 
     extraReducers: {
         [fetchTokensByUserId.fulfilled.type]: (state, action: PayloadAction<INftMetadata[]>) => {
-            state.nftsMetadata = action.payload
+                state.nftsMetadata = action.payload         
             state.error = '';
             state.isLoading = false;
         },

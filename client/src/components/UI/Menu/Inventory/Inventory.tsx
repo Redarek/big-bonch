@@ -43,23 +43,29 @@ const Inventory: FC<InventoryProps> = ({setNotificationMintNFTIsVisible, setNoti
     }, [])
 
     const cardStyle = (ind: number) => {
+        if (ind)
         if (nft.name === nftsMetadata[ind].name) {
             return {backgroundColor: 'rgba(255,255,255, .1)'}
         }
     }
+console.log(nftsMetadata);
 
     return (
         <div className={cl.inventory}>
             <div className={cl.info}>
                 {/*<div className={cl.infoPlayer}>1</div>*/}
                 <div className={cl.staff}>
-                    {nftsMetadata.map((obj, index) =>
+                    {nftsMetadata[0] !== undefined
+                    ?  nftsMetadata.map((obj, index) =>
                         <div key={obj._id} className={cl.card} style={cardStyle(index)}
                              onClick={() => dispatch(setNft(obj))}>
                             <img src={obj.image} alt=""/>
                         </div>
-                    )}
+                    )          
+                    :''
+                    }
                 </div>
+                   
                 {nft.name !== undefined
                     ? <div className={cl.infoAbout}>
                         <div className={cl.aboutHeader}>
