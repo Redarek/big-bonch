@@ -248,7 +248,7 @@ const start = async () => {
 
                 // анимация спрайта
                 if (self.pressingRight || self.pressingLeft || self.pressingUp || self.pressingDown)
-                    self.spriteAnimCounter += 0.5 
+                    self.spriteAnimCounter += 0.25
             }
 
             self.getInitPack = function() { // отправка пакета с данными о сущности
