@@ -29,9 +29,10 @@ const Canvas = () => {
 
     const [height, setHeight] = useState(100);
     const [width, setWidth] = useState(100);
-    const [mousEX, setMousEX] = useState<number>(-0);
-    const [mousEY, setMousEY] = useState<number>(-0);
     const [mouseMoveEvent, setMouseMoveEvent] = useState()
+
+    const [playerCoordinates, setPlayerCoordinates] = useState<{playerX: number; playerY: number}>({playerX: 0, playerY: 0})
+
     const [left, setLeft] = useState(0);
     const canvasRef = React.useRef(null)
     const canvasRefUi = React.useRef(null)
@@ -594,6 +595,7 @@ const Canvas = () => {
                 ctx.drawImage(self.image, x, y, WIDTH * 2, HEIGHT * 2);
                 // @ts-ignore
                 // ctx.drawImage(Img.map[player.map],x,y, WIDTH*2, HEIGHT*2);
+                setPlayerCoordinates({playerX:player.x, playerY: player.y})
             }
             return self;
         }
@@ -729,7 +731,7 @@ const Canvas = () => {
             style={{height: `${height}px`}}
         >
             {width && height && mouseMoveEvent
-                ? <PopupWindow width={width} height={height} reference={canvasRef} mouseMoveEvent={mouseMoveEvent}/>
+                ? <PopupWindow playerCoordinates={playerCoordinates} width={width} height={height} reference={canvasRef} mouseMoveEvent={mouseMoveEvent}/>
                 : ''
             }
             {notificationItemIsVisible

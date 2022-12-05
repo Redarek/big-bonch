@@ -6,9 +6,15 @@ interface PopupWindow {
     mouseMoveEvent: any;
     width: number;
     height: number;
+    playerCoordinates: any
 }
 
-const PopupWindow: FC<PopupWindow> = ({width, height, mouseMoveEvent, reference}) => {
+const PopupWindow: FC<PopupWindow> = ({width, height, mouseMoveEvent, reference, playerCoordinates}) => {
+    //@todo Кординаты игрока в компоненте
+    console.log(playerCoordinates)
+    // console.log(playerCoordinates.playerY)
+    // console.log(playerCoordinates.playerX)
+
 
     const coordinates = [
         {x: 500, y: 130, text: 'Первое всплывающее окно'},
@@ -36,8 +42,10 @@ const PopupWindow: FC<PopupWindow> = ({width, height, mouseMoveEvent, reference}
                 coordinate.y >= imagePos.y - 30 &&
                 coordinate.y <= imagePos.y + 30
                     ?
-                    < div key={coordinate.text} className={cl.popupContent}
-                          style={{left: imagePos.x, top: imagePos.y}}>{coordinate.text}</div>
+                    <div key={coordinate.text} className={cl.popupContent}
+                         style={{left: imagePos.x, top: imagePos.y}}>
+                        {coordinate.text}
+                    </div>
                     : ''
             )}
 
