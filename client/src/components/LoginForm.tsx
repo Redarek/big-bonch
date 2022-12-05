@@ -16,7 +16,6 @@ const LoginForm: FC = () => {
         dispatch(login({email: email, password: password, walletAddress: walletAddress}));
         navigate('/')
     }
-
     return (
         <div className={cl.auth}>
             <form className={cl.auth__form}>
