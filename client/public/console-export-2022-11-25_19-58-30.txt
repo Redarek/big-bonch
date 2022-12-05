@@ -1,0 +1,1890 @@
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.04820583461188788 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.04820583461188788 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.04820583461188788 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.04820583461188788 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+true bundle.js:325:13
+down bundle.js:327:15
+false bundle.js:325:13
+up bundle.js:334:15
+0.04820583461188788 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.04820583461188788 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.04820583461188788 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.04820583461188788 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.04820583461188788 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools react-dom.development.js:29840
+<empty string> App.tsx:21
+false App.tsx:22
+<empty string> App.tsx:21
+false App.tsx:22
+<empty string> App.tsx:21
+false App.tsx:22
+0x4830737cbbe518e54bfe40368f6943980ab9bbf5 App.tsx:21
+false App.tsx:22
+0x4830737cbbe518e54bfe40368f6943980ab9bbf5 App.tsx:21
+false App.tsx:22
+0x4830737cbbe518e54bfe40368f6943980ab9bbf5 App.tsx:21
+true App.tsx:22
+Применение mozImageSmoothingEnabled является устаревшим. Для его замены используйте безпрефиксный imageSmoothingEnabled. Canvas.tsx:220
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416
+Uncaught TypeError: Enemy.list[selfId] is undefined
+    draw Canvas.tsx:418
+    Canvas Canvas.tsx:658
+    setInterval handler*./src/components/Canvas.tsx/Canvas/< Canvas.tsx:636
+    React 16
+    notify Redux
+    batchedUpdates$1 React
+    Redux 5
+    node_modules Immutable
+    Redux 2
+    step bundle.js:24872
+    node_modules Redux
+    fulfilled bundle.js:24919
+    promise callback*step bundle.js:24932
+    node_modules Redux
+    __async bundle.js:24916
+    Redux 3
+    node_modules Immutable
+    App App.tsx:17
+    React 5
+Canvas.tsx:418
+0.4676032494096001 Canvas.tsx:641
+Object { "0.7105649558899179": {…}, "0.16092220829250126": {…}, "0.8143004000608758": {…}, "0.7098077028515344": {…}, "0.7552242086398919": {…}, "0.9953672915084675": {…}, "0.8565239609830291": {…}, "0.48084546222553604": {…}, "0.39212566147619543": {…}, "0.31591577029790363": {…}, … }
+Canvas.tsx:416

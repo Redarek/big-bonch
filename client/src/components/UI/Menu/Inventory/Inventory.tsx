@@ -3,6 +3,10 @@ import cl from './Inventory.module.css'
 import {useAppDispatch, useAppSelector} from "../../../../hooks/redux";
 import {setNft} from "../../../../store/reducers/inventorySlice";
 import {fetchTokensByUserId, patchNftMetadata} from "../../../../store/reducers/ActionCreators";
+import {ethers} from 'ethers'
+// const BASE_URL = process.env.NODE_ENV === "production" ? 'https://big-bonch.herokuapp.com' : 'http://localhost:8080';
+declare var window: any
+
 
 interface Reward {
     img: string;
@@ -23,11 +27,34 @@ const Inventory: FC<InventoryProps> = ({setNotificationMintNFTIsVisible, setNoti
 
 
     const handeCreateNFT = () => {
-        //создание и выпуск нфт
+        //@ts-ignore
+        const mintNftAndMetadata = async () => {
+            const contractAddr = '0xd57354f4AbF8B0A15fc480874c70CB21260cee3d'
+            if (window.ethereum) {
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                await provider.send("eth_requestAccounts", [])
+                const signer = provider.getSigner()
+                const abi = ["function mint(uint numberOfTokens) external payable"]
+                const contract = new ethers.Contract(
+                    contractAddr,
+                    abi, signer)
+                try {
+                    //заглушка для metamask
+                    // const response = 'res'
+                    const response = await contract.mint(ethers.BigNumber.from(1), {
+                        value: ethers.utils.parseEther("0.18"),
+                    })
+                    console.log('response: ', response)
+                    dispatch(patchNftMetadata(nft._id))
+                    setNotificationItem({img: nft.image, name: nft.name})
+                    setNotificationMintNFTIsVisible(true)
+                } catch (err) {
+                    console.log("error", err)
+                }
+            }
+        }
 
-        dispatch(patchNftMetadata(nft._id))
-        setNotificationItem({img: nft.image, name: nft.name})
-        setNotificationMintNFTIsVisible(true)
+        mintNftAndMetadata();
 
     }
     useEffect(() => {
@@ -39,6 +66,7 @@ const Inventory: FC<InventoryProps> = ({setNotificationMintNFTIsVisible, setNoti
                 image: '',
                 attributes: [],
                 _id: '',
+                expectedOwnerAddress: ''
             })
     }, [])
 
@@ -48,7 +76,7 @@ const Inventory: FC<InventoryProps> = ({setNotificationMintNFTIsVisible, setNoti
             return {backgroundColor: 'rgba(255,255,255, .1)'}
         }
     }
-console.log(nftsMetadata);
+// console.log(nftsMetadata);
 
     return (
         <div className={cl.inventory}>

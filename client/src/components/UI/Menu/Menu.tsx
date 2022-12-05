@@ -7,6 +7,8 @@ import {setIsShow, setTitle} from "../../../store/reducers/inventorySlice";
 import Notification from "../Notification/Notification";
 import {logout} from "../../../store/reducers/ActionCreators";
 
+
+
 interface MenuProps {
     // setIsShowMenu: (bol: boolean) => void;
     // setMenuIndex: (num: number) => void;

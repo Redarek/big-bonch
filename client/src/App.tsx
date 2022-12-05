@@ -18,8 +18,8 @@ function App() {
         }
     }, [])
 
-    console.log(walletAddress)
-    console.log(isAuth)
+    console.log('wallet address ' + walletAddress)
+    console.log('is auth  ' + isAuth)
     const [fetchWalletAddress, setFetchWalletAddress] = useState<string>("");
     return (
         <div className="App">

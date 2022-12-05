@@ -79,6 +79,14 @@ class NftMetadataService {
             }
         }
     }
+
+    async checkIfUserHasNft(nftName, userId) {
+        const heHas = await nftMetadataModel.find({name: nftName, ownerId: userId}).count();
+        if (heHas > 0) {
+            return true;
+        }
+        return false;
+    }
 }
 
 module.exports = new NftMetadataService();

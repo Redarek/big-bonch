@@ -29,13 +29,13 @@ const Notification: FC<NotificationProps> = ({type, item, setVisible}) => {
             </div>
             {type === "GetItem"
                 ? <div className={cl.rewardText}>
-                    Вы получили предмет <br/><span> {item.name}</span>
+                    Получен<br/><span> {item.name}</span>
                 </div>
                 : ''
             }
             {type === "MintNFT"
                 ? <div className={cl.rewardText}>
-                    Вы выпустили NFT <br/><span> {item.name}</span>
+                    Выпущен<br/><span> {item.name}</span>
                 </div>
                 : ''
             }

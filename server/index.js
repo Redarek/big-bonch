@@ -10,6 +10,9 @@ const path = require('path');
 const ethers = require('ethers')
 // const abi = require('./BigBonchNFT.json')
 
+const mapVestibule = require('./mapGrids/mapVestibule')
+const mapCyberBonch = require('./mapGrids/mapCyberBonch')
+
 const { Server } = require('socket.io');
 const http = require('http');
 
@@ -74,7 +77,7 @@ const start = async () => {
                 spdX: 0, // скорость
                 spdY: 0,
                 id: "", // id
-                map: 'vestibule',
+                map: 'Vestibule',
             }
 
             if(param) {
@@ -93,9 +96,26 @@ const start = async () => {
             }
 
             self.isPositionWall = function(pt){
-                // const TILE_SIZE = 128
-                const TILE_SIZE_X = 50.19607843
-                const TILE_SIZE_Y = 45
+                // const TILE_SIZE = 32
+                // 6589 x 4168 tile size is 32 x 32
+                // 2560 x 1440 tile size is 12.4328426 x 11.0556622
+                // 205x130 tiles in Tiled 32x32px
+                const TILE_SIZE_X = 12.4328426
+                const TILE_SIZE_Y = 11.0556622
+                let array;
+                switch(self.map)
+                {
+                    case 'Vestibule':
+                        array = mapVestibule
+                        break
+                    case 'CyberBonch':
+                        array = mapCyberBonch
+                        break
+                    default:
+                        array = []
+                }
+                
+                //
                 // console.log(pt.x, pt.y)
                 let gridX = Math.floor(pt.x / TILE_SIZE_X);
                 let gridY = Math.floor(pt.y / TILE_SIZE_Y);
@@ -114,19 +134,20 @@ const start = async () => {
                 self.y += self.spdY
 
                 //ispositionvalid не даем выйти за границы canvas
-                if(self.x < 160)
-                    self.x = 160;
-                if(self.x > 2400-131/2) //6528px ширина карты, 131px ширина фрейма игрока(Img.player.width /3/7)
-                    self.x = 2400 - 131/2; //160 2400 1350 границы карты по текущим размерам отрисованной карты
-                if(self.y < 121/2)
-                    self.y = 121/2;
-                if(self.y > 1350 - 121/2) //4096px высота карты, 121px высота фрейма игрока(Img.player.height /4/7)
-                    self.y = 1350 - 121/2;
+                // if(self.x < 160)
+                //     self.x = 160;
+                // if(self.x > 2400-131/2) //6528px ширина карты, 131px ширина фрейма игрока(Img.player.width /3/7)
+                //     self.x = 2400 - 131/2; //160 2400 1350 границы карты по текущим размерам отрисованной карты
+                // if(self.y < 121/2)
+                //     self.y = 121/2;
+                // if(self.y > 1350 - 121/2) //4096px высота карты, 121px высота фрейма игрока(Img.player.height /4/7)
+                //     self.y = 1350 - 121/2;
 
                 if (self.isPositionWall(self)) {
                     self.x = oldX
                     self.y = oldY
                 }
+                
             }
             self.getDistance = function(pt){ // вычисление дистанции
                 return Math.sqrt(Math.pow(self.x-pt.x,2) + Math.pow(self.y-pt.y,2));
@@ -153,7 +174,7 @@ const start = async () => {
             self.pressingUp = false
             self.pressingDown = false
             self.pressingAttack = false
-            self.atkSpd = 2; // скорость увеличения счетчика для выпуска пули
+            self.atkSpd = 3; // скорость увеличения счетчика для выпуска пули
 	        self.attackCounter = 0; // счетчик для выпуска пули
 	        self.mouseAngle = 0 // угол наведения курсора
             self.maxSpd = 10 // скорость передвижения игрока
@@ -186,20 +207,6 @@ const start = async () => {
                 });
             }
 
-            self.isPositionWall = function(pt){
-                // const TILE_SIZE = 128
-                const TILE_SIZE_X = 50.19607843
-                const TILE_SIZE_Y = 45
-                // console.log(pt.x, pt.y)
-                let gridX = Math.floor(pt.x / TILE_SIZE_X);
-                let gridY = Math.floor(pt.y / TILE_SIZE_Y);
-                if(gridX < 0 || gridX >= array[0].length)
-                    return true;
-                if(gridY < 0 || gridY >= array.length)
-                    return true;
-                return array[gridY][gridX];
-            }
-
             self.updateSpd = function() {
 
                 //if bumber touches a wall, you can't go
@@ -207,7 +214,7 @@ const start = async () => {
                 const leftBumper = {x: self.x - 30, y: self.y}
                 const upBumper = {x: self.x, y: self.y - 30}
                 const downBumper = {x: self.x, y: self.y + 30}
-
+                // console.log(self.isPositionWall(self))
                 if (self.isPositionWall(rightBumper)) {
                     self.spdX = -self.maxSpd/10
                 } else if (self.pressingRight) {
@@ -231,20 +238,24 @@ const start = async () => {
                 } else {
                     self.spdY = 0;
                 }
-                
-                // if(self.pressingRight && !self.isPositionWall(rightBumper))
-			    //     self.spdX = self.maxSpd;
-		        // else if(self.pressingLeft && !self.isPositionWall(leftBumper))
-                //     self.spdX = -self.maxSpd;
-                // else
-                //     self.spdX = 0;
-                
-                // if(self.pressingUp && !self.isPositionWall(upBumper))
-                //     self.spdY = -self.maxSpd;
-                // else if(self.pressingDown && !self.isPositionWall(downBumper))
-                //     self.spdY = self.maxSpd;
-                // else
-                //     self.spdY = 0;	
+
+                // console.log(self.spdX, self.spdY)
+                // self.spdY
+
+                //change map
+                if(self.map === 'Vestibule' && self.x > 200 && self.x < 300 && self.y > 900 && self.y < 1100) {
+                    self.map = 'CyberBonch'
+                    self.x = 2175
+                    self.y = 995
+                    console.log('change to cyber')
+                }
+
+                if(self.map === 'CyberBonch' && self.x > 2300 && self.x < 2400 && self.y > 900 && self.y < 1050) {
+                    self.map = 'Vestibule'
+                    self.x = 430
+                    self.y = 950
+                    console.log('change to cyber') 
+                }
 
                 // анимация спрайта
                 if (self.pressingRight || self.pressingLeft || self.pressingUp || self.pressingDown)
@@ -275,6 +286,7 @@ const start = async () => {
                     score:self.score,
                     mouseAngle:self.mouseAngle,
                     spriteAnimCounter:self.spriteAnimCounter,
+                    map:self.map
                 }	
             }
 
@@ -285,7 +297,7 @@ const start = async () => {
         Player.list = {}
 
         Player.onConnect = function(socket){
-            let map = 'vestibule';
+            let map = 'Vestibule';
                 // if(Math.random() < 0.5) {
                 //     map = 'vestibule2';
                 // }
@@ -297,32 +309,45 @@ const start = async () => {
             socket.on('keyPress',function(data){
                 if (data.inputId === 'left') {
                     player.pressingLeft = data.state;
-                    socket.emit('spriteAnimCounter', player.spriteAnimCounter)
                 }
                 else if (data.inputId === 'right') {
                     player.pressingRight = data.state;
-                    socket.emit('spriteAnimCounter', player.spriteAnimCounter)
                 }
                 else if (data.inputId === 'up') {
                     player.pressingUp = data.state;
-                    socket.emit('spriteAnimCounter', player.spriteAnimCounter)
                 }
                 else if (data.inputId === 'down') {
                     player.pressingDown = data.state;
-                    socket.emit('spriteAnimCounter', player.spriteAnimCounter)
                 }
                 else if (data.inputId === 'attack')
 			        player.pressingAttack = data.state;
 		        else if (data.inputId === 'mouseAngle')
 			        player.mouseAngle = data.state;         
             });
-            // socket.on('moveMouse', function() {socket.emit('angle', player.mouseAngle)})
+
+            // socket.on('changeMap', () => {
+            //     if (player.map === 'vestibule')
+            //         player.map = 'cyber-bonch'
+            //     else
+            //         player.map = 'vestibule'
+            // })
 
             socket.emit('init',{
                 selfId:socket.id,
                 player:Player.getAllInitPack(),
-                bullet:Bullet.getAllInitPack()
+                bullet:Bullet.getAllInitPack(),
+                enemy:Enemy.getAllInitPack()
             })
+            //generate enemies
+            let coordsX = [550, 670, 890, 999]
+            let coordsY = [700, 780, 890, 990, 1200, 1300]
+            Enemy({x:coordsX[Math.floor(Math.random()*coordsX.length)], y:coordsY[Math.floor(Math.random()*coordsY.length)], id: Math.random(), map:'Vestibule'});
+            Enemy({x:coordsX[Math.floor(Math.random()*coordsX.length)], y:coordsY[Math.floor(Math.random()*coordsY.length)], id: Math.random(), map:'Vestibule'});
+            Enemy({x:coordsX[Math.floor(Math.random()*coordsX.length)], y:coordsY[Math.floor(Math.random()*coordsY.length)], id: Math.random(), map:'Vestibule'});
+       
+            Enemy({x:coordsX[Math.floor(Math.random()*coordsX.length)], y:coordsY[Math.floor(Math.random()*coordsY.length)], id: Math.random(), map:'CyberBonch'});
+            Enemy({x:coordsX[Math.floor(Math.random()*coordsX.length)], y:coordsY[Math.floor(Math.random()*coordsY.length)], id: Math.random(), map:'CyberBonch'});
+            Enemy({x:coordsX[Math.floor(Math.random()*coordsX.length)], y:coordsY[Math.floor(Math.random()*coordsY.length)], id: Math.random(), map:'CyberBonch'});
         }
 
         Player.getAllInitPack = function(){
@@ -382,7 +407,27 @@ const start = async () => {
                             // p.x = Math.random() * 500;
                             // p.y = Math.random() * 500;		
                             p.x = 550; // координаты возрождения игрока
-                            p.y = 600;			
+                            p.y = 600;	
+                            p.map = 'Vestibule'
+                        }
+                        self.toRemove = true;
+                    }
+                }
+
+                for(let i in Enemy.list){
+                    let e = Enemy.list[i];
+                    if(self.map === e.map && self.getDistance(e) < 32 && self.parent !== e.id){
+                        e.hp -= 1;
+                                        
+                        if(e.hp <= 0){
+                            let shooter = Enemy.list[self.parent];
+                            e.hp = e.hpMax;
+                            // p.x = Math.random() * 500;
+                            // p.y = Math.random() * 500;		
+                            // e.x = 550; // координаты возрождения игрока
+                            // e.y = 600;		
+                            e.toRemove = true	
+                            console.log('enemy down')
                         }
                         self.toRemove = true;
                     }
@@ -455,6 +500,204 @@ const start = async () => {
             return bullets;
         }
 
+        let Enemy = function(param) { // Игрок
+            let self = Entity(param) //создание экземпляра сущности
+            let mouseAngles = [0, 45, 90, 135, 225, 315]
+            self.toRemove = false;
+
+            self.number = "" + Math.floor(10 * Math.random()) // присвоение рандомного номера игрока (никнейм, по сути)
+            self.pressingRight = false // нажаты ли клавиши – нет, т.к. false
+            self.pressingLeft = false
+            self.pressingUp = false
+            self.pressingDown = false
+            self.pressingAttack = false
+            self.atkSpd = 1; // скорость увеличения счетчика для выпуска пули
+	        self.attackCounter = 0; // счетчик для выпуска пули
+	        self.mouseAngle = mouseAngles[[Math.floor(Math.random()*mouseAngles.length)]] // угол наведения курсора
+            self.maxSpd = 8 // скорость передвижения игрока
+            self.hp = 3
+            self.hpMax = 3
+
+            self.toAttackX = 0
+            self.toAttackY = 0
+
+            self.spriteAnimCounter = 0
+
+            let super_update = self.update
+            self.update = function() {
+                self.updateSpd() //обновление скорости при нажатии клавиш
+                self.attackCounter += self.atkSpd; // рост счетчика для выпуска пули
+                // self.updateAim();
+		        // self.updateKeyPress();
+                self.pressingAttack = true //стрельба enemy
+                   
+                
+                if (self.pressingAttack) { //стрельба по нажатии клавиши мыши
+                    if (self.attackCounter > 25) { // счетчик для выпуска пули
+                        self.attackCounter = 0
+                        self.shootBullet(self.mouseAngle)
+                        // console.log('enemy shoot')
+                    }
+                }
+                super_update()
+            }
+            var diffX = Player.x - self.x;
+            var diffY = Player.y - self.y;
+            self.updateAim = function(){
+                // let object = Player.list
+                // console.log(Object.keys(Player.list))
+                // let keys = Object.keys(Player.list)
+                // randomPlayer = Player.list[keys[ keys.length * Math.random() << 0]].x;
+                // console.log(randomPlayer)
+                
+                
+                self.aimAngle = Math.atan2(diffY,diffX) / Math.PI * 180
+            }
+
+            // self.updateKeyPress = function(){
+            //     var diffX = Player.x - self.x;
+            //     var diffY = Player.y - self.y;
+        
+            //     self.pressingRight = diffX > 3;
+            //     self.pressingLeft = diffX < -3;
+            //     self.pressingDown = diffY > 3;
+            //     self.pressingUp = diffY < -3;
+            // }
+
+            self.shootBullet = function(angle) {
+                Bullet({
+                    parent:self.id,
+                    angle:angle,
+                    x:self.x,
+                    y:self.y,
+                    map:self.map,
+                });
+            }
+
+            self.updateSpd = function() {
+
+                //if bumber touches a wall, you can't go
+                const rightBumper = {x: self.x + 30, y: self.y}
+                const leftBumper = {x: self.x - 30, y: self.y}
+                const upBumper = {x: self.x, y: self.y - 30}
+                const downBumper = {x: self.x, y: self.y + 30}
+
+                if (self.isPositionWall(rightBumper)) {
+                    self.spdX = -self.maxSpd/10
+                } else if (self.pressingRight) {
+                    self.spdX = self.maxSpd;
+                } else if (self.isPositionWall(leftBumper)) {
+                    self.spdX = self.maxSpd/10
+                } else if (self.pressingLeft) {
+                    self.spdX = -self.maxSpd;
+                } else {
+                    self.spdX = 0;
+                }
+
+                if (self.isPositionWall(upBumper)) {
+                    self.spdY = self.maxSpd/10
+                } else if (self.pressingUp) {
+                    self.spdY = -self.maxSpd;
+                } else if (self.isPositionWall(downBumper)) {
+                    self.spdY = -self.maxSpd/10
+                } else if (self.pressingDown) {
+                    self.spdY = self.maxSpd;
+                } else {
+                    self.spdY = 0;
+                }
+
+                // анимация спрайта
+                // if (self.pressingRight || self.pressingLeft || self.pressingUp || self.pressingDown)
+                    self.spriteAnimCounter += 0.25
+            }
+
+            self.getInitPack = function() { // отправка пакета с данными о сущности
+                return {
+                    id:self.id,
+                    x:self.x,
+                    y:self.y,
+                    number:self.number,	
+                    hp:self.hp,
+                    hpMax:self.hpMax,
+                    score:self.score,
+                    map:self.map,
+                    mouseAngle:self.mouseAngle,
+                    spriteAnimCounter:self.spriteAnimCounter,
+                    toAttackX:self.toAttackX,
+                    toAttackY:self.toAttackY,
+                }
+            }
+
+            self.getUpdatePack = function() { // получение пакета с данными о сущности
+                return {
+                    id:self.id,
+                    x:self.x,
+                    y:self.y,
+                    hp:self.hp,
+                    score:self.score,
+                    mouseAngle:self.mouseAngle,
+                    spriteAnimCounter:self.spriteAnimCounter,
+                    toAttackX:self.toAttackX,
+                    toAttackY:self.toAttackY,
+                }	
+            }
+
+            Enemy.list[self.id] = self
+            initPack.enemy.push(self.getInitPack())
+            return self
+        }
+        Enemy.list = {}
+       
+
+        Enemy.getAllInitPack = function(){
+            let enemies = []
+            for(let i in Enemy.list)
+            enemies.push(Enemy.list[i].getInitPack());
+            return enemies;
+        }
+
+        Enemy.update = function(){
+            let pack = []         
+            for(let i in Enemy.list){
+                let enemy = Enemy.list[i]
+                enemy.update();
+                if (enemy.toRemove) {
+                    delete Enemy.list[i];
+                    removePack.enemy.push(enemy.id)
+                }
+                else
+                pack.push(enemy.getUpdatePack())
+                
+            }
+            return pack
+        }
+
+        // Enemy.update = function(){
+        //         Enemy.randomlyGenerate();
+        //     for(var key in Enemy.list){
+        //         Enemy.list[key].update();
+        //         console.log(key)
+        //     }
+        //     for(var key in Enemy.list){
+        //         if(Enemy.list[key].toRemove)
+        //             delete Enemy.list[key];
+        //     }
+        // }
+
+        // Enemy.randomlyGenerate = function(){
+            //Math.random() returns a number between 0 and 1
+            // var x = Math.random()*6528;
+            // var y = Math.random()*4096;
+            // var x = 550;
+            // var y = 600;
+            // var height = 64*1.5;
+            // var width = 64*1.5;
+            // var id = Math.random();
+            
+            // Enemy({id: Math.random(), map:'vestibule'});
+            // console.log(Enemy)
+        // }
+
         let DEBUG = true;
 
         io.sockets.on('connection', function(socket) {
@@ -462,18 +705,12 @@ const start = async () => {
             SOCKET_LIST[socket.id] = socket
 
             Player.onConnect(socket)
+            // console.log(Player)
 
             socket.on('disconnect', function() {
                 delete SOCKET_LIST[socket.id]
                 Player.onDisconnect(socket)
             })
-
-            socket.on('sendMsgToServer',function(data){
-                let playerName = ("" + socket.id).slice(2,7);
-                for(let i in SOCKET_LIST) {
-                    SOCKET_LIST[i].emit('addToChat',playerName + ': ' + data);
-                }
-            });
          
             socket.on('evalServer',function(data){
                 if(!DEBUG)
@@ -485,7 +722,7 @@ const start = async () => {
             console.log('socket connection')
         })
 
-        const array = 
+        const arrayMapVestibule = 
             [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -519,13 +756,17 @@ const start = async () => {
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
 
+        const arrayMapCyberBonch = []
+
         let initPack = {
             player:[],
-            bullet:[]
+            bullet:[],
+            enemy:[]
         }
         let removePack = {
             player:[],
-            bullet:[]
+            bullet:[],
+            enemy:[]
         }
 
         setInterval(function() {
@@ -533,18 +774,22 @@ const start = async () => {
             let pack = {
                 player:Player.update(),
                 bullet:Bullet.update(),
+                enemy:Enemy.update()
             }
          
             for(let i in SOCKET_LIST) {
                 let socket = SOCKET_LIST[i]
                 socket.emit('init', initPack)
+                // console.log(pack)
 		        socket.emit('update', pack)
 		        socket.emit('remove', removePack)             
             }
             initPack.player = []
 	        initPack.bullet = []
+            initPack.enemy = []
 	        removePack.player = []
 	        removePack.bullet = []
+            removePack.enemy = []
             
         }, 1000/25);
     } catch (error) {

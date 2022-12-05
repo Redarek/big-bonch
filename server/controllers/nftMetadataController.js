@@ -7,8 +7,13 @@ const API_URL = process.env.NODE_ENV === "production" ? 'https://big-bonch.herok
 class NftMetadataController {
     async createNftMetadata(req, res, next) {
         try {
-            console.log('create nft')
+            console.log('creating nft metadata')
             const {name, description, image, attributes} = req.body;
+            const heHas = await nftMetadataService.checkIfUserHasNft(name, req.user._id)
+            if (heHas) {
+                console.log('user already has the NFT with name ' + name)
+                return
+            }
             // const tokenId = await nftMetadataService.getNewTokenId();
             // const external_url = `${API_URL}${tokenId}`;
             const expectedOwnerAddress = await nftMetadataService.getWalletAddressByUserId(req.user._id);

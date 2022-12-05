@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const nftMetadataSchema = new Schema({
-    tokenId: {type: String, unique: true},
+    tokenId: {type: String},
     //токен айди стремится к минус бесконечности, пока не выпущено
     name: {type: String},
     // collection_name: {type: String, default: 'Big Bonch'},

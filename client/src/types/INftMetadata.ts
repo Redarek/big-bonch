@@ -9,6 +9,7 @@ export interface INftMetadata {
     tokenId?: string;
     _id:string;
     attributes: attributes[];
+    expectedOwnerAddress: string;
 }
 // export interface INftMetadataFetched {
 //     name: string;

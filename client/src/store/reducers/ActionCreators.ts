@@ -86,7 +86,9 @@ export const fetchTokensByUserId = createAsyncThunk(
     async (id: string, thunkAPI) => {
         try {
             const response = await NftService.fetchTokensByUserId(id)
-            console.log(response.data)
+            // console.log(response.data[0])
+            let filteredNftMetadatas = []
+            // фильтр для массива метаданных NFT. Если реальный адрес владельца NFT не совпадает с адресом игрока, то NFT фильтруется
             if (window.ethereum) {
                 const provider = new ethers.providers.Web3Provider(window.ethereum);
                 await provider.send("eth_requestAccounts", [])
@@ -99,30 +101,28 @@ export const fetchTokensByUserId = createAsyncThunk(
                 const contract = new ethers.Contract(
                     contractAddr,
                     abi, signer)
-                    const actualNftMetadatas = await Promise.all(response.data.map(async (metadata:any, index:any): Promise<any> => {
-                        console.log(metadata)
-                        const expected = metadata.expectedOwnerAddress
-                        if (metadata.tokenId) {
-                            console.log(metadata.tokenId)
-                            console.log(typeof Number(metadata.tokenId))
-                            const actual = await contract.ownerOf(ethers.BigNumber.from(Number(metadata.tokenId)))
-                            console.log(expected)
-                            console.log(actual)
-
-                            if (expected === actual) {
-                                return metadata[index]
-                            }
+                    
+                for (let i = 0; i < response.data.length; i++) {
+                    if (response.data[i].tokenId !== undefined) {
+                        const expected = response.data[i].expectedOwnerAddress
+                        console.log('expected ' + expected)
+                        const actual = await contract.ownerOf(ethers.BigNumber.from(Number(response.data[i].tokenId)))
+                        console.log('actual ' + actual)
+                            
+                        if (expected.toUpperCase() === actual.toUpperCase()) {
+                            filteredNftMetadatas.push(response.data[i])
+                            console.log('NFT ' + response.data[i].name + ' выпущено и отобразилось')
                         } else {
-                            return metadata[index]
+                            console.log('NFT ' + response.data[i].name + ' выпущено и не отобразилось')
                         }
-                        
-                    }))
-                    console.log(actualNftMetadatas)
-                    return actualNftMetadatas
-                    // console.log('response: ', response)
-                
+                    } else {
+                        filteredNftMetadatas.push(response.data[i])
+                        console.log('NFT ' + response.data[i].name + ' не выпущено и отобразилось')
+                    }
+                }
             }
-            return response.data;
+            console.log('response: ', response)
+            return filteredNftMetadatas;
         } catch (e) {
             return thunkAPI.rejectWithValue("Не удалось получить tokens")
         }

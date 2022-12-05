@@ -128,6 +128,7 @@ const Canvas = () => {
                                     })
                                 }
                             ],
+                            expectedOwnerAddress: ''
                         }
                         dispatch(postNftMetadata(nftMetadata)) //отправка на сервер
                         setNotificationItem({img: `${BASE_URL}/pass.png`, name: 'Пропуск'})
@@ -140,7 +141,7 @@ const Canvas = () => {
             }
         }
 
-        // mintNftAndMetadata();
+        mintNftAndMetadata();
 
         const getActualOwnerOfNft = async () => {
             const contractAddr = '0xd57354f4AbF8B0A15fc480874c70CB21260cee3d'
@@ -167,39 +168,7 @@ const Canvas = () => {
         // getActualOwnerOfNft();
 
 
-        const array =
-            [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-                [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-                [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-                [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-                [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-                [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-                [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-                [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-                [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-                [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-                [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-                [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-                [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-                [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-                [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-                [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1],
-                [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
-                [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
+        const array = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],[1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],[1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
 
         // resize game
         let resizeCanvas = function () {
@@ -245,19 +214,23 @@ const Canvas = () => {
         // @ts-ignore
         Img.player.src = '/images/player.png';
         // @ts-ignore
+        Img.enemy = new Image()
+        // @ts-ignore
+        Img.enemy.src = '/images/bat.png';
+        // @ts-ignore
         Img.bullet = new Image()
         // @ts-ignore
         Img.bullet.src = '/images/bullet.png';
         // @ts-ignore
         Img.map = {}
         // @ts-ignore
-        Img.map['vestibule'] = new Image()
+        Img.map['Vestibule'] = new Image()
         // @ts-ignore
-        Img.map['vestibule'].src = '/images/map.png'
+        Img.map['Vestibule'].src = '/images/mapVestibule.png'
         // @ts-ignore
-        Img.map['vestibule2'] = new Image()
+        Img.map['CyberBonch'] = new Image()
         // @ts-ignore
-        Img.map['vestibule2'].src = '/images/map.png'
+        Img.map['CyberBonch'].src = '/images/mapCyberBonch.png'
         ctx.font = '30px Arial'
         // @ts-ignore
         let Player = function (initPack) {
@@ -356,7 +329,7 @@ const Canvas = () => {
             // @ts-ignore
             self.map = initPack.map
             // @ts-ignore
-            self.draw = function () {
+            self.draw = function () {              
                 // @ts-ignore
                 if (Player.list[selfId].map !== self.map) {
                     return
@@ -383,11 +356,111 @@ const Canvas = () => {
         // @ts-ignore
         Bullet.list = {}
         // @ts-ignore
+        let Enemy = function (initPack) {
+            let self = {}
+            // @ts-ignore
+            self.id = initPack.id
+            // @ts-ignore
+            self.number = initPack.number
+            // @ts-ignore
+            self.x = initPack.x
+            // @ts-ignore
+            self.y = initPack.y
+            // @ts-ignore
+            self.hp = initPack.hp
+            // @ts-ignore
+            self.hpMax = initPack.hpMax
+            // @ts-ignore
+            self.score = initPack.score
+            // @ts-ignore
+            self.map = initPack.map
+            // @ts-ignore
+            self.mouseAngle = initPack.mouseAngle
+            // @ts-ignore
+            self.spriteAnimCounter = initPack.spriteAnimCounter
+
+            // @ts-ignore
+            self.draw = function () {
+                // @ts-ignore
+                // console.log(Player.list[selfId])
+                // @ts-ignore
+                if (Player.list[selfId].map !== self.map) {
+                    return
+                }
+                // @ts-ignore
+                let x = self.x - Player.list[selfId].x + WIDTH / 2;
+                // @ts-ignore
+                let y = self.y - Player.list[selfId].y + HEIGHT / 2;
+
+                //hp bar
+                // let hpWidth = 30 * self.hp / self.hpMax
+                // ctx.fillStyle = 'red'
+                // ctx.fillRect(x - hpWidth/2,y - 40,hpWidth,4)
+                // @ts-ignore
+                const width = Img.enemy.width / 3 / 7 //размеры фрейма игрока
+                // @ts-ignore
+                const height = Img.enemy.height / 4 / 7
+                // // @ts-ignore
+                // console.log(Maps.current.width, Maps.current.height)
+                // // @ts-ignore
+                // console.log(Img.player.width /3 /7, Img.player.height/4/7)
+                // @ts-ignore
+                const frameWidth = Img.enemy.width / 3
+                // @ts-ignore
+                const frameHeight = Img.enemy.height / 4
+                // socket.on('angle', function (data) {
+                //     // @ts-ignore
+                //     self.angle = data
+                // })
+                let directionMod = 2 // вправо
+                // @ts-ignore
+                if (self.mouseAngle >= 45 && self.mouseAngle < 135) //вниз
+                    directionMod = 2
+                // @ts-ignore
+                else if ((self.mouseAngle >= 135 && self.mouseAngle <= 180) || (self.mouseAngle >= -180 && self.mouseAngle < -135)) //влево
+                    directionMod = 2
+                // @ts-ignore
+                else if (self.mouseAngle >= -135 && self.mouseAngle < -45) //вверх
+                    directionMod = 2
+
+                // socket.on('spriteAnimCounter', function (data) {
+                //     // @ts-ignore
+                //     self.spriteAnimCounter = data
+                // })
+
+                // @ts-ignore
+                let walkingMod = Math.floor(self.spriteAnimCounter) % 3
+                // console.log('before draw')
+                // @ts-ignore
+                // console.log(Img.enemy.src)
+                // @ts-ignore
+                ctx.drawImage(Img.enemy,
+                    walkingMod * frameWidth, directionMod * frameHeight, frameWidth, frameHeight,
+                    x - width*10, y - height*10, width*20, height*20);
+                // @ts-ignore
+                // ctx.drawImage(Img.enemy,
+                //     x, y);
+                // console.log('after draw')
+            }
+            // @ts-ignore
+            Enemy.list[self.id] = self
+
+            return self
+        }
+        // @ts-ignore
+        Enemy.list = {}
+
+
+        // @ts-ignore
         let selfId = null
 
+
         socket.on('init', function (data) {
+            // console.log(data.selfId)
             if (data.selfId)
                 selfId = data.selfId
+                // @ts-ignore
+                // console.log(selfId)
             for (let i = 0; i < data.player.length; i++) {
                 // @ts-ignore
                 new Player(data.player[i])
@@ -396,16 +469,25 @@ const Canvas = () => {
                 // @ts-ignore
                 new Bullet(data.bullet[i])
             }
+            for (let i = 0; i < data.enemy.length; i++) {
+                // @ts-ignore
+                new Enemy(data.enemy[i])
+                // console.log(data.enemy[i])
+            }
         })
         socket.on('update', function (data) {
             //{ player : [{id:123,x:0,y:0},{id:1,x:0,y:0}], bullet: []}
+            // console.log(data)
             for (let i = 0; i < data.player.length; i++) {
                 let pack = data.player[i]
+                let enemyToAttackX
+                let enemyToAttackY
                 // @ts-ignore
                 let p = Player.list[pack.id]
                 if (p) {
                     if (pack.x !== undefined)
                         p.x = pack.x
+                        // enemyToAttackX = pack.x
                     if (pack.y !== undefined)
                         p.y = pack.y
                     if (pack.hp !== undefined)
@@ -416,6 +498,8 @@ const Canvas = () => {
                         p.mouseAngle = pack.mouseAngle
                     if (pack.spriteAnimCounter !== undefined)
                         p.spriteAnimCounter = pack.spriteAnimCounter
+                    if (pack.map !== undefined)
+                        p.map = pack.map
                 }
             }
             for (let i = 0; i < data.bullet.length; i++) {
@@ -429,6 +513,25 @@ const Canvas = () => {
                         b.y = pack.y
                 }
             }
+            for (let i = 0; i < data.enemy.length; i++) {
+                let pack = data.enemy[i]
+                // @ts-ignore
+                let e = Enemy.list[data.enemy[i].id]
+                if (e) {
+                    if (pack.x !== undefined)
+                        e.x = pack.x
+                    if (pack.y !== undefined)
+                        e.y = pack.y
+                    if (pack.hp !== undefined)
+                        e.hp = pack.hp
+                    if (pack.score !== undefined)
+                        e.score = pack.score
+                    if (pack.mouseAngle !== undefined)
+                        e.mouseAngle = pack.mouseAngle
+                    if (pack.spriteAnimCounter !== undefined)
+                        e.spriteAnimCounter = pack.spriteAnimCounter
+                }
+            }
         });
 
         socket.on('remove', function (data) {
@@ -440,34 +543,42 @@ const Canvas = () => {
                 // @ts-ignore
                 delete Bullet.list[data.bullet[i]]
             }
+            for (let i = 0; i < data.enemy.length; i++) {
+                // @ts-ignore
+                delete Enemy.list[data.enemy[i]]
+            }
         });
         // @ts-ignore
-        let Maps = function (id, imgSrc, grid) {
+        let Maps = function () {
             // @ts-ignore
 
             var self = {
-                id: id,
+                // id: id,
                 image: new Image(),
-                width: grid[0].length * TILE_SIZE,
-                height: grid.length * TILE_SIZE,
-                grid: grid,
+                // width: grid[0].length * TILE_SIZE,
+                // height: grid.length * TILE_SIZE,
+                // grid: grid,
             }
-            self.image.src = imgSrc;
+            
             // @ts-ignore
-            self.isPositionWall = function (pt) {
-                var gridX = Math.floor(pt.x / TILE_SIZE);
-                var gridY = Math.floor(pt.y / TILE_SIZE);
-                if (gridX < 0 || gridX >= self.grid[0].length)
-                    return true;
-                if (gridY < 0 || gridY >= self.grid.length)
-                    return true;
-                return self.grid[gridY][gridX];
-            }
+            // self.isPositionWall = function (pt) {
+            //     var gridX = Math.floor(pt.x / TILE_SIZE);
+            //     var gridY = Math.floor(pt.y / TILE_SIZE);
+            //     if (gridX < 0 || gridX >= self.grid[0].length)
+            //         return true;
+            //     if (gridY < 0 || gridY >= self.grid.length)
+            //         return true;
+            //     return self.grid[gridY][gridX];
+            // }
             // @ts-ignore
             self.draw = function () {
 
                 // @ts-ignore
                 let player = Player.list[selfId];
+                // console.log(player)
+                // @ts-ignore
+                self.image.src = `/images/map${player.map}.png`;
+                // @ts-ignore
                 // console.log(player.x, player.y)
                 // @ts-ignore
                 var x = WIDTH / 2 - player.x;
@@ -481,18 +592,11 @@ const Canvas = () => {
             return self;
         }
         // @ts-ignore
-        Maps.current = Maps('vestibule', '/images/map.png', array);
+        // @ts-ignore
+        Maps.current = Maps();
+        // @ts-ignore
+        // console.log(Maps.current.width, Maps.current.height)
 
-        // // @ts-ignore
-        // let array2D = [];
-        // for(let i = 0 ; i < 32; i++){
-        //     // @ts-ignore
-        //     array2D[i] = [];
-        //     for(let j = 0 ; j < 51; j++){
-        //         // @ts-ignore
-        //         array2D[i][j] = array[i * 32 + j];
-        //     }
-        // }
         let drawMap = function () {
             // @ts-ignore
             let player = Player.list[selfId];
@@ -510,6 +614,8 @@ const Canvas = () => {
             // @ts-ignore
             if (!selfId)
                 return;
+            // @ts-ignore
+            // console.log(selfId)
             ctx.clearRect(0, 0, WIDTH, HEIGHT)
             // @ts-ignore
             Maps.current.draw();
@@ -523,6 +629,10 @@ const Canvas = () => {
             for (let i in Bullet.list)
                 // @ts-ignore
                 Bullet.list[i].draw()
+            // @ts-ignore
+            for (let i in Enemy.list)
+                // @ts-ignore
+                Enemy.list[i].draw()
         }, 40)
 
 
