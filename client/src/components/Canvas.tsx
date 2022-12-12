@@ -15,11 +15,6 @@ import {showNotification} from "../store/reducers/notificationSlice";
 
 declare var window: any
 
-interface Reward {
-    img: string;
-    name: string
-}
-
 const Canvas = () => {
 
     const dispatch = useAppDispatch()
