@@ -1,4 +1,6 @@
-import React, {FC, useMemo, useState} from 'react';
+import React, {FC, useEffect, useMemo, useState} from 'react';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
+import { fetchTokenFirstEverPass } from '../../../store/reducers/ActionCreators';
 import cl from './PopupWindow.module.css'
 
 interface PopupWindow {
@@ -10,21 +12,19 @@ interface PopupWindow {
 }
 
 const PopupWindow: FC<PopupWindow> = ({width, height, mouseMoveEvent, reference, playerCoordinates}) => {
-    //@todo Кординаты игрока в компоненте
-    // console.log(playerCoordinates)
-    // console.log(playerCoordinates.playerY)
-    // console.log(playerCoordinates.playerX)
-    const firstPopUpFixedX = 2500
-    const firstPopUpFixedY = 0
-    let x = width/2 - playerCoordinates.playerX + firstPopUpFixedX
-    let y = height/2 - playerCoordinates.playerY + firstPopUpFixedY
-    // console.log(width, height)
-    console.log(playerCoordinates.playerX, playerCoordinates.playerY)
-    console.log(x,y)
+    const dispatch = useAppDispatch();
 
+    const firstPopUpFixedX = 160;
+    const firstPopUpFixedY = 550;
+    let adaptX = width/2 - playerCoordinates.playerX;
+    let adaptY = height/2 - playerCoordinates.playerY;
 
+    const {nftMetadata} = useAppSelector(state => state.nftSlice)
+    // useEffect(() => {
+    //     dispatch(fetchTokenFirstEverPass)
+    // }, [])
     const windows = [
-        {x: x, y: y, text: 'Первое всплывающее окно'},
+        {x: adaptX + firstPopUpFixedX, y: adaptY + firstPopUpFixedY, text: `Бюро пропуско\nСамый первый студент:\n${nftMetadata.attributes[0].value} ${nftMetadata.attributes[1].value}`},
         {x: 750, y: 450, text: 'Второе всплывающее окно'}
     ]
     const [imagePos, setImagePos] = useState({x: 0, y: 0});
@@ -44,10 +44,10 @@ const PopupWindow: FC<PopupWindow> = ({width, height, mouseMoveEvent, reference,
         //@ts-ignore
         <div className={cl.popup} style={{width: width, height: height}}>
             {windows.map(window =>
-                window.x >= imagePos.x - 5 &&
-                window.x <= imagePos.x + 5 &&
-                window.y >= imagePos.y - 5 &&
-                window.y <= imagePos.y + 5
+                window.x >= imagePos.x - 50 &&
+                window.x <= imagePos.x + 50 &&
+                window.y >= imagePos.y - 50 &&
+                window.y <= imagePos.y + 50
                     ?
                     <div key={window.text} className={cl.popupContent}
                          style={{left: imagePos.x, top: imagePos.y}}>

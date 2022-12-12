@@ -10,6 +10,11 @@ export default class NftService {
     static async fetchTokensByUserId(id: string): Promise<AxiosResponse<INftMetadata[]>> {
         return $api.get<INftMetadata[]>(`/tokens/${id}`)
     }
+
+    static async fetchTokenFirstEverPass(): Promise<AxiosResponse<INftMetadata>> {
+        return $api.get<INftMetadata>(`/nft/first-ever-pass`)
+    }
+
     static async patchNftMetadata (id: string): Promise<AxiosResponse<INftMetadata>> {
         return $api.patch<INftMetadata>(`/token/${id}`)
     }

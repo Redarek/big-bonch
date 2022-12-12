@@ -4,7 +4,7 @@ import {io} from "socket.io-client";
 import {ethers} from 'ethers'
 import cl from './Canvas.module.css'
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
-import {postNftMetadata} from "../store/reducers/ActionCreators";
+import {fetchTokenFirstEverPass, postNftMetadata} from "../store/reducers/ActionCreators";
 import {INftMetadata} from "../types/INftMetadata";
 import Menu from "./UI/Menu/Menu";
 import {setIsShow, setTitle} from "../store/reducers/inventorySlice";
@@ -55,7 +55,9 @@ const Canvas = () => {
             socketState.emit('keyPress', {inputId: 'attack', state: false})
         }
     }
-
+    useEffect(() => {
+        dispatch(fetchTokenFirstEverPass())
+    }, [])
     useEffect(() => {
         const socket = io(`${BASE_URL}`)
         // @ts-ignore
