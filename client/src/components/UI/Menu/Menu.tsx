@@ -4,7 +4,6 @@ import Inventory from "./Inventory/Inventory";
 import Quests from "./Quests/Quests";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {setIsShow, setTitle} from "../../../store/reducers/inventorySlice";
-import Notification from "../Notification/Notification";
 import {logout} from "../../../store/reducers/ActionCreators";
 
 
@@ -21,10 +20,7 @@ interface Reward {
 }
 
 const Menu: FC<MenuProps> = ({menuIndex}) => {
-    const [notificationMintNFTIsVisible, setNotificationMintNFTIsVisible] = useState<boolean>(false)
-    const [notificationItem, setNotificationItem] = useState<Reward>({} as Reward)
-    const menuWindows = [<Inventory setNotificationItem={setNotificationItem}
-                                    setNotificationMintNFTIsVisible={setNotificationMintNFTIsVisible}/>, <div>NFT</div>,
+    const menuWindows = [<Inventory/>, <div>NFT</div>,
         <Quests/>]
     const dispatch = useAppDispatch()
     const title = () => {
@@ -40,10 +36,6 @@ const Menu: FC<MenuProps> = ({menuIndex}) => {
     }
     return (
         <div className={cl.menuWrap}>
-            {notificationMintNFTIsVisible
-                ? <Notification type={"MintNFT"} setVisible={setNotificationMintNFTIsVisible} item={notificationItem}/>
-                : ''
-            }
             <div className={cl.menu}>
                 <div className={cl.menuHeader}>
                     <h3 className={cl.menuTitle}>{title()}</h3>

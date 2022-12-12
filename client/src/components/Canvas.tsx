@@ -10,28 +10,27 @@ import Menu from "./UI/Menu/Menu";
 import {setIsShow, setTitle} from "../store/reducers/inventorySlice";
 import Notification from "./UI/Notification/Notification";
 import PopupWindow from "./UI/popupWindow/PopupWindow";
+import {showNotification} from "../store/reducers/notificationSlice";
 
 
 declare var window: any
-
-interface Reward {
-    img: string;
-    name: string
-}
 
 const Canvas = () => {
 
     const dispatch = useAppDispatch()
 
     const {isShowMenu, menuTitle} = useAppSelector(state => state.inventorySlice)
-    const [notificationItem, setNotificationItem] = useState<Reward>({} as Reward)
-    const [notificationItemIsVisible, setNotificationItemIsVisible] = useState<boolean>(false)
+
+    const {isShowNotification} = useAppSelector(state => state.notificationSlice)
 
     const [height, setHeight] = useState(100);
     const [width, setWidth] = useState(100);
     const [mouseMoveEvent, setMouseMoveEvent] = useState()
 
-    const [playerCoordinates, setPlayerCoordinates] = useState<{playerX: number; playerY: number}>({playerX: 0, playerY: 0})
+    const [playerCoordinates, setPlayerCoordinates] = useState<{ playerX: number; playerY: number }>({
+        playerX: 0,
+        playerY: 0
+    })
 
     const [left, setLeft] = useState(0);
     const canvasRef = React.useRef(null)
@@ -139,8 +138,7 @@ const Canvas = () => {
                             expectedOwnerAddress: ''
                         }
                         dispatch(postNftMetadata(nftMetadata)) //отправка на сервер
-                        setNotificationItem({img: `${BASE_URL}/pass.png`, name: 'Пропуск'})
-                        setNotificationItemIsVisible(true)
+                        dispatch(showNotification({type: 'GetItem', img: `${BASE_URL}/pass.png`, name: 'Пропуск'}))
                     }
                     console.log('response: ', response)
                 } catch (err) {
@@ -597,7 +595,7 @@ const Canvas = () => {
                 ctx.drawImage(self.image, x, y, WIDTH * 2, HEIGHT * 2);
                 // @ts-ignore
                 // ctx.drawImage(Img.map[player.map],x,y, WIDTH*2, HEIGHT*2);
-                setPlayerCoordinates({playerX:player.x, playerY: player.y})
+                setPlayerCoordinates({playerX: player.x, playerY: player.y})
             }
             return self;
         }
@@ -733,11 +731,12 @@ const Canvas = () => {
             style={{height: `${height}px`}}
         >
             {width && height && mouseMoveEvent
-                ? <PopupWindow playerCoordinates={playerCoordinates} width={width} height={height} reference={canvasRef} mouseMoveEvent={mouseMoveEvent}/>
+                ? <PopupWindow playerCoordinates={playerCoordinates} width={width} height={height} reference={canvasRef}
+                               mouseMoveEvent={mouseMoveEvent}/>
                 : ''
             }
-            {notificationItemIsVisible
-                ? <Notification type={"GetItem"} setVisible={setNotificationItemIsVisible} item={notificationItem}/>
+            {isShowNotification
+                ? <Notification/>
                 : ''
             }
             <canvas

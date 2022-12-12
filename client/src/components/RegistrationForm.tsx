@@ -116,15 +116,8 @@ const RegistrationForm: FC = () => {
                         onChange={(e) => setPatronymic(e.target.value)}
                     />
                 </div>
-                <div className={cl.reg__input_wrap}>
-                    <DropDownMenu
-                        menuType={'faculty'}
-                        title={faculty}
-                        menuItems={[]}
-                        dropMenuItem={'faculty'}
-                        setDropMenuItem={setFaculty}
-                        viewMode={"bottom"}
-                    />
+                <div className={cl.reg__input_wrap} style={{zIndex: '100'}}>
+                    <DropDownMenu type={'faculty'} position={"bottom"} selectItem={faculty} setSelectItem={setFaculty} items={[]}/>
                 </div>
                 <div className={cl.reg__radio_container}>
                     <div className={cl.reg__radio}>

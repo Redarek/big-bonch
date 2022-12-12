@@ -4,17 +4,19 @@ import storage from "redux-persist/lib/storage";
 import authSlice from './reducers/authSlice'
 import nftSlice from "./reducers/nftSlice";
 import inventorySlice from "./reducers/inventorySlice";
+import notificationSlice from "./reducers/notificationSlice";
 
 const rootReducer = combineReducers({
     authSlice,
     nftSlice,
-    inventorySlice
+    inventorySlice,
+    notificationSlice
 })
 
 const persistConfig = {
     key: 'root',
     storage,
-    blacklist: ['authSlice', 'nftSlice', 'inventorySlice']
+    blacklist: ['authSlice', 'nftSlice', 'inventorySlice', 'notificationSlice']
 };
 
 
