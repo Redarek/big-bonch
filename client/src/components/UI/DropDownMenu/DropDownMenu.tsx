@@ -1,90 +1,48 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useState} from 'react';
 import cl from './DropDownMenu.module.css'
 
 interface DropDownMenuProps {
-    menuType: 'faculty' | 'other';
-    title: string;
-    menuItems: any[];
-    dropMenuItem: string;
-    setDropMenuItem: (item: string) => void;
-    viewMode: 'right' | 'bottom'
-    setIndexOfSelectElem?: (index: number) => void;
-    indexOfMenu?: string;
-    indexOfOpenMenu?: string;
-    setIndexOfOpenMenu?: (index: string) => void;
+    type: "faculty" | "string";
+    position: "bottom" | "right"
+    selectItem: any;
+    setSelectItem: (variable: any) => void;
+    items: any[];
 }
 
-const DropDownMenu: FC<DropDownMenuProps> = ({
-                                                 title,
-                                                 menuItems,
-                                                 dropMenuItem,
-                                                 setDropMenuItem,
-                                                 menuType,
-                                                 viewMode,
-                                                 setIndexOfSelectElem,
-                                                 indexOfMenu,
-                                                 indexOfOpenMenu,
-                                                 setIndexOfOpenMenu,
-                                             }) => {
-    const faculty = ["ИКСС", "ИСиТ", "РТС", "СЦТ", "ФФП", "ЦЭУБИ", "ИМ", "ИНО", "ВУЦ", "СПбКТ"]
-    let items: any[] = []
-    switch (menuType) {
-        case 'other':
-            items = menuItems;
-            break;
-        case "faculty":
-            items = faculty
-            break;
-    }
-
-    const wrapStyle = {width: '75%'}
-    const menuListWrapStyle = {width: '240px', left: '75%', marginTop: '0'}
-
-    switch (viewMode) {
-        case "bottom":
-            wrapStyle.width = '100%'
-            menuListWrapStyle.width = '100%'
-            menuListWrapStyle.left = '0'
-            menuListWrapStyle.marginTop = '42px'
-            break;
-    }
-
+const DropDownMenu: FC<DropDownMenuProps> = ({selectItem, items, setSelectItem, type, position}) => {
     const [visible, setVisible] = useState(false)
-    useEffect(() => {
-        if (indexOfOpenMenu !== indexOfMenu) setVisible(false)
-    }, [indexOfOpenMenu])
 
-    const checkSetOpenMenuTitle = () => {
-        if (setIndexOfOpenMenu && indexOfMenu) {
-            setIndexOfOpenMenu(indexOfMenu);
-        }
-        setVisible(!visible);
+    let inputStyles = {}
+    let itemsStyles = {}
+
+    if (position === "right") {
+        itemsStyles = {left: '60%', width: '40%', top: '0'};
+        inputStyles = {width: '60%'};
     }
 
+    const faculty = ["ИКСС", "ИСиТ", "РТС", "СЦТ", "ФФП", "ЦЭУБИ", "ИМ", "ИНО", "ВУЦ", "СПбКТ"]
+
+    let itms = items
+    switch (type) {
+        case "faculty":
+            itms = faculty
+    }
     return (
-        <div className={cl.wrapper}>
-            <div className={cl.wrap} style={wrapStyle} onClick={() => {
-                checkSetOpenMenuTitle();
-                setVisible(!visible);
-            }}>
-                <div
-                    className={cl.menuTitle}>{dropMenuItem === '' ? title : items[items.findIndex(obj => obj === title)]}</div>
-                <div className={cl.menuIcon}></div>
-            </div>
+        <div className={cl.container}>
+            <input style={inputStyles} className={cl.input} type="text" value={selectItem} readOnly={true}
+                   onFocus={() => setVisible(true)}
+                   onBlur={() => setTimeout(() => setVisible(false), 100)}/>
             {visible
-                ?
-                <div className={cl.menuListWrap} style={menuListWrapStyle}>
-                    {items.map((item, index) =>
-                        <div key={item} className={cl.menuItem} onClick={() => {
-                            setDropMenuItem(item);
-                            if (setIndexOfSelectElem) setIndexOfSelectElem(index)
+                ? <div className={cl.items} style={itemsStyles}>
+                    {itms.map(item =>
+                        <div className={cl.item} key={item} onClick={(e) => {
+                            setSelectItem(item);
                             setVisible(false)
-                        }}>
-                            {item}
-                        </div>
+                        }}>{item}</div>
                     )}
                 </div>
                 : ''
+
             }
         </div>
     );
