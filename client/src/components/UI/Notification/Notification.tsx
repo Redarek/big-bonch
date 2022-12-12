@@ -1,41 +1,39 @@
 import React, {FC} from 'react';
 import cl from './Notification.module.css'
+import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
+import {hideNotification} from "../../../store/reducers/notificationSlice";
 
 interface NotificationProps {
-    type: "GetItem" | "MintNFT";
-    item: {
-        img: string;
-        name: string
-    },
-    setVisible: (bool: boolean) => void
 }
 
-const Notification: FC<NotificationProps> = ({type, item, setVisible}) => {
+const Notification: FC<NotificationProps> = () => {
+    const {notificationItem} = useAppSelector(state => state.notificationSlice)
     const typeOfNot = () => {
-        switch (type) {
+        switch (notificationItem.type) {
             case 'GetItem':
                 return {backgroundImage: `url(/images/notificationGetItem.png)`}
             case 'MintNFT':
                 return {backgroundImage: `url(/images/notificationMintNFT.jpg)`}
         }
     }
+    const dispatch = useAppDispatch()
     setTimeout(()=> {
-        setVisible(false)
+        dispatch(hideNotification())
     }, 5000)
     return (
         <div className={cl.notification} style={typeOfNot()}>
             <div className={cl.rewardImg}>
-                <img src={item.img} alt=""/>
+                <img src={notificationItem.img} alt=""/>
             </div>
-            {type === "GetItem"
+            {notificationItem.type === "GetItem"
                 ? <div className={cl.rewardText}>
-                    Получен<br/><span> {item.name}</span>
+                    Получен<br/><span> {notificationItem.name}</span>
                 </div>
                 : ''
             }
-            {type === "MintNFT"
+            {notificationItem.type === "MintNFT"
                 ? <div className={cl.rewardText}>
-                    Выпущен<br/><span> {item.name}</span>
+                    Выпущен<br/><span> {notificationItem.name}</span>
                 </div>
                 : ''
             }
