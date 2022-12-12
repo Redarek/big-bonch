@@ -76,6 +76,15 @@ class NftMetadataController {
         }
     }
 
+    async getFirstEverPass(req, res, next) {
+        try {
+            const firstEverPass = await nftMetadataService.getFirstEverPass();
+            return res.json(firstEverPass)
+        } catch (error) {
+            next(error);
+        }
+    }
+
 }
 
 module.exports = new NftMetadataController();

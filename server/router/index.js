@@ -15,11 +15,14 @@ router.get('/activate/:link', userController.activate);
 router.get('/refresh', userController.refresh);
 router.get('/users', authMiddleware, userController.getUsers);
 
-
+// NFT metadata
 router.get('/token/id', authMiddleware, nftMetadataController.getNewTokenId);
 router.post('/token-metadata', authMiddleware, nftMetadataController.createNftMetadata)
 router.get('/token/:id', nftMetadataController.getNftMetadataByTokenId);
 router.get('/tokens/:id', nftMetadataController.getNftMetadatasByUserId)
 router.patch('/token/:id', nftMetadataController.assignIdToNftMetadata)
+
+// Specific NFTs
+router.get('/nft/first-ever-pass', nftMetadataController.getFirstEverPass);
 
 module.exports = router;

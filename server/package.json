@@ -20,10 +20,12 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.4",
     "nodemailer": "^6.8.0",
-    "nodemon": "^2.0.20",
     "path": "^0.12.7",
     "socket.io": "^4.5.3",
     "uuid": "^9.0.0",
     "web3": "^1.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }

@@ -87,6 +87,11 @@ class NftMetadataService {
         }
         return false;
     }
+
+    async getFirstEverPass() {
+        const firstEverPass = await nftMetadataModel.findOne({name: 'Пропуск'}).sort({_id: 1}).limit(1);
+        return firstEverPass;
+    }
 }
 
 module.exports = new NftMetadataService();
