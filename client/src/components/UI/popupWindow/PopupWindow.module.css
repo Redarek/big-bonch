@@ -9,7 +9,8 @@
     position: absolute;
     /*display: block;*/
     width: 200px;
-    height: 100px;
+    min-height: 100px;
+    padding: 2px 0;
     z-index: 100;
     display: flex;
     align-items: center;
