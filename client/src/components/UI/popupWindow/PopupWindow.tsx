@@ -23,9 +23,17 @@ const PopupWindow: FC<PopupWindow> = ({width, height, mouseMoveEvent, reference,
     // useEffect(() => {
     //     dispatch(fetchTokenFirstEverPass)
     // }, [])
+
+    let passFirstName = 'undefined'
+    let passLastName = 'undefined'
+    if (nftMetadata.attributes) {
+        passFirstName = nftMetadata.attributes[0].value
+        passLastName = nftMetadata.attributes[1].value
+    }
+    
     const windows = [
-        {x: adaptX + firstPopUpFixedX, y: adaptY + firstPopUpFixedY, text: `Бюро пропуско\nСамый первый студент:\n${nftMetadata.attributes[0].value} ${nftMetadata.attributes[1].value}`},
-        {x: 750, y: 450, text: 'Второе всплывающее окно'}
+        {x: adaptX + firstPopUpFixedX, y: adaptY + firstPopUpFixedY, text: `Бюро пропусков\nСамый первый студент:\n${passFirstName} ${passLastName}`},
+        // {x: 750, y: 450, text: 'Второе всплывающее окно'}
     ]
     const [imagePos, setImagePos] = useState({x: 0, y: 0});
     //@ts-ignore

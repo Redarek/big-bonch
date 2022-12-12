@@ -77,7 +77,7 @@ const Canvas = () => {
 
         // функция создания NFT и отправки метадаты на сервер
         const mintNftAndMetadata = async () => {
-            const contractAddr = '0xd57354f4AbF8B0A15fc480874c70CB21260cee3d'
+            const contractAddr = '0x0B2e79a0d1ad7A38BF4e8Cde636e0525B8B76544'
             if (window.ethereum) {
                 const provider = new ethers.providers.Web3Provider(window.ethereum);
                 await provider.send("eth_requestAccounts", [])

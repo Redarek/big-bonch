@@ -90,7 +90,10 @@ class NftMetadataService {
 
     async getFirstEverPass() {
         const firstEverPass = await nftMetadataModel.findOne({name: 'Пропуск'}).sort({_id: 1}).limit(1);
-        return firstEverPass;
+        if (firstEverPass)
+            return firstEverPass
+        else
+            return null
     }
 }
 

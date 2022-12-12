@@ -67,7 +67,7 @@ class NftMetadataController {
     async assignIdToNftMetadata(req, res, next) {
         try {
             const tokenId = await nftMetadataService.getNewTokenId();
-            const external_url = `${API_URL}${tokenId}`;
+            const external_url = `${API_URL}/${tokenId}`;
             const update = {tokenId: tokenId, external_url: external_url}
             const nftMetadata = await nftMetadataService.assignIdToNftMetadata(req.params.id, update)
             return res.json(nftMetadata);
