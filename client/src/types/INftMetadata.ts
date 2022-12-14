@@ -7,7 +7,7 @@ export interface INftMetadata {
     description: string;
     image: string;
     tokenId?: string;
-    _id:string;
+    _id: string;
     attributes: attributes[];
     expectedOwnerAddress: string;
 }

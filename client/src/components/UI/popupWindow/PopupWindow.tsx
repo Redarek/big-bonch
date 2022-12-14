@@ -26,7 +26,7 @@ const PopupWindow: FC<PopupWindow> = ({width, height, mouseMoveEvent, reference,
 
     let passFirstName = 'undefined'
     let passLastName = 'undefined'
-    if (nftMetadata.attributes) {
+    if (nftMetadata.attributes !== null && nftMetadata !== null && nftMetadata.attributes !== undefined) {
         passFirstName = nftMetadata.attributes[0].value
         passLastName = nftMetadata.attributes[1].value
     }
