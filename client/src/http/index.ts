@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { AuthResponse } from '../types/AuthResponse';
 
-export const API_URL = process.env.NODE_ENV === "production" ? 'https://big-bonch.herokuapp.com/api' : 'http://localhost:8080/api';
+export const API_URL = process.env.NODE_ENV === "production" ? 'https://big-bonch.onrender.com/api' : 'http://localhost:8080/api';
 
 const $api = axios.create({
     withCredentials: true,

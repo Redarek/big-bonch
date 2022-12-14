@@ -37,7 +37,7 @@ const Canvas = () => {
     const canvasRefUi = React.useRef(null)
 
     const {user} = useAppSelector(state => state.authSlice.user)
-    const BASE_URL = process.env.NODE_ENV === "production" ? 'https://big-bonch.herokuapp.com' : 'http://localhost:8080';
+    const BASE_URL = process.env.NODE_ENV === "production" ? 'https://big-bonch.onrender.com' : 'http://localhost:8080';
 
 
     const [socketState, setSocket] = useState()

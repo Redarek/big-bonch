@@ -5,7 +5,7 @@ import {setNft} from "../../../../store/reducers/inventorySlice";
 import {fetchTokensByUserId, patchNftMetadata} from "../../../../store/reducers/ActionCreators";
 import {ethers} from 'ethers'
 import {showNotification} from "../../../../store/reducers/notificationSlice";
-// const BASE_URL = process.env.NODE_ENV === "production" ? 'https://big-bonch.herokuapp.com' : 'http://localhost:8080';
+// const BASE_URL = process.env.NODE_ENV === "production" ? 'https://big-bonch.onrender.com' : 'http://localhost:8080';
 declare var window: any
 
 
