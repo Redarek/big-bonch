@@ -1,7 +1,7 @@
 import MainPage from "../pages/MainPage";
 import LoginForm from "../components/LoginForm";
 import RegistrationForm from "../components/RegistrationForm";
-import PopupWindow from "../components/UI/popupWindow/PopupWindow";
+import DialogueWindow from "../components/DialogueWindow/DialogueWindow";
 
 export const publicRoutes = [
     {path: '/login', element: <LoginForm/>},
@@ -13,7 +13,7 @@ export const privateRoutes = [
 ];
 export const authRoutes = [
     {path: '/', element: <MainPage/>},
-    {path: '/test', element: <PopupWindow/>},
+    {path: '/test', element: <DialogueWindow/>},
     // {path: '/login', element: <LoginForm/>},
     // {path: '/registration', element: <RegistrationForm/>},
 ];

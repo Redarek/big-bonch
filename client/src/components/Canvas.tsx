@@ -9,7 +9,7 @@ import {INftMetadata} from "../types/INftMetadata";
 import Menu from "./UI/Menu/Menu";
 import {setIsShow, setTitle} from "../store/reducers/inventorySlice";
 import Notification from "./UI/Notification/Notification";
-import PopupWindow from "./UI/popupWindow/PopupWindow";
+import PopupWindow from "./PopupWindow/PopupWindow";
 import {showNotification} from "../store/reducers/notificationSlice";
 
 

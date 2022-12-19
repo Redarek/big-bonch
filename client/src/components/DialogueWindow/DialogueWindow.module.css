@@ -1,0 +1,147 @@
+.dialogue {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 990;
+    background-color: rgba(222, 176, 123, .97);
+    display: flex;
+    align-items: flex-end;
+    /*justify-content: center;*/
+    padding: 20px 20px 50px 20px;
+    gap: 40px;
+}
+
+.companion {
+    left: 15%;
+    top: 15%;
+    position: absolute;
+    z-index: 991;
+    width: 30%;
+    height: 30%;
+    animation: talk 4s linear infinite;
+}
+
+.companion img{
+    width: 100%;
+    height: 100%;
+}
+
+.dialogueArea {
+    flex: 2;
+    height: 150px;
+    /*overflow-y: auto;*/
+    background-color: #DEB07B;
+    position: relative;
+    border-style: solid;
+    border-color: black;
+    padding: 10px;
+
+    border-width: 0.225em 0;
+    z-index: 4;
+    box-shadow: -.35em 0 0 -.125em,
+    .35em 0 0 -.125em;
+}
+
+.dialogueAreaContainer {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.answerArea {
+    flex: 1;
+    min-height: 150px;
+    background-color: #DEB07B;
+    position: relative;
+    border-style: solid;
+    border-color: black;
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+
+    border-width: 0.225em 0;
+    z-index: 4;
+    box-shadow: -.35em 0 0 -.125em,
+    .35em 0 0 -.125em;
+}
+
+.answer {
+    cursor: pointer;
+    transition: all 1s;
+}
+
+.answer:hover {
+    transform: scale(1.015);
+}
+
+.dialogueArea:before {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 .225em;
+    bottom: 0.20em;
+    content: "";
+    left: -0.4em;
+    pointer-events: none;
+    position: absolute;
+    top: 0.20em;
+    right: -0.4em;
+    z-index: -2;
+}
+
+.dialogueArea:after {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 0.225em;
+    bottom: 0.48em;
+    content: "";
+    left: -0.6em;
+    position: absolute;
+    top: 0.48em;
+    right: -0.6em;
+    z-index: -1;
+}
+
+.answerArea:before {
+     background-color: inherit;
+     border: inherit;
+     border-width: 0 .225em;
+     bottom: 0.20em;
+     content: "";
+     left: -0.4em;
+     pointer-events: none;
+     position: absolute;
+     top: 0.20em;
+     right: -0.4em;
+     z-index: -2;
+ }
+
+.answerArea:after {
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 0.225em;
+    bottom: 0.48em;
+    content: "";
+    left: -0.6em;
+    position: absolute;
+    top: 0.48em;
+    right: -0.6em;
+    z-index: -1;
+}
+
+@keyframes talk {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}

@@ -1,7 +1,8 @@
 import React, {FC, useEffect, useMemo, useState} from 'react';
-import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import { fetchTokenFirstEverPass } from '../../../store/reducers/ActionCreators';
+import {useAppDispatch, useAppSelector} from '../../hooks/redux';
+import {fetchTokenFirstEverPass} from '../../store/reducers/ActionCreators';
 import cl from './PopupWindow.module.css'
+import DialogueWindow from "../DialogueWindow/DialogueWindow";
 
 interface PopupWindow {
     reference: any;
@@ -13,11 +14,12 @@ interface PopupWindow {
 
 const PopupWindow: FC<PopupWindow> = ({width, height, mouseMoveEvent, reference, playerCoordinates}) => {
     const dispatch = useAppDispatch();
+    const [dialogueWindowIsVisible, setDialogueWindowIsVisible] = useState<boolean>(false)
 
     const firstPopUpFixedX = 160;
     const firstPopUpFixedY = 550;
-    let adaptX = width/2 - playerCoordinates.playerX;
-    let adaptY = height/2 - playerCoordinates.playerY;
+    let adaptX = width / 2 - playerCoordinates.playerX;
+    let adaptY = height / 2 - playerCoordinates.playerY;
 
     const {nftMetadata} = useAppSelector(state => state.nftSlice)
     // useEffect(() => {
@@ -30,9 +32,13 @@ const PopupWindow: FC<PopupWindow> = ({width, height, mouseMoveEvent, reference,
         passFirstName = nftMetadata.attributes[0].value
         passLastName = nftMetadata.attributes[1].value
     }
-    
+
     const windows = [
-        {x: adaptX + firstPopUpFixedX, y: adaptY + firstPopUpFixedY, text: `Бюро пропусков\nСамый первый студент:\n${passFirstName} ${passLastName}`},
+        {
+            x: adaptX + firstPopUpFixedX,
+            y: adaptY + firstPopUpFixedY,
+            text: `Бюро пропусков\nСамый первый студент:\n${passFirstName} ${passLastName}`
+        },
         // {x: 750, y: 450, text: 'Второе всплывающее окно'}
     ]
     const [imagePos, setImagePos] = useState({x: 0, y: 0});
@@ -57,12 +63,18 @@ const PopupWindow: FC<PopupWindow> = ({width, height, mouseMoveEvent, reference,
                 window.y >= imagePos.y - 50 &&
                 window.y <= imagePos.y + 50
                     ?
-                    <div key={window.text} className={cl.popupContent}
-                         style={{left: imagePos.x, top: imagePos.y}}>
+                    <div
+                        onClick={() => setDialogueWindowIsVisible(true)}
+                        key={window.text} className={cl.popupContent}
+                        style={{left: imagePos.x, top: imagePos.y}}>
                         {window.text}
                     </div>
                     : ''
             )}
+            {dialogueWindowIsVisible
+                ? <DialogueWindow dialogueIndex={0} setVisible={setDialogueWindowIsVisible}/>
+                : ''
+            }
 
         </div>
     );
