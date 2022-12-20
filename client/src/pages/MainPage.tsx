@@ -25,9 +25,6 @@ const MainPage: FC = () => {
     return (
         <div className={cl.wrapper}>
             <Canvas/>
-            <div className={cl.menuBtn} onClick={() => dispatch(setIsShow(!isShowMenu))}>
-                show menu
-            </div>
             {isShowMenu
                 ? <Menu menuIndex={menuTitle}/>
                 : ''

@@ -755,6 +755,11 @@ const Canvas = () => {
                 ref={canvasRefUi}>
                 Обновите браузер
             </canvas>
+
+            <div className={cl.menuBtn} onClick={() => dispatch(setIsShow(!isShowMenu))}>
+                Menu
+            </div>
+
         </div>
     );
 };

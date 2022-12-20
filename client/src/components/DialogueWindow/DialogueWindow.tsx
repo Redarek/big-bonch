@@ -124,14 +124,14 @@ const DialogueWindow: FC<DialogueWindowProps> = ({setVisible, dialogueId}) => {
                         },
                     ],
                     playerAnswers: [
-                        {
-                            speech: <p>Cool</p>,
-                            choiceNumber: 4,
-                        },
-                        {
-                            speech: <p>Круто</p>,
-                            choiceNumber: 3,
-                        },
+                        // {
+                        //     speech: <p>Cool</p>,
+                        //     choiceNumber: 4,
+                        // },
+                        // {
+                        //     speech: <p>Круто</p>,
+                        //     choiceNumber: 3,
+                        // },
                     ]
 
                 },

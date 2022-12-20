@@ -1,6 +1,5 @@
-import React, {FC, useEffect, useMemo, useState} from 'react';
-import {useAppDispatch, useAppSelector} from '../../hooks/redux';
-import {fetchTokenFirstEverPass} from '../../store/reducers/ActionCreators';
+import React, {FC, useMemo, useState} from 'react';
+import {useAppSelector} from '../../hooks/redux';
 import cl from './PopupWindow.module.css'
 import DialogueWindow from "../DialogueWindow/DialogueWindow";
 

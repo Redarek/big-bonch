@@ -6,7 +6,6 @@
     height: 100vh;
     width: 100%;
     position: relative;
-    /*background-color: #753d16;*/
 }
 
 
@@ -20,6 +19,28 @@
     height: 100vh;
     overflow: hidden;
     position: relative;
+}
+
+
+.menuBtn {
+    cursor: pointer;
+    position: fixed;
+    bottom: 0;
+    left: 20%;
+    height: 35px;
+    width: 100px;
+    background-color: #753d16;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-top: 10px;
+    color: #FFFFFF;
+    opacity: .9;
+    transition: opacity 300ms linear;
+}
+
+.menuBtn:hover {
+    opacity: 1;
 }
 
 
