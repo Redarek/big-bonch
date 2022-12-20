@@ -3,21 +3,21 @@
     height: 100%;
     position: absolute;
     z-index: 990;
-    background-color: rgba(222, 176, 123, .97);
+    background-color: rgba(222, 176, 123, .2);
     display: flex;
-    align-items: flex-end;
-    /*justify-content: center;*/
-    padding: 20px 20px 50px 20px;
+    align-items: center;
+    justify-content: center;
+    /*padding: 20px 20px 50px 20px;*/
     gap: 40px;
 }
 
 .companion {
-    left: 15%;
-    top: 15%;
+    left: 20%;
+    top: 22%;
     position: absolute;
     z-index: 991;
-    width: 30%;
-    height: 30%;
+    width: 15%;
+    height: 15%;
     animation: talk 4s linear infinite;
 }
 
@@ -29,6 +29,7 @@
 .dialogueArea {
     flex: 2;
     height: 150px;
+    max-width: 400px;
     /*overflow-y: auto;*/
     background-color: #DEB07B;
     position: relative;
@@ -36,6 +37,8 @@
     border-color: black;
     padding: 10px;
 
+    margin-left: 25%;
+    margin-bottom: 10%;
     border-width: 0.225em 0;
     z-index: 4;
     box-shadow: -.35em 0 0 -.125em,
@@ -57,7 +60,8 @@
     border-style: solid;
     border-color: black;
     padding: 15px;
-
+margin-bottom: 10%;
+    max-width: 250px;
     display: flex;
     flex-direction: column;
     gap: 15px;

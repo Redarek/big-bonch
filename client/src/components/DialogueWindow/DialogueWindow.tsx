@@ -115,7 +115,7 @@ const DialogueWindow: FC<DialogueWindowProps> = ({setVisible, dialogueIndex}) =>
         }
         if (answer.choiceNumber === 9) setTimeout(() => {
             setVisible(false)
-        }, 1000)
+        }, 500)
     }
 
     const [dialogueHistory, setDialogueHistory] = useState([dialogues[dialogueIndex][0].speeches[0].speech])
