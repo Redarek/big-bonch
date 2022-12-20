@@ -4,7 +4,7 @@ import {fetchTokenFirstEverPass} from '../../store/reducers/ActionCreators';
 import cl from './PopupWindow.module.css'
 import DialogueWindow from "../DialogueWindow/DialogueWindow";
 
-interface PopupWindow {
+interface PopupWindowProps {
     reference: any;
     mouseMoveEvent: any;
     width: number;
@@ -12,8 +12,14 @@ interface PopupWindow {
     playerCoordinates: any
 }
 
-const PopupWindow: FC<PopupWindow> = ({width, height, mouseMoveEvent, reference, playerCoordinates}) => {
-    const dispatch = useAppDispatch();
+interface WindowParameters {
+    x: number;
+    y: number;
+    text: string;
+    dialogueId: number;
+}
+
+const PopupWindow: FC<PopupWindowProps> = ({width, height, mouseMoveEvent, reference, playerCoordinates}) => {
     const [dialogueWindowIsVisible, setDialogueWindowIsVisible] = useState<boolean>(false)
 
     const firstPopUpFixedX = 160;
@@ -22,9 +28,7 @@ const PopupWindow: FC<PopupWindow> = ({width, height, mouseMoveEvent, reference,
     let adaptY = height / 2 - playerCoordinates.playerY;
 
     const {nftMetadata} = useAppSelector(state => state.nftSlice)
-    // useEffect(() => {
-    //     dispatch(fetchTokenFirstEverPass)
-    // }, [])
+
 
     let passFirstName = 'undefined'
     let passLastName = 'undefined'
@@ -33,13 +37,19 @@ const PopupWindow: FC<PopupWindow> = ({width, height, mouseMoveEvent, reference,
         passLastName = nftMetadata.attributes[1].value
     }
 
-    const windows = [
+    const windows: WindowParameters[] = [
         {
             x: adaptX + firstPopUpFixedX,
             y: adaptY + firstPopUpFixedY,
-            text: `Бюро пропусков\nСамый первый студент:\n${passFirstName} ${passLastName}`
+            text: `Бюро пропусков\nСамый первый студент:\n${passFirstName} ${passLastName}`,
+            dialogueId: -1,
         },
-        // {x: 750, y: 450, text: 'Второе всплывающее окно'}
+        {
+            x: 750,
+            y: 450,
+            text: 'Второе всплывающее окно',
+            dialogueId: 1,
+        }
     ]
     const [imagePos, setImagePos] = useState({x: 0, y: 0});
     //@ts-ignore
@@ -54,6 +64,7 @@ const PopupWindow: FC<PopupWindow> = ({width, height, mouseMoveEvent, reference,
         handlerMoveMouse()
     }, [mouseMoveEvent])
 
+    const [dialogueId, setDialogueId] = useState<number>(-1)
     return (
         //@ts-ignore
         <div className={cl.popup} style={{width: width, height: height}}>
@@ -62,20 +73,25 @@ const PopupWindow: FC<PopupWindow> = ({width, height, mouseMoveEvent, reference,
                 window.x <= imagePos.x + 50 &&
                 window.y >= imagePos.y - 50 &&
                 window.y <= imagePos.y + 50
-                    ?
-                    <div
-                        onClick={() => setDialogueWindowIsVisible(true)}
-                        key={window.text} className={cl.popupContent}
-                        style={{left: imagePos.x, top: imagePos.y}}>
-                        {window.text}
+                    ? <div>
+                        <div
+                            onClick={() => {
+                                if (window.dialogueId > -1) {
+                                    setDialogueId(window.dialogueId);
+                                    setDialogueWindowIsVisible(true)
+                                }
+                            }}
+                            key={window.text} className={cl.popupContent}
+                            style={{left: imagePos.x, top: imagePos.y}}>
+                            {window.text}
+                        </div>
                     </div>
                     : ''
             )}
             {dialogueWindowIsVisible
-                ? <DialogueWindow dialogueIndex={0} setVisible={setDialogueWindowIsVisible}/>
+                ? <DialogueWindow dialogueId={dialogueId} setVisible={setDialogueWindowIsVisible}/>
                 : ''
             }
-
         </div>
     );
 };

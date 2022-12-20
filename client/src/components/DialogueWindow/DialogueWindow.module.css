@@ -1,7 +1,9 @@
 .dialogue {
+    /*display: none;*/
     width: 100%;
     height: 100%;
-    position: absolute;
+    /*position: absolute;*/
+    position: relative;
     z-index: 990;
     background-color: rgba(222, 176, 123, .2);
     display: flex;
@@ -11,17 +13,39 @@
     gap: 40px;
 }
 
-.companion {
-    left: 20%;
-    top: 22%;
-    position: absolute;
-    z-index: 991;
-    width: 15%;
-    height: 15%;
-    animation: talk 4s linear infinite;
+
+.speech {
+    animation: printed_text 3s steps(40);
+    overflow: hidden;
+    white-space: nowrap;
+    width: 380px;
 }
 
-.companion img{
+.speech p {
+    display: inline;
+}
+
+@keyframes printed_text {
+    from {
+        width: 0;
+    }
+}
+
+.companion {
+    /*flex: 1;*/
+    /*left: 20%;*/
+    /*top: 22%;*/
+    /*position: absolute;*/
+    position: relative;
+    /*z-index: 991;*/
+    width: 120px;
+    height: 120px;
+    animation: talk 4s linear infinite;
+    margin-bottom: 15%;
+    /*margin-left: 25%;*/
+}
+
+.companion img {
     width: 100%;
     height: 100%;
 }
@@ -37,7 +61,6 @@
     border-color: black;
     padding: 10px;
 
-    margin-left: 25%;
     margin-bottom: 10%;
     border-width: 0.225em 0;
     z-index: 4;
@@ -46,7 +69,9 @@
 }
 
 .dialogueAreaContainer {
-    overflow-y: auto;
+    overflow: auto;
+    /*overflow-y: -1000px;*/
+    max-height: 100px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -60,7 +85,7 @@
     border-style: solid;
     border-color: black;
     padding: 15px;
-margin-bottom: 10%;
+    margin-bottom: 10%;
     max-width: 250px;
     display: flex;
     flex-direction: column;
@@ -110,18 +135,18 @@ margin-bottom: 10%;
 }
 
 .answerArea:before {
-     background-color: inherit;
-     border: inherit;
-     border-width: 0 .225em;
-     bottom: 0.20em;
-     content: "";
-     left: -0.4em;
-     pointer-events: none;
-     position: absolute;
-     top: 0.20em;
-     right: -0.4em;
-     z-index: -2;
- }
+    background-color: inherit;
+    border: inherit;
+    border-width: 0 .225em;
+    bottom: 0.20em;
+    content: "";
+    left: -0.4em;
+    pointer-events: none;
+    position: absolute;
+    top: 0.20em;
+    right: -0.4em;
+    z-index: -2;
+}
 
 .answerArea:after {
     background-color: inherit;
@@ -137,15 +162,37 @@ margin-bottom: 10%;
 }
 
 @keyframes talk {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
 }
